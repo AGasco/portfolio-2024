@@ -4,6 +4,12 @@
   width: 100vw;
 }
 
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 main {
   max-width: 1280px;
   padding: 2rem;
