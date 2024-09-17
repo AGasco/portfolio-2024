@@ -1,3 +1,5 @@
+import './HeroBackgroundVideo.scss';
+
 const HeroBackgroundVideo = () => {
   return (
     <div className="video-container">
