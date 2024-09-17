@@ -9,7 +9,8 @@ export default defineConfig({
       '@': resolve('src'),
       '@/assets': resolve('src/assets'),
       '@/components': resolve('src/components'),
-      '@/types': resolve('src/types')
+      '@/types': resolve('src/types'),
+      '@/data': resolve('src/data')
     }
   },
   plugins: [react()]

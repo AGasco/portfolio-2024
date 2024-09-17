@@ -10,7 +10,8 @@
       "@/*": ["src/*"],
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
-      "@types/*": ["src/types/*"]
+      "@types/*": ["src/types/*"],
+      "@data/*": ["src/data/*"]
     },
     "types": ["node"]
   }
