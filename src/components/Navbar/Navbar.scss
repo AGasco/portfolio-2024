@@ -5,20 +5,32 @@
   position: fixed;
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   color: white;
   padding: 2rem;
   font-weight: bold;
 
+  &__logo {
+    font-family: 'Dancing Script', cursive;
+    font-size: 32px;
+  }
+
   &__content {
     display: flex;
+    align-items: flex-start;
 
     & > p {
-      cursor: pointer;
       padding: 0.5rem;
+      padding-top: 1rem;
+    }
+  }
 
-      &:hover {
-        text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.8);
-      }
+  p {
+    cursor: pointer;
+    margin-top: 0;
+
+    &:hover {
+      text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.8);
     }
   }
 }
