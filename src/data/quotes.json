@@ -3,7 +3,7 @@
     "id": 0,
     "quote": "A man can succeed at almost anything for which he has unlimited enthusiasm",
     "author": "Charles Schwab",
-    "image": "",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Charles_M._Schwab_cph.3b33668.jpg/1024px-Charles_M._Schwab_cph.3b33668.jpg",
     "date": "1862 - 1939",
     "wikipedia": "https://en.wikipedia.org/wiki/Charles_M._Schwab"
   },
@@ -11,23 +11,15 @@
     "id": 1,
     "quote": "The future depends on what you do today",
     "author": "Mahatma Gandhi",
-    "image": "",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Mahatma-Gandhi%2C_studio%2C_1931.jpg/1024px-Mahatma-Gandhi%2C_studio%2C_1931.jpg",
     "date": "1869 - 1948",
     "wikipedia": "https://en.wikipedia.org/wiki/Mahatma_Gandhi"
-  },
-  {
-    "id": 3,
-    "quote": "The most difficult thing is the decision to act, the rest is merely tenacity. The fears are paper tigers. You can do anything you decide to do. You can act to change and control your life; and the procedure, the process is its own reward",
-    "author": "Amelia Earhart",
-    "image": "",
-    "date": "1869 - 1948",
-    "wikipedia": "https://en.wikipedia.org/wiki/Amelia_Earhart"
   },
   {
     "id": 4,
     "quote": "Man cannot discover new oceans unless he has the courage to lose sight of the shore",
     "author": "André Gide",
-    "image": "",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Andr%C3%A9_Gide_01.jpg",
     "date": "1869 - 1951",
     "wikipedia": "https://en.wikipedia.org/wiki/André_Gide"
   },
