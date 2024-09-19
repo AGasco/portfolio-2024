@@ -9,9 +9,10 @@
     "paths": {
       "@/*": ["src/*"],
       "@assets/*": ["src/assets/*"],
+      "@data/*": ["src/data/*"],
       "@components/*": ["src/components/*"],
-      "@types/*": ["src/types/*"],
-      "@data/*": ["src/data/*"]
+      "@constants/*": ["src/constants/*"],
+      "@types/*": ["src/types/*"]
     },
     "types": ["node"]
   }
