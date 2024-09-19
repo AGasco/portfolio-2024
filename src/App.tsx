@@ -1,33 +1,41 @@
-import './App.css';
-import './fonts.css';
 import { Hero, Navbar } from '@/components';
 import { BrowserRouter } from 'react-router-dom';
+import './App.css';
+import About from './components/About/About';
+import {
+  ABOUT_SECTION,
+  CLIENTS_SECTION,
+  CONTACT_SECTION,
+  HERO_SECTION,
+  PROJECTS_SECTION,
+  SERVICES_SKILLS_SECTION
+} from './constants';
+import './fonts.css';
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="hero">
+      <div className={HERO_SECTION}>
         <Navbar />
         <Hero />
       </div>
       <main>
-        <section id="about">
-          <h2>About Me</h2>
-          {/* TODO Content for about me */}
+        <section id={ABOUT_SECTION}>
+          <About />
         </section>
-        <section id="projects">
+        <section id={PROJECTS_SECTION}>
           <h2>Projects</h2>
           {/* TODO Content for projects */}
         </section>
-        <section id="clients">
+        <section id={CLIENTS_SECTION}>
           <h2>Clients</h2>
           {/* TODO Content for clients */}
         </section>
-        <section id="services_skills">
+        <section id={SERVICES_SKILLS_SECTION}>
           <h2>Services & Skills</h2>
           {/* TODO Content for services & skills */}
         </section>
-        <section id="contact">
+        <section id={CONTACT_SECTION}>
           <h2>Contact</h2>
           {/* TODO Content for Contact */}
         </section>

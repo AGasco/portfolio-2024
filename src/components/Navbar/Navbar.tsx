@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavHashLink } from 'react-router-hash-link';
 import './Navbar.scss';
+import { SCROLL_EVENT } from '@/constants';
 
 const Navbar = () => {
   const [isScrolled, setScrolled] = useState(false);
@@ -11,10 +12,9 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-
+    window.addEventListener(SCROLL_EVENT, handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener(SCROLL_EVENT, handleScroll);
     };
   }, []);
 
