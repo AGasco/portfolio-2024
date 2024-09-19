@@ -1,0 +1,15 @@
+.about {
+  font-family: 'Begum', sans-serif;
+  font-size: 1.7rem;
+  opacity: 0.1;
+  transform: translateY(100px);
+  line-height: 5.5rem;
+  transition: opacity 5s ease-out, transform 2s ease-out,
+    line-height 3s ease-out;
+
+  &.animate {
+    opacity: 1;
+    transform: translateY(0);
+    line-height: 2.5rem;
+  }
+}
