@@ -6,3 +6,10 @@ export interface Quote {
   date: string;
   wikipedia: string;
 }
+
+export interface Project {
+  id: number;
+  title: string;
+  description: string;
+  screenshots: string[];
+}

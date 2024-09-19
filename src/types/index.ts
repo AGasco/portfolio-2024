@@ -1,1 +1,1 @@
-export * from './quoteTypes';
+export * from './types';
