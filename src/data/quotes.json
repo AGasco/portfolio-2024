@@ -27,7 +27,7 @@
     "id": 5,
     "quote": "Whether you think you can or you think you can’t, you’re right",
     "author": "Henry Ford",
-    "image": "",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Henry_ford_1919.jpg/800px-Henry_ford_1919.jpg",
     "date": "1863 - 1947",
     "wikipedia": "https://en.wikipedia.org/wiki/Henry_Ford"
   },
@@ -35,7 +35,7 @@
     "id": 6,
     "quote": "The only way to do great work is to love what you do. If you haven’t found it yet, keep looking. Don’t settle",
     "author": "Steve Jobs",
-    "image": "",
+    "image": "https://stevenjobsbio.weebly.com/uploads/2/4/8/4/24849750/136042616.jpg",
     "date": "1955 - 2011",
     "wikipedia": "https://en.wikipedia.org/wiki/Steve_Jobs"
   },
@@ -43,7 +43,7 @@
     "id": 7,
     "quote": "There is no passion to be found playing small — in settling for a life that is less than the one you are capable of living",
     "author": "Nelson Mandela",
-    "image": "",
+    "image": "https://i0.wp.com/www.culturetype.com/wp-content/uploads/2013/12/mandela.png?ssl=1",
     "date": "1918 - 2013",
     "wikipedia": "https://en.wikipedia.org/wiki/Nelson_Mandela"
   },
@@ -51,7 +51,7 @@
     "id": 8,
     "quote": "If opportunity doesn't knock, build a door",
     "author": "Milton Berle",
-    "image": "",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/2/20/Milton_Berle_-_publicity.jpg",
     "date": "1908 - 2002",
     "wikipedia": "https://en.wikipedia.org/wiki/Milton_Berle"
   },
@@ -59,7 +59,7 @@
     "id": 9,
     "quote": "If you're offered a seat on a rocket ship, don't ask what seat! Just get on",
     "author": "Sheryl Sandberg",
-    "image": "",
+    "image": "https://topceos.net/wp-content/uploads/2023/05/sheryl-sandberg-ceo-facebook-liderazgo-inspirador.jpg",
     "date": "born 1969",
     "wikipedia": "https://en.wikipedia.org/wiki/Sheryl_Sandberg"
   },
@@ -67,7 +67,7 @@
     "id": 10,
     "quote": "If it scares you, it might be a good thing to try",
     "author": "Seth Godin",
-    "image": "",
+    "image": "https://assets.entrepreneur.com/content/3x2/2000/20160714204140-articles-seth-godin2-01.png",
     "date": "born 1960",
     "wikipedia": "https://en.wikipedia.org/wiki/Seth_Godin"
   },
@@ -75,7 +75,7 @@
     "id": 11,
     "quote": "The worst days of those who enjoy what they do, are better than the best days of those who don’t",
     "author": "Jim Rohn",
-    "image": "",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Jim_rohn.jpg",
     "date": "1930 - 2009",
     "wikipedia": "https://en.wikipedia.org/wiki/Jim_Rohn"
   },
@@ -83,7 +83,7 @@
     "id": 12,
     "quote": "A mind that is stretched by new experiences can never go back to its old dimensions",
     "author": "Oliver Wendell Holmes Jr.",
-    "image": "",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/6/6a/HOLMES%2C_OLIVER_W._JUSTICE_%28cropped%29.jpg",
     "date": "1841 - 1935",
     "wikipedia": "https://en.wikipedia.org/wiki/Oliver_Wendell_Holmes_Jr."
   },
@@ -91,7 +91,7 @@
     "id": 13,
     "quote": "There is only one way to avoid criticism: Do nothing, say nothing, and be nothing",
     "author": "Aristotle",
-    "image": "",
+    "image": "https://i.pinimg.com/originals/2a/44/b8/2a44b8dee59b5f5bbf0ce7d459c2943c.jpg",
     "date": "384BC - 322BC",
     "wikipedia": "https://en.wikipedia.org/wiki/Aristotle"
   },
@@ -99,7 +99,7 @@
     "id": 14,
     "quote": "The best way to predict the future is to create it",
     "author": "Abraham Lincoln",
-    "image": "",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Abraham_Lincoln_O-77_matte_collodion_print.jpg/330px-Abraham_Lincoln_O-77_matte_collodion_print.jpg",
     "date": "1809 - 1865",
     "wikipedia": "https://en.wikipedia.org/wiki/Abraham_Lincoln"
   },
@@ -107,7 +107,7 @@
     "id": 15,
     "quote": "You miss 100 percent of the shots you never take",
     "author": "Wayne Gretzky",
-    "image": "",
+    "image": "https://wamu.org/wp-content/uploads/2016/10/25/photo-1_in-vaughan-nationals-sweater-1975_wide-f7ed46480fbbe65d1bf3f26bb072f953a84297af-1500x844.jpg",
     "date": "born 1961",
     "wikipedia": "https://en.wikipedia.org/wiki/Wayne_Gretzky"
   },
@@ -115,7 +115,7 @@
     "id": 16,
     "quote": "The best thing you can do is the right thing; the next best thing you can do is the wrong thing; the worst thing you can do is nothing",
     "author": "Theodore Roosevelt",
-    "image": "",
+    "image": "https://blogs.loc.gov/headlinesandheroes/files/2020/05/Roosevelt_portrait-796x1024.jpg",
     "date": "1858 - 1919",
     "wikipedia": "https://en.wikipedia.org/wiki/Theodore_Roosevelt"
   },
@@ -123,7 +123,7 @@
     "id": 17,
     "quote": "Insist on yourself. Never imitate",
     "author": "Ralph Waldo Emerson",
-    "image": "",
+    "image": "https://www.thelivingphilosophy.com/wp-content/uploads/2021/12/Emerson.jpg",
     "date": "1803 - 1882",
     "wikipedia": "https://en.wikipedia.org/wiki/Ralph_Waldo_Emerson"
   },
@@ -131,7 +131,7 @@
     "id": 18,
     "quote": "The future belongs to those who believe in the beauty of their dreams",
     "author": "Eleanor Roosevelt",
-    "image": "",
+    "image": "https://imgc.artprintimages.com/img/print/joe-scherschel-former-first-lady-eleanor-roosevelt-speak-at-democratic-fundraising-dinner-honoring-75th-birthday_u-l-p47i2h0.jpg?background=F3F3F3",
     "date": "1884 - 1962",
     "wikipedia": "https://en.wikipedia.org/wiki/Eleanor_Roosevelt"
   },
@@ -139,7 +139,7 @@
     "id": 19,
     "quote": "Whatever you decide to do, make sure it makes you happy",
     "author": "Paulo Coelho",
-    "image": "",
+    "image": "https://i.pinimg.com/originals/36/f3/b1/36f3b1f4cbcd57ac906b8dcc0f6f0f6d.png",
     "date": "born 1947",
     "wikipedia": "https://en.wikipedia.org/wiki/Paulo_Coelho"
   },
@@ -147,7 +147,7 @@
     "id": 20,
     "quote": "Act as if what you do makes a difference. It does",
     "author": "William James",
-    "image": "",
+    "image": "https://hips.hearstapps.com/hmg-prod/images/gettyimages-929233606.jpg",
     "date": "1842 - 1910",
     "wikipedia": "https://en.wikipedia.org/wiki/William_James"
   },
@@ -163,7 +163,7 @@
     "id": 22,
     "quote": "Nobody in life gets exactly what they thought they were going to get. But if you work really hard and you're kind, amazing things will happen",
     "author": "Conan O'Brien",
-    "image": "",
+    "image": "https://i.pinimg.com/564x/7f/c9/5b/7fc95bd70d14e139674a4605556668db.jpg",
     "date": "born 1963",
     "wikipedia": "https://en.wikipedia.org/wiki/Conan_O%27Brien"
   }
