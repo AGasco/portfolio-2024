@@ -85,7 +85,6 @@ const QuoteGenerator = () => {
               <FontAwesomeIcon icon={faArrowsRotate} color="#fff" />
             </button>
             <div className="quoteGenerator__author">
-              {/* -{' '} */}
               <a
                 href={curQuote?.wikipedia || '#'}
                 target="_blank"
