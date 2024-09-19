@@ -1,3 +1,4 @@
 import quotes from './quotes.json';
+import projects from './projects.json';
 
-export { quotes };
+export { projects, quotes };

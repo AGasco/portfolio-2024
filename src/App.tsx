@@ -10,6 +10,7 @@ import {
   SERVICES_SKILLS_SECTION
 } from './constants';
 import './fonts.css';
+import { Projects } from './components/Projects';
 
 function App() {
   return (
@@ -23,8 +24,7 @@ function App() {
           <About />
         </section>
         <section id={PROJECTS_SECTION}>
-          <h2>Projects</h2>
-          {/* TODO Content for projects */}
+          <Projects />
         </section>
         <section id={CLIENTS_SECTION}>
           <h2>Clients</h2>

@@ -1,0 +1,32 @@
+[
+  {
+    "id": 0,
+    "title": "Project 1",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque erat, luctus sollicitudin facilisis non, hendrerit venenatis ligula. Cras auctor porta sagittis. Nunc sed ullamcorper leo. Nunc id eleifend risus. In laoreet orci eget mauris elementum, ut convallis nisl commodo. Quisque placerat metus volutpat leo aliquet elementum.",
+    "screenshots": [
+      "https://antoniofgasco.com/static/media/kikemindfulness.4ea1f983.JPG",
+      "https://antoniofgasco.com/static/media/kikemindfulness.4ea1f983.JPG",
+      "https://antoniofgasco.com/static/media/kikemindfulness.4ea1f983.JPG"
+    ]
+  },
+  {
+    "id": 0,
+    "title": "Project 2",
+    "description": "Etiam vitae mauris eu enim suscipit sodales vitae sit amet urna. Aliquam egestas mattis felis, vel tristique magna auctor eu. Vestibulum eu egestas diam. Pellentesque condimentum accumsan sem sed dapibus. Vestibulum ullamcorper purus tortor, mollis euismod eros sodales id. Aenean eget sollicitudin lectus. Ut mattis sapien eget posuere maximus.",
+    "screenshots": [
+      "p2_screenshot1.png",
+      "p2_screenshot2.png",
+      "p2_screenshot3.png"
+    ]
+  },
+  {
+    "id": 0,
+    "title": "Project 3",
+    "description": "Vestibulum tortor diam, blandit et dolor sit amet, consectetur pulvinar sem. Donec sodales, orci eu bibendum iaculis, felis ex pulvinar nulla, id hendrerit orci risus et odio. Nullam imperdiet turpis eget urna aliquam, suscipit rutrum est semper. Fusce mollis ipsum quis dolor porttitor fringilla. Nulla facilisi",
+    "screenshots": [
+      "p3_screenshot1.png",
+      "p3_screenshot2.png",
+      "p3_screenshot3.png"
+    ]
+  }
+]
