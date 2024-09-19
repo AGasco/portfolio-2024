@@ -1,7 +1,6 @@
-import { Hero, Navbar } from '@/components';
+import { About, Hero, Navbar } from '@/components';
 import { BrowserRouter } from 'react-router-dom';
 import './App.css';
-import About from './components/About/About';
 import {
   ABOUT_SECTION,
   CLIENTS_SECTION,
