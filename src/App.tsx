@@ -1,4 +1,4 @@
-import { About, Hero, Navbar, Projects, Clients } from '@/components';
+import { About, Clients, Hero, Navbar, Projects, Skills } from '@/components';
 import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import {
@@ -7,7 +7,7 @@ import {
   CONTACT_SECTION,
   HERO_SECTION,
   PROJECTS_SECTION,
-  SERVICES_SKILLS_SECTION
+  SKILLS_SECTION
 } from './constants';
 import './fonts.css';
 
@@ -28,9 +28,8 @@ function App() {
         <section id={CLIENTS_SECTION}>
           <Clients />
         </section>
-        <section id={SERVICES_SKILLS_SECTION}>
-          <h2>Services & Skills</h2>
-          {/* TODO Content for services & skills */}
+        <section id={SKILLS_SECTION}>
+          <Skills />
         </section>
         <section id={CONTACT_SECTION}>
           <h2>Contact</h2>
