@@ -1,0 +1,58 @@
+[
+  {
+    "id": 0,
+    "name": "The OG Triad",
+    "logo": "HTML + CSS + JS logo combined",
+    "link": "https://developer.mozilla.org/",
+    "title": "HTML/CSS/JS Title",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget mollis est. Quisque interdum, tortor sit amet condimentum pretium, arcu urna fringilla dui, ut maximus erat urna ac enim. Praesent iaculis eu elit ut eleifend. Pellentesque sem purus, vulputate molestie diam quis, porta egestas nisi. Donec sit amet ex vitae arcu aliquet interdum."
+  },
+  {
+    "id": 1,
+    "name": "The DOM Whisperer",
+    "logo": "React Logo",
+    "link": "https://react.dev/",
+    "title": "React Title",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget mollis est. Quisque interdum, tortor sit amet condimentum pretium, arcu urna fringilla dui, ut maximus erat urna ac enim. Praesent iaculis eu elit ut eleifend. Pellentesque sem purus, vulputate molestie diam quis, porta egestas nisi. Donec sit amet ex vitae arcu aliquet interdum."
+  },
+  {
+    "id": 2,
+    "name": "The Type Guardian",
+    "logo": "Typescript Logo",
+    "link": "https://www.typescriptlang.org/",
+    "title": "Typescript Title",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget mollis est. Quisque interdum, tortor sit amet condimentum pretium, arcu urna fringilla dui, ut maximus erat urna ac enim. Praesent iaculis eu elit ut eleifend. Pellentesque sem purus, vulputate molestie diam quis, porta egestas nisi. Donec sit amet ex vitae arcu aliquet interdum."
+  },
+  {
+    "id": 3,
+    "name": "The State Commander",
+    "logo": "Redux Logo",
+    "link": "https://redux.js.org/",
+    "title": "Redux Title",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget mollis est. Quisque interdum, tortor sit amet condimentum pretium, arcu urna fringilla dui, ut maximus erat urna ac enim. Praesent iaculis eu elit ut eleifend. Pellentesque sem purus, vulputate molestie diam quis, porta egestas nisi. Donec sit amet ex vitae arcu aliquet interdum."
+  },
+  {
+    "id": 4,
+    "name": "The Server Sage",
+    "logo": "Next Logo",
+    "link": "https://nextjs.org/",
+    "title": "Next Title",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget mollis est. Quisque interdum, tortor sit amet condimentum pretium, arcu urna fringilla dui, ut maximus erat urna ac enim. Praesent iaculis eu elit ut eleifend. Pellentesque sem purus, vulputate molestie diam quis, porta egestas nisi. Donec sit amet ex vitae arcu aliquet interdum."
+  },
+  {
+    "id": 5,
+    "name": "The Commit Captain",
+    "logo": "Git Logo",
+    "link": "https://git-scm.com/",
+    "title": "Git Title",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget mollis est. Quisque interdum, tortor sit amet condimentum pretium, arcu urna fringilla dui, ut maximus erat urna ac enim. Praesent iaculis eu elit ut eleifend. Pellentesque sem purus, vulputate molestie diam quis, porta egestas nisi. Donec sit amet ex vitae arcu aliquet interdum."
+  },
+  {
+    "id": 6,
+    "name": "The Bug Slayer",
+    "logo": "Jest Logo",
+    "link": "https://jestjs.io/",
+    "title": "Jest Title",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget mollis est. Quisque interdum, tortor sit amet condimentum pretium, arcu urna fringilla dui, ut maximus erat urna ac enim. Praesent iaculis eu elit ut eleifend. Pellentesque sem purus, vulputate molestie diam quis, porta egestas nisi. Donec sit amet ex vitae arcu aliquet interdum."
+  }
+]
