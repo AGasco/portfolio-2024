@@ -6,7 +6,7 @@ import './Clients.scss';
 const Clients = () => {
   const titleRef = useRef<HTMLDivElement>(null);
   const logosRef = useRef<HTMLDivElement>(null);
-  const [isInView, setIsInView] = useState(false);
+  const [isInView, setInView] = useState(false);
 
   const handleScroll = () => {
     const section = titleRef.current;
@@ -21,9 +21,9 @@ const Clients = () => {
         sectionTop <= triggerPointEnter &&
         sectionBottom >= triggerPointExit
       ) {
-        setIsInView(true);
+        setInView(true);
       } else {
-        setIsInView(false);
+        setInView(false);
       }
     }
   };
@@ -38,7 +38,7 @@ const Clients = () => {
   return (
     <div className="clients">
       <div
-        className={`clients__title ${isInView ? 'in-view' : ''}`}
+        className={`clients__title ${isInView ? 'animate' : ''}`}
         ref={titleRef}
       >
         <div className="clients__lineContainer">
