@@ -19,10 +19,11 @@ const Projects = () => {
   const handleNext = () =>
     setCurrentProjectIdx((prevIdx) => (prevIdx + 1) % projects.length);
 
-  const { title, description, screenshots } = projects[currentProjectIdx];
+  const { title, description, screenshots, backgroundColor } =
+    projects[currentProjectIdx];
 
   return (
-    <div className="projects">
+    <div className="projects" style={{ backgroundColor }}>
       <div className="projects__controls">
         <button onClick={handlePrevious}>
           <FontAwesomeIcon icon={faChevronLeft} />

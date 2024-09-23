@@ -12,4 +12,5 @@ export interface Project {
   title: string;
   description: string;
   screenshots: string[];
+  backgroundColor: string;
 }

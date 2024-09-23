@@ -7,7 +7,8 @@
       "https://antoniofgasco.com/static/media/kikemindfulness.4ea1f983.JPG",
       "https://antoniofgasco.com/static/media/kikemindfulness.4ea1f983.JPG",
       "https://antoniofgasco.com/static/media/kikemindfulness.4ea1f983.JPG"
-    ]
+    ],
+    "backgroundColor": "green"
   },
   {
     "id": 0,
@@ -17,7 +18,8 @@
       "p2_screenshot1.png",
       "p2_screenshot2.png",
       "p2_screenshot3.png"
-    ]
+    ],
+    "backgroundColor": "red"
   },
   {
     "id": 0,
@@ -27,6 +29,7 @@
       "p3_screenshot1.png",
       "p3_screenshot2.png",
       "p3_screenshot3.png"
-    ]
+    ],
+    "backgroundColor": "blue"
   }
 ]
