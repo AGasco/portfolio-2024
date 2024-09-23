@@ -1,39 +1,14 @@
-import { SCROLL_EVENT } from '@/constants';
 import { clients } from '@/data';
-import { useEffect, useRef, useState } from 'react';
+import { useInView } from '@/hooks';
+import { useRef } from 'react';
 import './Clients.scss';
+
+const triggerPointEnter = window.innerHeight * 0.8;
+const triggerPointExit = window.innerHeight * 0.2;
 
 const Clients = () => {
   const titleRef = useRef<HTMLDivElement>(null);
-  const logosRef = useRef<HTMLDivElement>(null);
-  const [isInView, setInView] = useState(false);
-
-  const handleScroll = () => {
-    const section = titleRef.current;
-    if (section) {
-      const sectionRect = section.getBoundingClientRect();
-      const sectionTop = sectionRect.top;
-      const sectionBottom = sectionRect.bottom;
-      const triggerPointEnter = window.innerHeight * 0.8;
-      const triggerPointExit = window.innerHeight * 0.2;
-
-      if (
-        sectionTop <= triggerPointEnter &&
-        sectionBottom >= triggerPointExit
-      ) {
-        setInView(true);
-      } else {
-        setInView(false);
-      }
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener(SCROLL_EVENT, handleScroll);
-    return () => {
-      window.removeEventListener(SCROLL_EVENT, handleScroll);
-    };
-  }, []);
+  const isInView = useInView(titleRef, triggerPointEnter, triggerPointExit);
 
   return (
     <div className="clients">
@@ -53,7 +28,7 @@ const Clients = () => {
           reprehenderit adipisci, aspernatur, minus eius enim delectus unde
           quod.
         </div>
-        <div className="clients__logos" ref={logosRef}>
+        <div className="clients__logos">
           {clients.map((client, idx) => (
             <span
               key={client.id}
