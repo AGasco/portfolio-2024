@@ -1,3 +1,4 @@
+import { AnimatedLine } from '@/components';
 import { clients } from '@/data';
 import { useInView } from '@/hooks';
 import { useRef } from 'react';
@@ -16,9 +17,7 @@ const Clients = () => {
         className={`clients__title ${isInView ? 'animate' : ''}`}
         ref={titleRef}
       >
-        <div className="clients__lineContainer">
-          <span className={`line ${isInView ? 'animate' : ''}`}></span>
-        </div>
+        <AnimatedLine animate={isInView} />
         <h2>Clients</h2>
       </div>
       <div className="clients__content">
