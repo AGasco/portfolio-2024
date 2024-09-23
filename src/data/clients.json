@@ -13,5 +13,30 @@
     "id": 2,
     "name": "client3",
     "logo": "logo"
+  },
+  {
+    "id": 4,
+    "name": "client4",
+    "logo": "logo"
+  },
+  {
+    "id": 5,
+    "name": "client5",
+    "logo": "logo"
+  },
+  {
+    "id": 6,
+    "name": "client6",
+    "logo": "logo"
+  },
+  {
+    "id": 7,
+    "name": "client7",
+    "logo": "logo"
+  },
+  {
+    "id": 8,
+    "name": "client8",
+    "logo": "logo"
   }
 ]

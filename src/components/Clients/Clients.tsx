@@ -5,6 +5,7 @@ import './Clients.scss';
 
 const Clients = () => {
   const titleRef = useRef<HTMLDivElement>(null);
+  const logosRef = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(false);
 
   const handleScroll = () => {
@@ -40,7 +41,7 @@ const Clients = () => {
         className={`clients__title ${isInView ? 'in-view' : ''}`}
         ref={titleRef}
       >
-        <div className="line-container">
+        <div className="clients__lineContainer">
           <span className={`line ${isInView ? 'animate' : ''}`}></span>
         </div>
         <h2>Clients</h2>
@@ -52,13 +53,15 @@ const Clients = () => {
           reprehenderit adipisci, aspernatur, minus eius enim delectus unde
           quod.
         </div>
-        <div className="clients__logos">
-          {clients.map((client) => (
-            <img
+        <div className="clients__logos" ref={logosRef}>
+          {clients.map((client, idx) => (
+            <span
               key={client.id}
-              src={client.logo}
-              alt={`${client.name}'s logo`}
-            />
+              className={`logo ${isInView ? 'animate' : ''}`}
+              style={{ transitionDelay: `${idx * 0.15}s` }}
+            >
+              <img src={client.logo} alt={`${client.name}'s logo`} />
+            </span>
           ))}
         </div>
       </div>
