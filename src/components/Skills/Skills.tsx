@@ -7,10 +7,12 @@ import './Skills.scss';
 const triggerPointEnter = window.innerHeight * 0.8;
 const triggerPointExit = window.innerHeight - 1000;
 
-const ServicesSkills = () => {
+const Skills = () => {
   const titleRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(titleRef, triggerPointEnter, triggerPointExit);
   const [curSkill, setCurSkill] = useState<Skill | null>(null);
+
+  console.log(curSkill?.name);
 
   return (
     <div className="skills">
@@ -27,9 +29,16 @@ const ServicesSkills = () => {
         <div className={`skills__menu ${isInView ? 'animate' : ''}`}>
           <ul>
             {skills.map((skill) => (
-              <div className="skills__menuItem">
+              <div
+                className={`skills__menuItem ${
+                  curSkill === skill ? 'selected' : ''
+                }`}
+                onClick={() => setCurSkill(skill)}
+              >
                 <div className="skills__menu__lineContainer">
-                  <span className={`line ${isInView ? 'animate' : ''}`}></span>
+                  <span
+                    className={`line ${curSkill === skill ? 'animate' : ''}`}
+                  ></span>
                 </div>
                 <div className="skills__menuItem__id">{skill.id}</div>
                 <div className="skills__menuItem__name">{skill.name}</div>
@@ -39,16 +48,11 @@ const ServicesSkills = () => {
         </div>
       </div>
       <div className="skills__right">
-        {/* Dynamic content depending on which skill/service is selected on the left */}
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
-        magnam illo commodi ut nulla sit delectus temporibus, libero, nesciunt
-        tenetur odit voluptatem quos itaque, eaque sed laborum? Error eos
-        repudiandae nesciunt eaque minus, corrupti, illum est quasi ab veniam
-        placeat impedit ducimus numquam expedita sunt nam aliquam quidem, in
-        ullam!
+        <h2>{curSkill?.name}</h2>
+        <p>{curSkill?.description}</p>
       </div>
     </div>
   );
 };
 
-export default ServicesSkills;
+export default Skills;
