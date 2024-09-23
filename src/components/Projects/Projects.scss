@@ -8,7 +8,7 @@
   align-items: center;
   font-family: 'Begum', sans-serif;
   background-color: green;
-  z-index: 3;
+  z-index: 1;
 
   &__controls {
     width: 90%;
@@ -16,7 +16,7 @@
     justify-content: flex-start;
     align-items: center;
     z-index: 1000;
-    margin-top: 3rem;
+    margin-top: 6.5rem;
 
     button {
       background: none;
