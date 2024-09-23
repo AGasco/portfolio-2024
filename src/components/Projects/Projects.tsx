@@ -1,15 +1,16 @@
 import { projects } from '@/data';
-import { useState } from 'react';
 import {
   faChevronLeft,
   faChevronRight
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useEffect, useState } from 'react';
 
 import './Projects.scss';
 
 const Projects = () => {
   const [currentProjectIdx, setCurrentProjectIdx] = useState(0);
+  const [opacity, setOpacity] = useState(1);
 
   const handlePrevious = () =>
     setCurrentProjectIdx(
@@ -19,11 +20,42 @@ const Projects = () => {
   const handleNext = () =>
     setCurrentProjectIdx((prevIdx) => (prevIdx + 1) % projects.length);
 
+  const handleScroll = () => {
+    const projectsSection = document.querySelector('.projects') as HTMLElement;
+    if (projectsSection) {
+      const sectionRect = projectsSection.getBoundingClientRect();
+      const sectionTop = sectionRect.top + window.scrollY;
+      const sectionHeight = projectsSection.offsetHeight;
+      const offset = sectionHeight * 0.4;
+
+      const scrollStart =
+        sectionTop + sectionHeight - window.innerHeight + offset;
+      const scrollEnd = sectionTop + sectionHeight - offset / 3;
+
+      const windowScrollTop = window.scrollY;
+
+      if (windowScrollTop >= scrollStart && windowScrollTop <= scrollEnd) {
+        const opacityReduction =
+          (windowScrollTop - scrollStart) / (scrollEnd - scrollStart);
+        setOpacity(Math.max(1 - opacityReduction, 0));
+      } else if (windowScrollTop < scrollStart) {
+        setOpacity(1);
+      } else {
+        setOpacity(0);
+      }
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const { title, description, screenshots, backgroundColor } =
     projects[currentProjectIdx];
 
   return (
-    <div className="projects" style={{ backgroundColor }}>
+    <div className="projects" style={{ backgroundColor, opacity }}>
       <div className="projects__controls">
         <button onClick={handlePrevious}>
           <FontAwesomeIcon icon={faChevronLeft} />
