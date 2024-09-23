@@ -20,3 +20,12 @@ export interface Client {
   name: string;
   logo: string;
 }
+
+export interface Skill {
+  id: string;
+  name: string;
+  logo: string;
+  link: string;
+  title: string;
+  description: string;
+}

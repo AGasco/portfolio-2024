@@ -1,0 +1,118 @@
+.skills {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  * {
+    font-family: 'Begum', sans-serif;
+  }
+
+  &__left {
+    flex-basis: 30%;
+  }
+
+  &__right {
+    flex-basis: 30%;
+  }
+
+  &__lineContainer {
+    width: 50px;
+    height: 1px;
+    display: flex;
+
+    .line {
+      height: 1px;
+      background-color: white;
+      width: 0;
+      visibility: hidden;
+      transition: width 0.6s ease-out, visibility 0s 1s;
+      flex-shrink: 0;
+
+      &.animate {
+        width: 100%;
+        visibility: visible;
+        transition: width 0.6s ease-out, visibility 0s;
+      }
+    }
+  }
+
+  &__title {
+    flex-basis: 40%;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    margin-top: 0.5rem;
+
+    h2 {
+      font-family: 'gt walsheim';
+      font-weight: 400;
+      text-align: left;
+      line-height: 0;
+      font-size: 1.1rem;
+      margin: 0;
+      padding-left: 40px;
+      opacity: 0;
+      transition: opacity 0.7s ease-out 0.4s;
+    }
+
+    &.animate {
+      h2 {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-size: 1.3rem;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: transform 2s ease-out, opacity 1.5s ease-out;
+
+    ul {
+      margin: 0;
+      padding: 5rem 0 5rem 2rem;
+    }
+
+    &.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &__menuItem {
+    cursor: pointer;
+    display: flex;
+    font-size: 20px;
+    margin-bottom: 0.5rem;
+
+    * {
+      color: #515151;
+      letter-spacing: normal;
+      transition: color 0.5s ease-out, letter-spacing 0.5s ease-out;
+    }
+
+    &__id {
+      font-family: 'gt walsheim';
+      font-weight: 400;
+      margin-right: 40px;
+    }
+
+    &__name {
+      font-family: 'gt walsheim';
+      font-weight: 400;
+    }
+
+    &:hover {
+      * {
+        color: white;
+      }
+
+      .skills__menuItem__name {
+        letter-spacing: 1px;
+      }
+    }
+  }
+}
