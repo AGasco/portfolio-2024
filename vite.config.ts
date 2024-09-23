@@ -11,7 +11,8 @@ export default defineConfig({
       '@/components': resolve('src/components'),
       '@/constants': resolve('src/constants'),
       '@/data': resolve('src/data'),
-      '@/types': resolve('src/types')
+      '@/types': resolve('src/types'),
+      '@/hooks': resolve('src/hooks')
     }
   },
   plugins: [react()]
