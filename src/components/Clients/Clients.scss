@@ -1,0 +1,51 @@
+.clients {
+  display: flex;
+
+  &__title {
+    flex-basis: 40%;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+
+    h2 {
+      text-align: left;
+      line-height: 0;
+      font-weight: 300;
+      margin: 0;
+      padding-left: 20px;
+      opacity: 0;
+      transition: opacity 0.7s ease-out 0.4s;
+    }
+
+    &.in-view {
+      h2 {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__content {
+    flex-basis: 60%;
+  }
+}
+
+.line-container {
+  width: 60px;
+  height: 1px;
+  display: flex;
+
+  .line {
+    height: 1px;
+    background-color: white;
+    width: 0;
+    visibility: hidden;
+    transition: width 0.6s ease-out, visibility 0s 1s;
+    flex-shrink: 0;
+
+    &.animate {
+      width: 100%;
+      visibility: visible;
+      transition: width 0.6s ease-out, visibility 0s;
+    }
+  }
+}

@@ -1,3 +1,4 @@
+import { SCROLL_EVENT } from '@/constants';
 import { projects } from '@/data';
 import {
   faChevronLeft,
@@ -5,7 +6,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
-
 import './Projects.scss';
 
 const Projects = () => {
@@ -47,8 +47,8 @@ const Projects = () => {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener(SCROLL_EVENT, handleScroll);
+    return () => window.removeEventListener(SCROLL_EVENT, handleScroll);
   }, []);
 
   const { title, description, screenshots, backgroundColor } =

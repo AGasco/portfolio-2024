@@ -13,8 +13,6 @@ const QuoteGenerator = () => {
   const [remainingQuotes, setRemainingQuotes] = useState<Quote[]>([]);
   const [isFading, setFading] = useState(true);
 
-  console.log(isFading);
-
   useEffect(() => {
     resetQuotes();
 

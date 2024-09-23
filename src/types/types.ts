@@ -14,3 +14,9 @@ export interface Project {
   screenshots: string[];
   backgroundColor: string;
 }
+
+export interface Client {
+  id: number;
+  name: string;
+  logo: string;
+}

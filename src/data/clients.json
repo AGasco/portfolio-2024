@@ -1,0 +1,17 @@
+[
+  {
+    "id": 0,
+    "name": "client1",
+    "logo": "logo"
+  },
+  {
+    "id": 1,
+    "name": "client2",
+    "logo": "logo"
+  },
+  {
+    "id": 2,
+    "name": "client3",
+    "logo": "logo"
+  }
+]
