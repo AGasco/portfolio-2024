@@ -47,7 +47,7 @@ const Clients = () => {
         <h2>Clients</h2>
       </div>
       <div className="clients__content">
-        <div className="clients__description">
+        <div className={`clients__description ${isInView ? 'animate' : ''}`}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod itaque
           at porro? Rem explicabo, ipsam iusto quasi eveniet ratione quia magni
           reprehenderit adipisci, aspernatur, minus eius enim delectus unde

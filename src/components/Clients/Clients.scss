@@ -1,6 +1,10 @@
 .clients {
   display: flex;
 
+  * {
+    font-family: 'Begum', sans-serif;
+  }
+
   &__lineContainer {
     width: 60px;
     height: 1px;
@@ -27,11 +31,12 @@
     display: flex;
     align-items: flex-start;
     position: relative;
+    margin-top: 0.5rem;
 
     h2 {
       text-align: left;
       line-height: 0;
-      font-weight: 300;
+      font-size: 1.2rem;
       margin: 0;
       padding-left: 20px;
       opacity: 0;
@@ -49,6 +54,19 @@
     flex-basis: 60%;
   }
 
+  &__description {
+    text-align: left;
+    font-size: 1.3rem;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: transform 2.2s ease-out, opacity 1.5s ease-out;
+
+    &.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   &__logos {
     display: flex;
     flex-wrap: wrap;
@@ -60,14 +78,15 @@
       opacity: 0;
       visibility: hidden;
       transform: translateY(20px);
-      transition: transform 1s ease-out, opacity 1s ease-out,
-        visibility 0s linear 1s;
+      transition: transform 1.5s ease-out, opacity 1.5s ease-out,
+        visibility 0s linear 1.5s;
 
       &.animate {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
-        transition: transform 1s ease-out, opacity 1s ease-out, visibility 0s;
+        transition: transform 1.5s ease-out, opacity 1.5s ease-out,
+          visibility 0s;
       }
 
       img {
