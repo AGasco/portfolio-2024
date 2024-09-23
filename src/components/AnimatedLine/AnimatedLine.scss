@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+
+  .line {
+    width: 0;
+    height: 100%;
+    background-color: white;
+    visibility: hidden;
+    transition: width 0.6s ease-out, visibility 0s;
+    transition-delay: 0s, 1s;
+    flex-shrink: 0;
+
+    &.animate {
+      width: 100%;
+      visibility: visible;
+      transition-delay: 0s, 0s;
+    }
+  }
+}

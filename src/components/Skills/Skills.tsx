@@ -1,3 +1,4 @@
+import { AnimatedLine } from '@/components';
 import { skills } from '@/data';
 import { useInView } from '@/hooks';
 import { Skill } from '@/types';
@@ -21,9 +22,7 @@ const Skills = () => {
           className={`skills__title ${isInView ? 'animate' : ''}`}
           ref={titleRef}
         >
-          <div className="skills__lineContainer">
-            <span className={`line ${isInView ? 'animate' : ''}`}></span>
-          </div>
+          <AnimatedLine animate={isInView} />
           <h2>Skills</h2>
         </div>
         <div className={`skills__menu ${isInView ? 'animate' : ''}`}>
@@ -35,11 +34,11 @@ const Skills = () => {
                 }`}
                 onClick={() => setCurSkill(skill)}
               >
-                <div className="skills__menu__lineContainer">
-                  <span
-                    className={`line ${curSkill === skill ? 'animate' : ''}`}
-                  ></span>
-                </div>
+                <AnimatedLine
+                  animate={curSkill === skill}
+                  width="20px"
+                  className="skills__menu__line"
+                />
                 <div className="skills__menuItem__id">{skill.id}</div>
                 <div className="skills__menuItem__name">{skill.name}</div>
               </div>
@@ -47,6 +46,7 @@ const Skills = () => {
           </ul>
         </div>
       </div>
+
       <div className="skills__right">
         <h2>{curSkill?.name}</h2>
         <p>{curSkill?.description}</p>
