@@ -10,6 +10,11 @@
   font-weight: bold;
   transition: background-color 0.3s ease;
 
+  * {
+    font-family: 'gt walsheim';
+    font-weight: 400;
+  }
+
   &__container {
     padding: 2rem;
     width: 100%;
