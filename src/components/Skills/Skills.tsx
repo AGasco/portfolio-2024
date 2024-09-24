@@ -1,8 +1,8 @@
-import { AnimatedLine } from '@/components';
+import { AnimatedLine, FadeTransition } from '@/components';
 import { skills } from '@/data';
 import { useInView } from '@/hooks';
 import { Skill } from '@/types';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import './Skills.scss';
 
 const triggerPointEnter = window.innerHeight * 0.8;
@@ -14,42 +14,13 @@ const Skills = () => {
 
   const [curSkill, setCurSkill] = useState<Skill | null>(null);
   const [newSkill, setNewSkill] = useState<Skill | null>(null);
-  const [isFadingOut, setFadingOut] = useState(false);
-  const [isFadingIn, setFadingIn] = useState(false);
 
   const handleSelectSkill = (skill: Skill) => {
     if (skill === curSkill) return;
 
     setNewSkill(skill);
-
-    if (curSkill) {
-      setFadingOut(true);
-    } else {
-      setCurSkill(skill);
-      setFadingIn(true);
-    }
+    setCurSkill(skill);
   };
-
-  useEffect(() => {
-    if (isFadingOut) {
-      const timer = setTimeout(() => {
-        setCurSkill(newSkill);
-        setFadingOut(false);
-        setFadingIn(true);
-      }, 1000);
-
-      return () => clearTimeout(timer);
-    }
-  }, [isFadingOut, newSkill]);
-
-  useEffect(() => {
-    if (isFadingIn) {
-      const fadeInTimer = setTimeout(() => {
-        setFadingIn(false);
-      }, 1000);
-      return () => clearTimeout(fadeInTimer);
-    }
-  }, [isFadingIn]);
 
   return (
     <div className="skills">
@@ -84,15 +55,13 @@ const Skills = () => {
       </div>
       <div className="skills__right">
         {curSkill && (
-          <div
-            className={`skills__content ${
-              isFadingOut ? 'fade-out' : isFadingIn ? 'fade-in' : ''
-            }`}
-          >
-            <img src={curSkill?.logo} alt={`${curSkill?.name}'s logo`} />
-            <h2>{curSkill?.name}</h2>
-            <p>{curSkill?.description}</p>
-          </div>
+          <FadeTransition trigger={curSkill.id}>
+            <div className="skills__content">
+              <img src={curSkill?.logo} alt={`${curSkill?.name}'s logo`} />
+              <h2>{curSkill?.name}</h2>
+              <p>{curSkill?.description}</p>
+            </div>
+          </FadeTransition>
         )}
       </div>
     </div>
