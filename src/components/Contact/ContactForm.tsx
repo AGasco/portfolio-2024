@@ -46,11 +46,11 @@ const ContactForm = ({ className }: Props) => {
           name="option"
           value={input.option}
           onChange={handleChange}
-          className="form__select"
+          className={`form__select ${
+            input.option ? 'form__select--not-empty' : ''
+          }`}
         >
-          <option value="" disabled hidden className="pepe">
-            What interests you?
-          </option>
+          <option value="" disabled hidden></option>
           <option value="1">Jimi 1</option>
           <option value="2">Pepe 2</option>
           <option value="3">Jaime 3</option>
@@ -60,6 +60,8 @@ const ContactForm = ({ className }: Props) => {
           className="form__select-icon"
           size={'lg'}
         />
+        <span className="form__placeholder">What interests you?</span>
+
         <label htmlFor="option" className="form__label">
           Select one of the options
         </label>
@@ -73,9 +75,11 @@ const ContactForm = ({ className }: Props) => {
           name="name"
           value={input.name}
           onChange={handleChange}
-          placeholder="Your Name"
-          className="form__input"
+          className={`form__input ${
+            input.name ? 'form__input--not-empty' : ''
+          }`}
         />
+        <span className="form__placeholder">Your Name</span>
         <label htmlFor="name" className="form__label">
           To address you :)
         </label>
@@ -89,9 +93,11 @@ const ContactForm = ({ className }: Props) => {
           name="email"
           value={input.email}
           onChange={handleChange}
-          placeholder="Email"
-          className="form__input"
+          className={`form__input ${
+            input.email ? 'form__input--not-empty' : ''
+          }`}
         />
+        <span className="form__placeholder">Email</span>
         <label htmlFor="email" className="form__label">
           So I can get in contact with you
         </label>
@@ -104,10 +110,17 @@ const ContactForm = ({ className }: Props) => {
           name="body"
           value={input.body}
           onChange={handleChange}
-          placeholder="Tell me your idea"
-          className="form__input"
-          rows={5}
+          onInput={(e) => {
+            const target = e.target as HTMLTextAreaElement;
+            target.style.height = 'auto';
+            target.style.height = target.scrollHeight + 'px';
+          }}
+          className={`form__textarea ${
+            input.body ? 'form__textarea--not-empty' : ''
+          }`}
+          rows={1}
         />
+        <span className="form__placeholder">Tell me your idea</span>
         <label htmlFor="body" className="form__label">
           So I put myself in context
         </label>
