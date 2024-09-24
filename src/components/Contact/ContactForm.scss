@@ -55,6 +55,10 @@
       outline: none;
     }
 
+    &--not-empty ~ .form__label {
+      opacity: 0;
+    }
+
     &:focus ~ .form__placeholder,
     &--not-empty ~ .form__placeholder {
       top: -20px;
