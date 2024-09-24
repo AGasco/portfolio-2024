@@ -12,6 +12,8 @@
   }
 
   &__right {
+    display: flex;
+    flex-direction: column;
     flex-basis: 30%;
   }
 
@@ -101,5 +103,40 @@
         letter-spacing: 1px;
       }
     }
+  }
+
+  &__content {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &__content.fade-in {
+    animation: fadeInAnimation 1s forwards;
+  }
+
+  &__content.fade-out {
+    animation: fadeOutAnimation 1s forwards;
+  }
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutAnimation {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
   }
 }

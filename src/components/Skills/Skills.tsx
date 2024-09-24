@@ -2,7 +2,7 @@ import { AnimatedLine } from '@/components';
 import { skills } from '@/data';
 import { useInView } from '@/hooks';
 import { Skill } from '@/types';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './Skills.scss';
 
 const triggerPointEnter = window.innerHeight * 0.8;
@@ -11,9 +11,45 @@ const triggerPointExit = window.innerHeight - 1000;
 const Skills = () => {
   const titleRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(titleRef, triggerPointEnter, triggerPointExit);
-  const [curSkill, setCurSkill] = useState<Skill | null>(null);
 
-  console.log(curSkill?.name);
+  const [curSkill, setCurSkill] = useState<Skill | null>(null);
+  const [newSkill, setNewSkill] = useState<Skill | null>(null);
+  const [isFadingOut, setFadingOut] = useState(false);
+  const [isFadingIn, setFadingIn] = useState(false);
+
+  const handleSelectSkill = (skill: Skill) => {
+    if (skill === curSkill) return;
+
+    setNewSkill(skill);
+
+    if (curSkill) {
+      setFadingOut(true);
+    } else {
+      setCurSkill(skill);
+      setFadingIn(true);
+    }
+  };
+
+  useEffect(() => {
+    if (isFadingOut) {
+      const timer = setTimeout(() => {
+        setCurSkill(newSkill);
+        setFadingOut(false);
+        setFadingIn(true);
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isFadingOut, newSkill]);
+
+  useEffect(() => {
+    if (isFadingIn) {
+      const fadeInTimer = setTimeout(() => {
+        setFadingIn(false);
+      }, 1000);
+      return () => clearTimeout(fadeInTimer);
+    }
+  }, [isFadingIn]);
 
   return (
     <div className="skills">
@@ -30,12 +66,12 @@ const Skills = () => {
             {skills.map((skill) => (
               <div
                 className={`skills__menuItem ${
-                  curSkill === skill ? 'selected' : ''
+                  newSkill === skill ? 'selected' : ''
                 }`}
-                onClick={() => setCurSkill(skill)}
+                onClick={() => handleSelectSkill(skill)}
               >
                 <AnimatedLine
-                  animate={curSkill === skill}
+                  animate={newSkill === skill}
                   width="20px"
                   className="skills__menu__line"
                 />
@@ -46,10 +82,18 @@ const Skills = () => {
           </ul>
         </div>
       </div>
-
       <div className="skills__right">
-        <h2>{curSkill?.name}</h2>
-        <p>{curSkill?.description}</p>
+        {curSkill && (
+          <div
+            className={`skills__content ${
+              isFadingOut ? 'fade-out' : isFadingIn ? 'fade-in' : ''
+            }`}
+          >
+            <img src={curSkill?.logo} alt={`${curSkill?.name}'s logo`} />
+            <h2>{curSkill?.name}</h2>
+            <p>{curSkill?.description}</p>
+          </div>
+        )}
       </div>
     </div>
   );
