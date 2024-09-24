@@ -1,0 +1,11 @@
+.footer {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 auto;
+  height: 300px;
+  width: 100%;
+  min-width: 100vw;
+  background-color: white;
+  color: black;
+  z-index: 3;
+}

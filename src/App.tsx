@@ -2,6 +2,7 @@ import {
   About,
   Clients,
   Contact,
+  Footer,
   Hero,
   Navbar,
   Projects,
@@ -11,6 +12,7 @@ import {
   ABOUT_SECTION,
   CLIENTS_SECTION,
   CONTACT_SECTION,
+  FOOTER_SECTION,
   HERO_SECTION,
   PROJECTS_SECTION,
   SKILLS_SECTION
@@ -42,12 +44,15 @@ function App() {
         <section id={CONTACT_SECTION}>
           <Contact />
         </section>
+        <section id={FOOTER_SECTION}>
+          <Footer />
+        </section>
       </main>
-      <div>
+      {/* <div>
         Icons made from{' '}
         <a href="https://www.onlinewebfonts.com/icon">svg icons</a>is licensed{' '}
         by CC BY 4.0
-      </div>
+      </div> */}
     </BrowserRouter>
   );
 }
