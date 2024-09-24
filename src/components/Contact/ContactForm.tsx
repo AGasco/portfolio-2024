@@ -3,10 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import './ContactForm.scss';
 
-interface Props {
-  className: string;
-}
-
 interface FormData {
   option: string;
   name: string;
@@ -21,7 +17,7 @@ const initialState: FormData = {
   body: ''
 };
 
-const ContactForm = ({ className }: Props) => {
+const ContactForm = ({ className }: { className: string }) => {
   const [input, setInput] = useState<FormData>(initialState);
 
   const handleChange = (
