@@ -1,14 +1,26 @@
 import { useEffect, useState } from 'react';
 import { NavHashLink } from 'react-router-hash-link';
 import './Navbar.scss';
-import { SCROLL_EVENT } from '@/constants';
+import { CONTACT_SECTION, SCROLL_EVENT } from '@/constants';
 
 const Navbar = () => {
   const [isScrolled, setScrolled] = useState(false);
+  const [hasReachedContact, setReachedContact] = useState(false);
 
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
     setScrolled(scrollPosition > 0);
+
+    const contactSection = document.querySelector(`#${CONTACT_SECTION}`);
+    if (contactSection) {
+      const { top, bottom } = contactSection.getBoundingClientRect();
+      const triggerOffset = 200; // px
+
+      const isVisible = top <= triggerOffset && bottom >= 0;
+      console.log('isVisible', isVisible);
+
+      setReachedContact(isVisible);
+    }
   };
 
   useEffect(() => {
@@ -19,7 +31,15 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}>
+    <nav
+      className={`navbar ${
+        hasReachedContact
+          ? 'navbar--reachedContact'
+          : isScrolled
+          ? 'navbar--scrolled'
+          : ''
+      }`}
+    >
       <div className="navbar__container">
         <NavHashLink smooth to="#" className="navbar__logo">
           antoniofgasco

@@ -55,8 +55,20 @@
   &--scrolled {
     background-color: rgba(0, 0, 0, 0.7);
   }
+
+  &--reachedContact {
+    background-color: #fff !important;
+    z-index: 10;
+
+    * {
+      color: black !important;
+    }
+  }
 }
 
-.navbar--scrolled .navbar__container {
-  padding: 1rem 2rem;
+.navbar--scrolled,
+.navbar--reachedContact {
+  & .navbar__container {
+    padding: 1rem 2rem;
+  }
 }
