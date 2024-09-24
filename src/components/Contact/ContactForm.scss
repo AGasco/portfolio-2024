@@ -1,0 +1,111 @@
+.form {
+  max-width: 600px;
+
+  &__group {
+    position: relative;
+    margin-bottom: 15px;
+    padding-left: 10px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 24px;
+      bottom: 0;
+      width: 4px;
+      height: 25px;
+      background-color: #ddd;
+      transition: height 0.3s ease-out, top 0.3s ease-out, bottom 0.3s ease-out;
+    }
+
+    &:hover {
+      &::before {
+        top: 14px;
+        height: 50px;
+        bottom: 20px;
+      }
+    }
+  }
+
+  &__group--select {
+    position: relative;
+  }
+
+  &__label {
+    width: 100%;
+    text-align: left;
+    display: block;
+    margin: 5px 0;
+    font-weight: 100;
+    font-size: 0.9rem;
+    opacity: 0.6;
+  }
+
+  &__input,
+  &__select,
+  &__textarea {
+    font-family: 'Begum', sans-serif;
+    font-size: 2.5rem;
+    width: 100%;
+    padding: 10px;
+    padding-left: 0;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__input,
+  &__textarea {
+    &:focus {
+      border-bottom: 1px solid black;
+      border-radius: 0;
+    }
+
+    &::placeholder {
+      color: #ddd;
+    }
+  }
+
+  &__select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: #ddd;
+
+    &-icon {
+      position: absolute;
+      right: 27%;
+      top: 50%;
+      transform: translateY(-120%);
+      pointer-events: none;
+      opacity: 0.15;
+    }
+  }
+
+  &__textarea {
+    resize: vertical;
+  }
+
+  &__button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #218838;
+    }
+  }
+}
+
+.pepe {
+  color: white;
+}

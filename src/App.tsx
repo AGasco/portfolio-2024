@@ -1,6 +1,12 @@
-import { About, Clients, Hero, Navbar, Projects, Skills } from '@/components';
-import { BrowserRouter } from 'react-router-dom';
-import './App.css';
+import {
+  About,
+  Clients,
+  Contact,
+  Hero,
+  Navbar,
+  Projects,
+  Skills
+} from '@/components';
 import {
   ABOUT_SECTION,
   CLIENTS_SECTION,
@@ -8,7 +14,9 @@ import {
   HERO_SECTION,
   PROJECTS_SECTION,
   SKILLS_SECTION
-} from './constants';
+} from '@/constants';
+import { BrowserRouter } from 'react-router-dom';
+import './App.css';
 import './fonts.css';
 
 function App() {
@@ -32,8 +40,7 @@ function App() {
           <Skills />
         </section>
         <section id={CONTACT_SECTION}>
-          <h2>Contact</h2>
-          {/* TODO Content for Contact */}
+          <Contact />
         </section>
       </main>
       <div>
