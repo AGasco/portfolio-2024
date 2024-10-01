@@ -1,7 +1,7 @@
+import { CONTACT_SECTION, SCROLL_EVENT } from '@/constants';
 import { useEffect, useState } from 'react';
 import { NavHashLink } from 'react-router-hash-link';
 import './Navbar.scss';
-import { CONTACT_SECTION, SCROLL_EVENT } from '@/constants';
 
 const Navbar = () => {
   const [isScrolled, setScrolled] = useState(false);
@@ -17,7 +17,6 @@ const Navbar = () => {
       const triggerOffset = 200; // px
 
       const isVisible = top <= triggerOffset && bottom >= 0;
-      console.log('isVisible', isVisible);
 
       setReachedContact(isVisible);
     }

@@ -1,31 +1,84 @@
 .footer {
   position: relative;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   margin: 0 auto;
-  padding: 2rem 7rem;
-  height: 200px;
+  padding: 7rem 7rem 2rem;
+  min-height: 200px;
+  height: 100%;
   width: 100%;
   min-width: 100vw;
   background-color: white;
   z-index: 20;
-  border: 2px solid red;
 
   * {
     color: black;
+    font-family: 'gt walsheim', sans-serif;
+    font-size: 14px;
+    font-weight: 100;
   }
 
   p {
     margin: 0;
   }
 
+  a {
+    &:hover {
+      color: black;
+    }
+  }
+
+  h3 {
+    font-weight: 400;
+  }
+
+  &__content,
+  &__linksContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__content {
+    width: 100%;
+    align-items: center;
+  }
+
+  &__linksContainer {
+    flex-basis: 45%;
+    margin-right: 10rem;
+  }
+
+  &__logo {
+    font-family: 'Dancing Script', cursive;
+    font-size: 32px;
+    padding-right: 2rem;
+    padding-bottom: 4rem;
+  }
+
   &__links {
     display: flex;
     flex-direction: column;
+  }
 
-    p {
-      margin: 0;
+  &__socials {
+    h3 {
+      text-align: start;
+    }
+
+    svg {
+      padding-right: 1rem;
+    }
+  }
+
+  &__createdAt {
+    margin-top: 3rem;
+    font-family: 'gt walsheim', sans-serif;
+    font-weight: bold;
+    font-size: 0.8rem;
+
+    span {
+      padding: 0 5px;
     }
   }
 }
