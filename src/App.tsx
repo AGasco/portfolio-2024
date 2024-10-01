@@ -4,6 +4,7 @@ import {
   Contact,
   Footer,
   Hero,
+  LoadingScreen,
   Navbar,
   Projects,
   Skills
@@ -24,6 +25,7 @@ import './fonts.css';
 function App() {
   return (
     <BrowserRouter>
+      <LoadingScreen />
       <div className={HERO_SECTION}>
         <Navbar />
         <Hero />
