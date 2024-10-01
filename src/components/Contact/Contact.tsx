@@ -1,8 +1,9 @@
 import { AnimatedLine } from '@/components';
 import { useInView } from '@/hooks';
 import { useRef } from 'react';
-import ContactForm from './ContactForm';
 import './Contact.scss';
+import ContactForm from './ContactForm';
+import ContactVideo from './ContactVideo';
 
 const triggerPointEnter = window.innerHeight * 0.8;
 const triggerPointExit = window.innerHeight - 1000;
@@ -35,6 +36,7 @@ const Contact = () => {
           className={`contact__right__content ${isInView ? 'animate' : ''}`}
         />
       </div>
+      <ContactVideo />
     </div>
   );
 };
