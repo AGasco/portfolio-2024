@@ -2,16 +2,18 @@ import { quotes } from '@/data';
 import { Quote } from '@/types';
 import { faArrowsRotate } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FadeWrapper } from '../FadeWrapper';
 import './QuoteGenerator.scss';
 
 const FADE_DURATION = 2000;
+const AUTO_QUOTE_INTERVAL = 8000;
 
 const QuoteGenerator = () => {
   const [curQuote, setCurQuote] = useState<Quote | null>(null);
   const [remainingQuotes, setRemainingQuotes] = useState<Quote[]>([]);
   const [isFading, setFading] = useState(true);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     resetQuotes();
@@ -19,7 +21,20 @@ const QuoteGenerator = () => {
     setTimeout(() => {
       setFading(false);
     }, FADE_DURATION);
+
+    startAutoNextQuoteTimer();
+
+    return () => clearAutoNextQuoteTimer();
   }, []);
+
+  const startAutoNextQuoteTimer = () => {
+    clearAutoNextQuoteTimer();
+    timerRef.current = setTimeout(generateNewQuote, AUTO_QUOTE_INTERVAL);
+  };
+
+  const clearAutoNextQuoteTimer = () => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+  };
 
   const generateNewQuote = () => {
     if (remainingQuotes.length === 0) {
@@ -28,6 +43,7 @@ const QuoteGenerator = () => {
       setTimeout(() => {
         resetQuotes();
         setFading(false);
+        startAutoNextQuoteTimer();
       }, FADE_DURATION);
       return;
     }
@@ -42,6 +58,7 @@ const QuoteGenerator = () => {
         prev.filter((quote) => quote.id !== newQuote.id)
       );
       setFading(false);
+      startAutoNextQuoteTimer();
     }, FADE_DURATION);
   };
 
@@ -55,6 +72,11 @@ const QuoteGenerator = () => {
       shuffledQuotes.filter((quote) => quote.id !== differentQuote.id)
     );
     setCurQuote(differentQuote);
+  };
+
+  const handleManualQuoteChange = () => {
+    clearAutoNextQuoteTimer();
+    generateNewQuote();
   };
 
   return (
@@ -76,7 +98,7 @@ const QuoteGenerator = () => {
 
           <div className="quoteGenerator__bottom">
             <button
-              onClick={generateNewQuote}
+              onClick={handleManualQuoteChange}
               className="quoteGenerator__btn"
               disabled={isFading}
             >
