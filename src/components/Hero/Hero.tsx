@@ -1,11 +1,11 @@
 import './Hero.scss';
-import HeroBackgroundVideo from './HeroBackgroundVideo';
 import QuoteGenerator from './QuoteGenerator';
+import HeroVideo from './HeroVideo';
 
 const Hero = () => {
   return (
     <div className="hero-banner">
-      <HeroBackgroundVideo />
+      <HeroVideo />
       <div className="hero-content">
         <div className="headings">
           <h1>Hey, I am Antonio</h1>
