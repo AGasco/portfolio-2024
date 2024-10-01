@@ -10,3 +10,4 @@ export { Footer } from './Footer';
 export { LoadingScreen } from './LoadingScreen';
 export { AnimatedLine } from './AnimatedLine';
 export { FadeTransition } from './FadeTransition';
+export { CurvedArrow } from './SVG';

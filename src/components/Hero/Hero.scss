@@ -39,3 +39,20 @@
     text-align: start;
   }
 }
+
+.hero-arrow {
+  bottom: -20px;
+  left: 35%;
+  width: 300px;
+
+  &-message {
+    position: absolute;
+    bottom: 3%;
+    left: 48%;
+    font-family: 'Caveat', cursive;
+    font-weight: 100;
+    font-size: 18px;
+    width: 100px;
+    transform: rotateZ(-30deg);
+  }
+}

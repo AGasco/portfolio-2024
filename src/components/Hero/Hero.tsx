@@ -1,6 +1,7 @@
+import { CurvedArrow } from '@/components';
 import './Hero.scss';
-import QuoteGenerator from './QuoteGenerator';
 import HeroVideo from './HeroVideo';
+import QuoteGenerator from './QuoteGenerator';
 
 const Hero = () => {
   return (
@@ -10,6 +11,10 @@ const Hero = () => {
         <div className="headings">
           <h1>Hey, I am Antonio</h1>
           <h2>a frontend developer</h2>
+          <CurvedArrow className="hero-arrow" />
+          <span className="hero-arrow-message">
+            * some inspiring quotes for you
+          </span>
         </div>
         <QuoteGenerator />
       </div>
