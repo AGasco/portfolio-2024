@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import './LoadingScreen.scss';
 
 const videoUrls: string[] = [
-  '/videos/rotating-shape-black-720.mp4',
+  '/videos/rotating-shape-black-60mb.mp4',
   '/videos/rotating-shape-white.mp4'
 ];
 

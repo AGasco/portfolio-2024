@@ -1,5 +1,16 @@
 .hero-video {
   position: absolute;
-  top: 5%;
-  left: 0;
+  top: 10%;
+  left: 5%;
+  height: 60vh;
+
+  opacity: 0;
+  transition: opacity 4s ease-in;
+  animation: fadeIn 4s ease-in forwards 3s;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }
