@@ -7,6 +7,7 @@ import {
   LoadingScreen,
   Navbar,
   Projects,
+  ScrollToTop,
   Skills
 } from '@/components';
 import {
@@ -25,6 +26,7 @@ import './fonts.css';
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <LoadingScreen />
       <div className={HERO_SECTION}>
         <Navbar />

@@ -11,3 +11,4 @@ export { LoadingScreen } from './LoadingScreen';
 export { AnimatedLine } from './AnimatedLine';
 export { FadeTransition } from './FadeTransition';
 export { CurvedArrow } from './SVG';
+export { ScrollToTop } from './ScrollToTop';
