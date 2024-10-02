@@ -1,5 +1,5 @@
 import { projects } from '@/data';
-import { useScrollOpacity } from '@/hooks';
+import { useInView, useScrollOpacity } from '@/hooks';
 import {
   faChevronLeft,
   faChevronRight
@@ -8,12 +8,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRef, useState } from 'react';
 import './Projects.scss';
 
+const triggerPointEnter = window.innerHeight * 0.6;
 const offset = 0.4;
 
 const Projects = () => {
-  const ref = useRef(null);
-  const opacity = useScrollOpacity(ref, offset);
+  const topRef = useRef(null);
+  const screenshotsRef = useRef(null);
+  const opacity = useScrollOpacity(topRef, offset);
+  const isInView = useInView(screenshotsRef, triggerPointEnter);
   const [currentProjectIdx, setCurrentProjectIdx] = useState(0);
+
+  console.log(isInView);
 
   const handlePrevious = () =>
     setCurrentProjectIdx(
@@ -23,11 +28,22 @@ const Projects = () => {
   const handleNext = () =>
     setCurrentProjectIdx((prevIdx) => (prevIdx + 1) % projects.length);
 
+  const getImgTransformValues = (idx: number) => {
+    let translateZValue;
+
+    if (isInView) translateZValue = idx === 0 ? -50 : idx * -200;
+    else translateZValue = idx === 0 ? 100 : idx * -300;
+
+    const rotateYValue = isInView ? idx * 10 : idx * 18;
+
+    return { translateZValue, rotateYValue };
+  };
+
   const { title, description, screenshots, backgroundColor } =
     projects[currentProjectIdx];
 
   return (
-    <div className="projects" ref={ref} style={{ backgroundColor, opacity }}>
+    <div className="projects" ref={topRef} style={{ backgroundColor, opacity }}>
       <div className="projects__controls">
         <button onClick={handlePrevious}>
           <FontAwesomeIcon icon={faChevronLeft} />
@@ -45,21 +61,28 @@ const Projects = () => {
           <h2>{title}</h2>
           <p>{description}</p>
         </div>
-        <div className="projects__content__screenshots">
-          <div className="projects__content__screenshots__carousel">
-            {screenshots.map((src, idx) => (
-              <img
-                key={idx}
-                src={src}
-                className={`screenshot ${idx === 0 ? 'active' : ''}`}
-                alt={`Screenshot ${idx + 1}`}
-                style={{
-                  transform: `translateZ(${idx * -200}px) rotateY(${
-                    idx * 5
-                  }deg)`
-                }}
-              />
-            ))}
+        <div ref={screenshotsRef} className="projects__content__screenshots">
+          <div
+            className={`projects__content__screenshots__carousel ${
+              isInView ? 'animate' : ''
+            }`}
+          >
+            {screenshots.map((src, idx) => {
+              const { translateZValue, rotateYValue } =
+                getImgTransformValues(idx);
+
+              return (
+                <img
+                  key={idx}
+                  src={src}
+                  className={`screenshot ${idx === 0 ? 'active' : ''}`}
+                  style={{
+                    transform: `translateZ(${translateZValue}px) rotateY(${rotateYValue}deg)`,
+                    transition: 'transform 1s ease'
+                  }}
+                />
+              );
+            })}
           </div>
         </div>
       </div>
