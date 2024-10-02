@@ -5,7 +5,7 @@ import {
   faChevronRight
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './Projects.scss';
 
 const triggerPointEnter = window.innerHeight * 0.6;
@@ -16,25 +16,43 @@ const Projects = () => {
   const screenshotsRef = useRef(null);
   const opacity = useScrollOpacity(topRef, offset);
   const isInView = useInView(screenshotsRef, triggerPointEnter);
+
   const [currentProjectIdx, setCurrentProjectIdx] = useState(0);
+  const [targetPosition, setTargetPosition] = useState(0);
 
-  console.log(isInView);
+  useEffect(() => {
+    setTargetPosition(0);
+  }, [currentProjectIdx]);
 
-  const handlePrevious = () =>
+  const handlePrevious = () => {
     setCurrentProjectIdx(
       (prevIdx) => (prevIdx - 1 + projects.length) % projects.length
     );
+  };
 
-  const handleNext = () =>
+  const handleNext = () => {
     setCurrentProjectIdx((prevIdx) => (prevIdx + 1) % projects.length);
+  };
 
   const getImgTransformValues = (idx: number) => {
+    let positionOffset = idx - targetPosition;
+    if (positionOffset < 0) positionOffset += screenshots.length;
+
     let translateZValue;
+    let rotateYValue;
 
-    if (isInView) translateZValue = idx === 0 ? -50 : idx * -200;
-    else translateZValue = idx === 0 ? 100 : idx * -300;
-
-    const rotateYValue = isInView ? idx * 10 : idx * 18;
+    if (!isInView) {
+      if (positionOffset === 0) {
+        translateZValue = 100;
+        rotateYValue = 0;
+      } else {
+        translateZValue = positionOffset * -300;
+        rotateYValue = positionOffset * 20;
+      }
+    } else {
+      translateZValue = positionOffset * -200;
+      rotateYValue = positionOffset * 10;
+    }
 
     return { translateZValue, rotateYValue };
   };
@@ -70,16 +88,26 @@ const Projects = () => {
             {screenshots.map((src, idx) => {
               const { translateZValue, rotateYValue } =
                 getImgTransformValues(idx);
+              let positionOffset = idx - targetPosition;
+              if (positionOffset < 0) positionOffset += screenshots.length;
+
+              const zIndex = screenshots.length - positionOffset;
+              const opacity = Math.max(1 - positionOffset * 0.2, 0.2);
 
               return (
                 <img
                   key={idx}
                   src={src}
-                  className={`screenshot ${idx === 0 ? 'active' : ''}`}
+                  className={`screenshot ${
+                    idx === targetPosition ? 'active' : ''
+                  }`}
                   style={{
                     transform: `translateZ(${translateZValue}px) rotateY(${rotateYValue}deg)`,
-                    transition: 'transform 1s ease'
+                    transition: 'transform 1s ease',
+                    zIndex: zIndex,
+                    opacity: opacity
                   }}
+                  onClick={() => setTargetPosition(idx)}
                 />
               );
             })}
