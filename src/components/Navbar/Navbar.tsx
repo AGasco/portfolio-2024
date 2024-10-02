@@ -7,6 +7,8 @@ const Navbar = () => {
   const [isScrolled, setScrolled] = useState(false);
   const [hasReachedContact, setReachedContact] = useState(false);
 
+  console.log(hasReachedContact);
+
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
     setScrolled(scrollPosition > 0);
@@ -14,7 +16,7 @@ const Navbar = () => {
     const contactSection = document.querySelector(`#${CONTACT_SECTION}`);
     if (contactSection) {
       const { top, bottom } = contactSection.getBoundingClientRect();
-      const triggerOffset = 200; // px
+      const triggerOffset = 75; // px
 
       const isVisible = top <= triggerOffset && bottom >= 0;
 
