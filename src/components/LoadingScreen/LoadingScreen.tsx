@@ -1,26 +1,12 @@
-import { quotes } from '@/data';
+import { quotes, skills } from '@/data';
 import { useEffect, useState } from 'react';
 import './LoadingScreen.scss';
 
-const videoUrls: string[] = [
-  // '/videos/rotating-shape-black-60mb.mp4'
-  // '/videos/rotating-shape-white.mp4'
-];
-
-const preloadImages = (src: string) => {
+const preloadImage = (src: string) => {
   return fetch(src)
     .then((res) => {
       if (!res.ok) throw new Error('Failed to load image: ' + src);
       return res.blob();
-    })
-    .catch((err) => console.error(err));
-};
-
-const preloadVideo = (src: string) => {
-  return fetch(src)
-    .then((res) => {
-      if (!res.ok) throw new Error('Failed to load video: ' + src);
-      return res.blob(); // Fetched and cached
     })
     .catch((err) => console.error(err));
 };
@@ -31,12 +17,11 @@ const LoadingScreen = () => {
   useEffect(() => {
     const assetsToLoad: Promise<void | Blob>[] = [];
 
-    const imageUrls = quotes.map((quote) => quote.image);
-    imageUrls.forEach((url) => assetsToLoad.push(preloadImages(url)));
+    const quoteImageUrls = quotes.map((quote) => quote.image);
+    quoteImageUrls.forEach((url) => assetsToLoad.push(preloadImage(url)));
 
-    videoUrls.forEach((url) => {
-      assetsToLoad.push(preloadVideo(url));
-    });
+    const techLogoUrls = skills.map((skill) => skill.logo);
+    techLogoUrls.forEach((url) => assetsToLoad.push(preloadImage(url)));
 
     Promise.all(assetsToLoad)
       .then(() => setLoading(false))
