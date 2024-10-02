@@ -3,10 +3,12 @@
   top: 10%;
   left: 5%;
   height: 60vh;
-
   opacity: 0;
   transition: opacity 4s ease-in;
-  animation: fadeIn 4s ease-in forwards 3s;
+
+  &.animate {
+    animation: fadeIn 4s ease-in forwards 3s;
+  }
 }
 
 @keyframes fadeIn {

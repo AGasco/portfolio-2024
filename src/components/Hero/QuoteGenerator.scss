@@ -1,6 +1,13 @@
 .quoteGenerator {
   width: 35vw;
   font-size: 1.5rem;
+  opacity: 0;
+  transition: opacity 2s ease-in-out 2s;
+
+  &.animate {
+    animation: fadeIn 2s ease forwards 2s;
+    opacity: 1;
+  }
 
   &__container {
     display: flex;
@@ -37,24 +44,13 @@
     border-radius: 50%;
     object-fit: cover;
     opacity: 0.45;
-    // transition: opacity 2s ease-in-out;
-    // opacity: 0.9;
   }
-
-  // .fade-out {
-  //   opacity: 0; /* Fades out */
-  // }
-
-  // .fade-in {
-  //   opacity: 0.45; /* Fades in */
-  // }
 
   &__bottom {
     width: 60%;
     align-self: flex-end;
     text-align: right;
     margin-top: -20px;
-    // padding-right: 30px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -102,7 +98,6 @@
       text-align: right;
       z-index: 100;
       cursor: pointer;
-      // font-family: 'Darker Grotesque', sans-serif;
 
       &.disabled {
         pointer-events: none;
@@ -125,5 +120,14 @@
 @media (max-width: 1200px) {
   .quoteGenerator {
     display: none;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

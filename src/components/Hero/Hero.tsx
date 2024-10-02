@@ -14,7 +14,7 @@ const Hero = () => {
 
   return (
     <div className="hero-banner">
-      <HeroVideo />
+      <HeroVideo isLoaded={isLoaded} />
       <div className="hero-content">
         <div className="headings">
           <h1>Hey, I am Antonio</h1>
@@ -24,7 +24,7 @@ const Hero = () => {
             * some inspiring quotes for you
           </span>
         </div>
-        <QuoteGenerator />
+        <QuoteGenerator isLoaded={isLoaded} />
       </div>
     </div>
   );

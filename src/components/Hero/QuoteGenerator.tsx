@@ -9,7 +9,7 @@ import './QuoteGenerator.scss';
 const FADE_DURATION = 2000;
 const AUTO_QUOTE_INTERVAL = 8000;
 
-const QuoteGenerator = () => {
+const QuoteGenerator = ({ isLoaded }: { isLoaded: boolean }) => {
   const [curQuote, setCurQuote] = useState<Quote | null>(null);
   const [remainingQuotes, setRemainingQuotes] = useState<Quote[]>([]);
   const [isFading, setFading] = useState(true);
@@ -80,7 +80,7 @@ const QuoteGenerator = () => {
   };
 
   return (
-    <div className="quoteGenerator">
+    <div className={`quoteGenerator ${isLoaded ? 'animate' : ''}`}>
       <FadeWrapper isFadingOut={isFading} duration={FADE_DURATION}>
         <span className="quoteGenerator__container">
           <div className="quoteGenerator__image-container">
