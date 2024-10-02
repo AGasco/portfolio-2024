@@ -30,7 +30,7 @@ const Contact = () => {
           </p>
         </div>
       </div>
-      <div className="contact__dividerLine"></div>
+      <div className="contact__dividerLine" />
       <div className="contact__right">
         <ContactForm
           className={`contact__right__content ${isInView ? 'animate' : ''}`}

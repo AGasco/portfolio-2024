@@ -10,6 +10,13 @@ interface FormData {
   body: string;
 }
 
+interface FormErrors {
+  option?: string;
+  name?: string;
+  email?: string;
+  body?: string;
+}
+
 const initialState: FormData = {
   option: '',
   name: '',
@@ -19,22 +26,48 @@ const initialState: FormData = {
 
 const ContactForm = ({ className }: { className: string }) => {
   const [input, setInput] = useState<FormData>(initialState);
+  const [errors, setErrors] = useState<FormErrors>({});
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setInput({ ...input, [name]: value });
+    setErrors({ ...errors, [name]: '' });
   };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    // TODO Send email with formData
+    if (validate()) {
+      console.log('Form submitted:', input);
+      // TODO Send email with formData
+      // TODO Render a confirmation screen
+    }
+  };
+
+  const validateEmail = (email: string) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
+  const validate = () => {
+    const newErrors: FormErrors = {};
+
+    if (!input.option) newErrors.option = 'Please select an option';
+    if (!input.name) newErrors.name = 'Please provide your name';
+    if (!input.email) newErrors.email = 'Please provide your email';
+    else if (!validateEmail(input.email))
+      newErrors.email = 'Please provide a valid email';
+    if (!input.body)
+      newErrors.body = 'Please provide some details about your idea/project';
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   return (
-    <form onSubmit={handleSubmit} className={`form ${className}`}>
+    <form onSubmit={handleSubmit} className={`form ${className}`} noValidate>
       {/* Select Dropdown */}
       <div className="form__group form__group--select">
         <select
@@ -58,9 +91,13 @@ const ContactForm = ({ className }: { className: string }) => {
         />
         <span className="form__placeholder">What interests you?</span>
 
-        <label htmlFor="option" className="form__label">
-          Select one of the options
-        </label>
+        {!errors.option ? (
+          <label htmlFor="option" className="form__label">
+            Select one of the options
+          </label>
+        ) : (
+          <span className="form__error">{errors.option}</span>
+        )}
       </div>
 
       {/* Name Input */}
@@ -76,9 +113,13 @@ const ContactForm = ({ className }: { className: string }) => {
           }`}
         />
         <span className="form__placeholder">Your Name</span>
-        <label htmlFor="name" className="form__label">
-          To address you :)
-        </label>
+        {!errors.name ? (
+          <label htmlFor="name" className="form__label">
+            To address you :)
+          </label>
+        ) : (
+          <span className="form__error">{errors.name}</span>
+        )}
       </div>
 
       {/* Email Input */}
@@ -94,9 +135,13 @@ const ContactForm = ({ className }: { className: string }) => {
           }`}
         />
         <span className="form__placeholder">Email</span>
-        <label htmlFor="email" className="form__label">
-          So I can get in contact with you
-        </label>
+        {!errors.email ? (
+          <label htmlFor="email" className="form__label">
+            So I can get in contact with you
+          </label>
+        ) : (
+          <span className="form__error">{errors.email}</span>
+        )}
       </div>
 
       {/* Body Input */}
@@ -117,9 +162,13 @@ const ContactForm = ({ className }: { className: string }) => {
           rows={1}
         />
         <span className="form__placeholder">Tell me your idea</span>
-        <label htmlFor="body" className="form__label">
-          So I put myself in context
-        </label>
+        {!errors.body ? (
+          <label htmlFor="body" className="form__label">
+            So I put myself in context
+          </label>
+        ) : (
+          <span className="form__error">{errors.body}</span>
+        )}
       </div>
 
       {/* Submit Button */}
