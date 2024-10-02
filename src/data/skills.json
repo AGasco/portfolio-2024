@@ -2,7 +2,7 @@
   {
     "id": "01",
     "name": "The OG Triad",
-    "logo": "HTML + CSS + JS logo combined",
+    "logo": "/images/logos/triad-logo.png",
     "link": "https://developer.mozilla.org/",
     "title": "HTML/CSS/JS Title",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget mollis est. Quisque interdum, tortor sit amet condimentum pretium, arcu urna fringilla dui, ut maximus erat urna ac enim. Praesent iaculis eu elit ut eleifend. Pellentesque sem purus, vulputate molestie diam quis, porta egestas nisi. Donec sit amet ex vitae arcu aliquet interdum."
@@ -10,7 +10,7 @@
   {
     "id": "02",
     "name": "The DOM Whisperer",
-    "logo": "React Logo",
+    "logo": "/images/logos/react-logo.svg",
     "link": "https://react.dev/",
     "title": "React Title",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget mollis est. Quisque interdum, tortor sit amet condimentum pretium, arcu urna fringilla dui, ut maximus erat urna ac enim. Praesent iaculis eu elit ut eleifend. Pellentesque sem purus, vulputate molestie diam quis, porta egestas nisi. Donec sit amet ex vitae arcu aliquet interdum."
@@ -26,7 +26,7 @@
   {
     "id": "04",
     "name": "The State Commander",
-    "logo": "Redux Logo",
+    "logo": "/images/logos/redux-logo.webp",
     "link": "https://redux.js.org/",
     "title": "Redux Title",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget mollis est. Quisque interdum, tortor sit amet condimentum pretium, arcu urna fringilla dui, ut maximus erat urna ac enim. Praesent iaculis eu elit ut eleifend. Pellentesque sem purus, vulputate molestie diam quis, porta egestas nisi. Donec sit amet ex vitae arcu aliquet interdum."
@@ -34,7 +34,7 @@
   {
     "id": "05",
     "name": "The Server Sage",
-    "logo": "Next Logo",
+    "logo": "/images/logos/nextjs-logo.png",
     "link": "https://nextjs.org/",
     "title": "Next Title",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget mollis est. Quisque interdum, tortor sit amet condimentum pretium, arcu urna fringilla dui, ut maximus erat urna ac enim. Praesent iaculis eu elit ut eleifend. Pellentesque sem purus, vulputate molestie diam quis, porta egestas nisi. Donec sit amet ex vitae arcu aliquet interdum."
@@ -42,7 +42,7 @@
   {
     "id": "06",
     "name": "The Commit Captain",
-    "logo": "Git Logo",
+    "logo": "/images/logos/git-logo.png",
     "link": "https://git-scm.com/",
     "title": "Git Title",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget mollis est. Quisque interdum, tortor sit amet condimentum pretium, arcu urna fringilla dui, ut maximus erat urna ac enim. Praesent iaculis eu elit ut eleifend. Pellentesque sem purus, vulputate molestie diam quis, porta egestas nisi. Donec sit amet ex vitae arcu aliquet interdum."
@@ -50,7 +50,7 @@
   {
     "id": "07",
     "name": "The Bug Slayer",
-    "logo": "Jest Logo",
+    "logo": "/images/logos/jest-logo.png",
     "link": "https://jestjs.io/",
     "title": "Jest Title",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget mollis est. Quisque interdum, tortor sit amet condimentum pretium, arcu urna fringilla dui, ut maximus erat urna ac enim. Praesent iaculis eu elit ut eleifend. Pellentesque sem purus, vulputate molestie diam quis, porta egestas nisi. Donec sit amet ex vitae arcu aliquet interdum."
