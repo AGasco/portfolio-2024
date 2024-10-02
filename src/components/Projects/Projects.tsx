@@ -57,6 +57,30 @@ const Projects = () => {
     return { translateZValue, rotateYValue };
   };
 
+  const renderScreenshot = (src: string, idx: number) => {
+    const { translateZValue, rotateYValue } = getImgTransformValues(idx);
+    let positionOffset = idx - targetPosition;
+    if (positionOffset < 0) positionOffset += screenshots.length;
+
+    const zIndex = screenshots.length - positionOffset;
+    const opacity = Math.max(1 - positionOffset * 0.2, 0.2);
+
+    return (
+      <img
+        key={idx}
+        src={src}
+        className={`screenshot ${idx === targetPosition ? 'active' : ''}`}
+        style={{
+          transform: `translateZ(${translateZValue}px) rotateY(${rotateYValue}deg)`,
+          transition: 'transform 1s ease',
+          zIndex: zIndex,
+          opacity: opacity
+        }}
+        onClick={() => setTargetPosition(idx)}
+      />
+    );
+  };
+
   const { title, description, screenshots, backgroundColor } =
     projects[currentProjectIdx];
 
@@ -85,32 +109,7 @@ const Projects = () => {
               isInView ? 'animate' : ''
             }`}
           >
-            {screenshots.map((src, idx) => {
-              const { translateZValue, rotateYValue } =
-                getImgTransformValues(idx);
-              let positionOffset = idx - targetPosition;
-              if (positionOffset < 0) positionOffset += screenshots.length;
-
-              const zIndex = screenshots.length - positionOffset;
-              const opacity = Math.max(1 - positionOffset * 0.2, 0.2);
-
-              return (
-                <img
-                  key={idx}
-                  src={src}
-                  className={`screenshot ${
-                    idx === targetPosition ? 'active' : ''
-                  }`}
-                  style={{
-                    transform: `translateZ(${translateZValue}px) rotateY(${rotateYValue}deg)`,
-                    transition: 'transform 1s ease',
-                    zIndex: zIndex,
-                    opacity: opacity
-                  }}
-                  onClick={() => setTargetPosition(idx)}
-                />
-              );
-            })}
+            {screenshots.map((src, idx) => renderScreenshot(src, idx))}
           </div>
         </div>
       </div>
