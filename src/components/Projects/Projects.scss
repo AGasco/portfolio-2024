@@ -1,6 +1,6 @@
 .projects {
   height: 100%;
-  min-height: 100vh;
+  min-height: 101vh;
   min-width: 100vw;
   box-sizing: border-box;
   padding: 3rem 2rem;
@@ -9,6 +9,7 @@
   align-items: center;
   font-family: 'Begum', sans-serif;
   z-index: 1;
+  margin-top: -4px;
 
   &__controls {
     width: 90%;
