@@ -44,6 +44,7 @@
   bottom: -20px;
   left: 35%;
   width: 300px;
+  opacity: 0;
 
   &-message {
     position: absolute;
@@ -54,5 +55,23 @@
     font-size: 18px;
     width: 100px;
     transform: rotateZ(-30deg);
+    opacity: 0;
+
+    &.animate {
+      animation: fadeIn 2s ease forwards 1.5s;
+    }
+  }
+
+  &.animate {
+    animation: fadeIn 2s ease forwards 1s;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
