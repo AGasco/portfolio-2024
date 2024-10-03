@@ -5,18 +5,26 @@
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #fff;
   z-index: 1000;
+  background-color: black;
 
   .spinner {
-    border: 16px solid #f3f3f3;
-    border-top: 16px solid #3498db;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid black;
     border-radius: 50%;
-    width: 120px;
-    height: 120px;
+    width: 80px;
+    height: 80px;
     animation: spin 2s linear infinite;
+  }
+
+  p {
+    font-family: 'Begum', sans-serif;
+    font-size: 1.5rem;
+    color: white;
   }
 }
 
