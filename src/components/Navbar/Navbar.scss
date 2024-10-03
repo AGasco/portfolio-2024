@@ -1,5 +1,7 @@
+@import '@/styles/main.scss';
+
 .navbar {
-  z-index: 2;
+  z-index: 1000;
   width: 100%;
   position: fixed;
   top: 0;
@@ -15,43 +17,6 @@
     font-weight: 400;
   }
 
-  &__container {
-    padding: 2rem;
-    width: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    transition: padding 0.3s ease;
-  }
-
-  &__logo {
-    font-family: 'Dancing Script', cursive;
-    font-size: 32px;
-  }
-
-  &__content {
-    display: flex;
-    align-items: flex-start;
-
-    & a {
-      padding: 0.5rem;
-      padding-top: 1rem;
-    }
-  }
-
-  a {
-    cursor: pointer;
-    margin-top: 0;
-    color: white;
-
-    &:hover {
-      text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.8);
-      color: white;
-    }
-  }
-
   &--scrolled {
     background-color: rgba(0, 0, 0, 0.7);
   }
@@ -62,6 +27,122 @@
 
     * {
       color: black !important;
+    }
+  }
+
+  &__container {
+    padding: 2rem;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: padding 0.3s ease;
+
+    @include respond-to('tablet') {
+      padding: 1rem 2rem;
+    }
+  }
+
+  &__logo {
+    font-family: 'Dancing Script', cursive;
+    color: white;
+    font-size: 32px;
+    transition: text-shadow 0.3s ease;
+
+    &:hover {
+      color: white;
+      text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  &__hamburger {
+    display: block;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    @include respond-to('tablet') {
+      display: none;
+    }
+  }
+
+  &__content {
+    display: none;
+
+    &.active {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      transition: background-color 0.3s ease;
+      z-index: 999;
+
+      a {
+        margin: 1.5rem 0;
+        font-size: 1.5rem;
+        color: white;
+        text-decoration: none;
+        transition: text-shadow 0.3s ease;
+
+        &:hover {
+          text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.8);
+        }
+      }
+    }
+
+    @include respond-to('tablet') {
+      display: flex;
+      flex-direction: row;
+      position: static;
+      height: auto;
+      width: auto;
+      background-color: transparent;
+
+      a {
+        margin: 0;
+        font-size: 1rem;
+
+        &:hover {
+          text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.8);
+          color: white;
+        }
+      }
+    }
+
+    & a {
+      color: white;
+      padding: 0.5rem;
+      padding-top: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    &__link {
+      cursor: pointer;
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+
+      &:hover {
+        text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.8);
+        color: white;
+      }
+
+      @include respond-to('tablet') {
+        margin-left: 1.5rem;
+      }
     }
   }
 }
