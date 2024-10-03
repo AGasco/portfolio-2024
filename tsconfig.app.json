@@ -26,6 +26,12 @@
     "rootDir": "./src",
     "composite": true
   },
-  "include": ["src", "src/**/*.ts", "src/**/*.tsx", "src/**/*.json"],
+  "include": [
+    "src",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.json",
+    "src/**/*.scss"
+  ],
   "exclude": ["node_modules", "dist"]
 }

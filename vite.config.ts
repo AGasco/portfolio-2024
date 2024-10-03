@@ -12,7 +12,8 @@ export default defineConfig({
       '@/constants': resolve('src/constants'),
       '@/data': resolve('src/data'),
       '@/types': resolve('src/types'),
-      '@/hooks': resolve('src/hooks')
+      '@/hooks': resolve('src/hooks'),
+      '@/styles': resolve('src/styles')
     }
   },
   plugins: [react()]
