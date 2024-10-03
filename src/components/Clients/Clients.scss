@@ -71,12 +71,16 @@
 
   &__logos {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     margin-top: 2rem;
 
     .logo {
       display: inline-block;
-      width: 25%;
+      width: 22%;
+      height: 100px;
+      padding: 0 0.5rem;
       opacity: 0;
       visibility: hidden;
       transform: translateY(20px);
