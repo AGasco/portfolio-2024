@@ -1,42 +1,50 @@
 [
   {
     "id": 0,
-    "name": "client1",
-    "logo": "logo"
+    "name": "Scandiweb",
+    "logo": "/images/logos/clients/scandiweb-logo.png",
+    "link": ""
   },
   {
     "id": 1,
-    "name": "client2",
-    "logo": "logo"
+    "name": "Knowmad Mood",
+    "logo": "/images/logos/clients/knowmadmood-logo.png",
+    "link": ""
   },
   {
     "id": 2,
-    "name": "client3",
-    "logo": "logo"
+    "name": "Version 1",
+    "logo": "/images/logos/clients/version1-logo.png",
+    "link": ""
   },
   {
     "id": 4,
-    "name": "client4",
-    "logo": "logo"
+    "name": "Sweet",
+    "logo": "/images/logos/clients/sweet-logo.jpg",
+    "link": ""
   },
   {
     "id": 5,
-    "name": "client5",
-    "logo": "logo"
-  },
-  {
-    "id": 6,
-    "name": "client6",
-    "logo": "logo"
+    "name": "Inditex",
+    "logo": "/images/logos/clients/inditex-logo.jpg",
+    "link": ""
   },
   {
     "id": 7,
-    "name": "client7",
-    "logo": "logo"
+    "name": "Travelport",
+    "logo": "/images/logos/clients/travelport-logo.jpg",
+    "link": ""
+  },
+  {
+    "id": 6,
+    "name": "Applus",
+    "logo": "/images/logos/clients/applus-logo.jpg",
+    "link": ""
   },
   {
     "id": 8,
-    "name": "client8",
-    "logo": "logo"
+    "name": "Beatclub",
+    "logo": "/images/logos/clients/beatclub-logo.jpg",
+    "link": ""
   }
 ]
