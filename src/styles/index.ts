@@ -1,3 +1,5 @@
-import * as breakpoints from './breakpoints.scss';
+import * as breakpoints from './_breakpoints.scss';
+import * as typography from './_typography.scss';
+import * as main from './main.scss';
 
-export { breakpoints };
+export { breakpoints, typography, main };
