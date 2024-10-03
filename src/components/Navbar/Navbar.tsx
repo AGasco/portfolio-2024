@@ -1,7 +1,8 @@
 import { CONTACT_SECTION, SCROLL_EVENT } from '@/constants';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useState } from 'react';
+import FocusTrap from 'focus-trap-react';
+import { useEffect, useRef, useState } from 'react';
 import { NavHashLink } from 'react-router-hash-link';
 import './Navbar.scss';
 
@@ -9,6 +10,7 @@ const Navbar = () => {
   const [isScrolled, setScrolled] = useState(false);
   const [hasReachedContact, setReachedContact] = useState(false);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
@@ -55,9 +57,8 @@ const Navbar = () => {
           antoniofgasco
         </NavHashLink>
 
-        {/* Hamburger Icon */}
         <div
-          className="navbar__hamburger"
+          className={`navbar__hamburger ${isMobileMenuOpen ? 'active' : ''}`}
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
           aria-expanded={isMobileMenuOpen}
@@ -69,33 +70,54 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Navigation Links */}
-        <div className={`navbar__content ${isMobileMenuOpen ? 'active' : ''}`}>
-          <NavHashLink
-            smooth
-            to="#about"
-            className="navbar__link"
-            onClick={handleLinkClick}
-          >
-            About
-          </NavHashLink>
-          <NavHashLink
-            smooth
-            to="#projects"
-            className="navbar__link"
-            onClick={handleLinkClick}
-          >
-            Projects
-          </NavHashLink>
-          <NavHashLink
-            smooth
-            to="#contact"
-            className="navbar__link"
-            onClick={handleLinkClick}
-          >
-            Contact
-          </NavHashLink>
-        </div>
+        {isMobileMenuOpen ? (
+          <FocusTrap focusTrapOptions={{ allowOutsideClick: true }}>
+            <div
+              className={'navbar__content active'}
+              ref={mobileMenuRef}
+              id="navbar-menu"
+              role="dialog"
+              aria-modal="true"
+            >
+              <NavHashLink
+                smooth
+                to="#about"
+                className="navbar__link"
+                onClick={handleLinkClick}
+              >
+                About
+              </NavHashLink>
+              <NavHashLink
+                smooth
+                to="#projects"
+                className="navbar__link"
+                onClick={handleLinkClick}
+              >
+                Projects
+              </NavHashLink>
+              <NavHashLink
+                smooth
+                to="#contact"
+                className="navbar__link"
+                onClick={handleLinkClick}
+              >
+                Contact
+              </NavHashLink>
+            </div>
+          </FocusTrap>
+        ) : (
+          <div className="navbar__content">
+            <NavHashLink smooth to="#about" className="navbar__link">
+              About
+            </NavHashLink>
+            <NavHashLink smooth to="#projects" className="navbar__link">
+              Projects
+            </NavHashLink>
+            <NavHashLink smooth to="#contact" className="navbar__link">
+              Contact
+            </NavHashLink>
+          </div>
+        )}
       </div>
     </nav>
   );
