@@ -6,11 +6,10 @@ import { useRef, useState } from 'react';
 import './Skills.scss';
 
 const triggerPointEnter = window.innerHeight * 0.8;
-const triggerPointExit = window.innerHeight - 1000;
 
 const Skills = () => {
   const titleRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(titleRef, triggerPointEnter, triggerPointExit);
+  const isInView = useInView(titleRef, triggerPointEnter);
 
   const [curSkill, setCurSkill] = useState<Skill | null>(null);
   const [newSkill, setNewSkill] = useState<Skill | null>(null);

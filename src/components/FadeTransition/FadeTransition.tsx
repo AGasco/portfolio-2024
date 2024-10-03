@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 import './FadeTransition.scss';
 
 interface Props {
@@ -13,14 +13,19 @@ const FadeTransition = ({ children, trigger, duration = 1000 }: Props) => {
   const [isFadingIn, setFadingIn] = useState(false);
   const [curContent, setCurContent] = useState<ReactNode>(null);
   const [nextContent, setNextContent] = useState<ReactNode>(null);
+  const previousTrigger = useRef(null);
 
   useEffect(() => {
-    if (curContent) {
+    if (previousTrigger.current !== trigger) {
       setNextContent(children);
-      setFadingOut(true);
-    } else {
-      setCurContent(children);
-      setFadingIn(true);
+
+      if (previousTrigger.current !== null) {
+        setFadingOut(true);
+      } else {
+        setCurContent(children);
+        setFadingIn(true);
+      }
+      previousTrigger.current = trigger;
     }
   }, [trigger, children]);
 
