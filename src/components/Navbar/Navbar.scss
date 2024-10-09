@@ -43,6 +43,10 @@
     @include respond-to('tablet') {
       padding: 1rem 2rem;
     }
+
+    @include respond-to('largeDesktop') {
+      max-width: 1600px;
+    }
   }
 
   &__logo {

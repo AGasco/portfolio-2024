@@ -19,6 +19,10 @@ main {
   margin: 0 auto;
   padding: 2rem;
   padding-bottom: 0;
+
+  @include respond-to('largeDesktop') {
+    max-width: 1600px;
+  }
 }
 
 section {
