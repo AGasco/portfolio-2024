@@ -1,5 +1,5 @@
 import { CurvedArrow } from '@/components';
-import { BREAKPOINT_LARGEDESKTOP } from '@/constants';
+import { BREAKPOINT_LARGEDESKTOP, BREAKPOINT_XLDESKTOP } from '@/constants';
 import { useDeviceType } from '@/hooks';
 import { useEffect, useState } from 'react';
 import './Hero.scss';
@@ -17,7 +17,8 @@ const Hero = () => {
     setLoaded(Boolean(heroContent));
   }, []);
 
-  const isLargeDesktop = device === BREAKPOINT_LARGEDESKTOP;
+  const isLargeDesktop =
+    device === BREAKPOINT_LARGEDESKTOP || device === BREAKPOINT_XLDESKTOP;
 
   return (
     <div className="hero-banner">
