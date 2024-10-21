@@ -18,14 +18,14 @@
     width: 150vw;
   }
 
-  @include respond-to('desktop') {
+  @include respond-to('largeDesktop') {
     top: 10%;
     left: 5%;
     height: 60vh;
     width: 50vw;
   }
 
-  @include respond-to('largeDesktop') {
+  @include respond-to('extraLargeDesktop') {
     width: 40vw;
   }
 }

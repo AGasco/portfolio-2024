@@ -44,7 +44,7 @@
       padding: 1rem 2rem;
     }
 
-    @include respond-to('largeDesktop') {
+    @include respond-to('extraLargeDesktop') {
       max-width: 1600px;
     }
   }
