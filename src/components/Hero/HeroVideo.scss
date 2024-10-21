@@ -18,6 +18,10 @@
     width: 150vw;
   }
 
+  @include respond-to('desktop') {
+    left: -5%;
+  }
+
   @include respond-to('largeDesktop') {
     top: 10%;
     left: 5%;
