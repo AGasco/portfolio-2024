@@ -20,7 +20,7 @@ main {
   padding: 2rem;
   padding-bottom: 0;
 
-  @include respond-to('largeDesktop') {
+  @include respond-to('desktop') {
     max-width: 1600px;
   }
 }
