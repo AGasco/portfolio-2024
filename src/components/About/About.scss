@@ -1,15 +1,63 @@
+@import '@/styles/_breakpoints.scss';
+
 .about {
   font-family: 'Begum', sans-serif;
-  font-size: 1.7rem;
+  font-size: 1rem;
   opacity: 0.1;
-  transform: translateY(100px);
-  line-height: 5.5rem;
-  transition: opacity 5s ease-out, transform 2s ease-out,
-    line-height 3s ease-out;
+  transform: translateY(50px);
+  line-height: 3.5rem;
+  transition: opacity 3s ease-out, transform 1.5s ease-out,
+    line-height 2s ease-out;
 
   &.animate {
     opacity: 1;
     transform: translateY(0);
     line-height: 2.5rem;
+  }
+
+  @include respond-to('tablet') {
+    font-size: 2.5rem;
+    transform: translateY(70px);
+    line-height: 4.5rem;
+
+    &.animate {
+      line-height: 3.5rem;
+    }
+  }
+
+  @include respond-to('desktop') {
+    font-size: 3rem;
+    transform: translateY(100px);
+    line-height: 5.5rem;
+
+    &.animate {
+      line-height: 4.5rem;
+    }
+  }
+
+  @include respond-to('largeDesktop') {
+    width: 60%;
+    font-size: 1.5rem;
+    transform: translateY(100px);
+    line-height: 4rem;
+    transition: opacity 4s ease-out, transform 2s ease-out,
+      line-height 2s ease-out;
+
+    &.animate {
+      line-height: 2.5rem;
+    }
+  }
+
+  @include respond-to('extraLargeDesktop') {
+    width: 80%;
+    font-size: 2.2rem;
+    transform: translateY(100px);
+    line-height: 4rem;
+    transition: opacity 4s ease-out, transform 2s ease-out,
+      line-height 2s ease-out;
+
+    &.animate {
+      line-height: 3.2rem;
+    }
   }
 }
