@@ -5,7 +5,7 @@
   top: 0;
   left: -20%;
   height: 80vh;
-  width: 50vw;
+  width: 200vw;
   opacity: 0;
   transition: opacity 4s ease-in;
 
@@ -13,10 +13,16 @@
     animation: fadeIn 4s ease-in forwards 3s;
   }
 
+  @include respond-to('tablet') {
+    left: 0;
+    width: 150vw;
+  }
+
   @include respond-to('desktop') {
     top: 10%;
     left: 5%;
     height: 60vh;
+    width: 50vw;
   }
 
   @include respond-to('largeDesktop') {
@@ -27,11 +33,5 @@
 @keyframes fadeIn {
   to {
     opacity: 1;
-  }
-}
-
-@media (min-width: 1024px) and (max-width: 1500px) {
-  .hero-video {
-    left: -20%;
   }
 }
