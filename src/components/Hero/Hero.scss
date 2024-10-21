@@ -21,12 +21,17 @@
 .hero-content {
   position: relative;
   height: 100%;
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
   margin-bottom: 2%;
   color: white;
   font-family: 'Begum', sans-serif;
+
+  @include respond-to('largeDesktop') {
+    width: 85%;
+  }
 
   & .headings {
     display: flex;
@@ -58,7 +63,23 @@
     }
 
     @include respond-to('desktop') {
-      flex-basis: 45%;
+      flex-basis: 90%;
+
+      h1 {
+        font-size: 7rem;
+        width: 30%;
+      }
+
+      h2 {
+        font-size: 2rem;
+        line-height: 1.5rem;
+        text-align: left;
+        padding-left: 14rem;
+      }
+    }
+
+    @include respond-to('largeDesktop') {
+      flex-basis: 50%;
 
       h1 {
         font-size: 5.5rem;
@@ -71,13 +92,18 @@
       }
     }
 
-    @include respond-to('largeDesktop') {
+    @include respond-to('extraLargeDesktop') {
+      flex-basis: 30%;
+
       h1 {
-        font-size: 8rem;
+        font-size: 10rem;
       }
 
       h2 {
         font-size: 2.5rem;
+        text-wrap: nowrap;
+        margin-left: 8rem;
+        padding-right: 0;
       }
     }
   }
@@ -109,7 +135,7 @@
     animation: fadeIn 2s ease forwards 1s;
   }
 
-  @include respond-to('largeDesktop') {
+  @include respond-to('extraLargeDesktop') {
     left: 36%;
     bottom: 5rem;
     width: 500px;

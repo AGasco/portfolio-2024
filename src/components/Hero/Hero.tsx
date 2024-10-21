@@ -1,5 +1,5 @@
 import { CurvedArrow } from '@/components';
-import { BREAKPOINT_MOBILE, BREAKPOINT_TABLET } from '@/constants';
+import { BREAKPOINT_LARGEDESKTOP } from '@/constants';
 import { useDeviceType } from '@/hooks';
 import { useEffect, useState } from 'react';
 import './Hero.scss';
@@ -17,15 +17,19 @@ const Hero = () => {
     setLoaded(Boolean(heroContent));
   }, []);
 
+  const isLargeDesktop = device === BREAKPOINT_LARGEDESKTOP;
+
   return (
     <div className="hero-banner">
       <HeroVideo isLoaded={isLoaded} />
       <div className="hero-content">
         <div className="headings">
-          <h1>Hey, I am Antonio</h1>
+          <h1>
+            Hey, <br />I am Antonio
+          </h1>
           <h2>a frontend developer</h2>
 
-          {device !== BREAKPOINT_MOBILE && device !== BREAKPOINT_TABLET && (
+          {isLargeDesktop && (
             <>
               <CurvedArrow
                 className={`hero-arrow ${isLoaded ? 'animate' : ''}`}
@@ -40,9 +44,7 @@ const Hero = () => {
         </div>
 
         {/* Maybe put it below the heading on mobile */}
-        {device !== BREAKPOINT_MOBILE && device !== BREAKPOINT_TABLET && (
-          <QuoteGenerator isLoaded={isLoaded} />
-        )}
+        {isLargeDesktop && <QuoteGenerator isLoaded={isLoaded} />}
       </div>
     </div>
   );
