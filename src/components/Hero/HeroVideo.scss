@@ -24,12 +24,13 @@
 
   @include respond-to('largeDesktop') {
     top: 10%;
-    left: 5%;
+    left: 12%;
     height: 60vh;
     width: 50vw;
   }
 
   @include respond-to('extraLargeDesktop') {
+    left: 15%;
     width: 40vw;
   }
 }

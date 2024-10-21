@@ -7,7 +7,7 @@
   transition: opacity 2s ease-in-out 2s;
 
   @include respond-to('extraLargeDesktop') {
-    padding-left: 10rem;
+    padding-left: 3rem;
     margin-bottom: 5rem;
   }
 
