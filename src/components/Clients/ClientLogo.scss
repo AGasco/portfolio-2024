@@ -1,10 +1,13 @@
+@import '@/styles/_breakpoints.scss';
+
 .logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 22%;
-  height: 100px;
-  padding: 0 0.5rem;
+  width: 50%;
+  height: 80px;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
   opacity: 0;
   visibility: hidden;
   transform: translateY(calc(20px + var(--logo-translateY, 0px))) scale(1);
@@ -21,5 +24,17 @@
   img {
     max-width: 100%;
     max-height: 100%;
+  }
+
+  @include respond-to('tablet') {
+    height: 70px;
+    margin-bottom: 3rem;
+  }
+
+  @include respond-to('desktop') {
+    height: 100px;
+    width: 22%;
+    padding: 0;
+    margin-bottom: 0;
   }
 }

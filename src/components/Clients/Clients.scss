@@ -1,5 +1,12 @@
+@import '@/styles/_breakpoints.scss';
+
 .clients {
   display: flex;
+  flex-direction: column;
+
+  @include respond-to('desktop') {
+    flex-direction: row;
+  }
 
   * {
     font-family: 'Begum', sans-serif;
@@ -32,6 +39,11 @@
     align-items: flex-start;
     position: relative;
     margin-top: 0.5rem;
+    margin-bottom: 3rem;
+
+    @include respond-to('desktop') {
+      margin-bottom: 0;
+    }
 
     h2 {
       font-family: 'gt walsheim';
