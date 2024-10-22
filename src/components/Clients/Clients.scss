@@ -58,7 +58,7 @@
 
   &__description {
     text-align: left;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     opacity: 0;
     transform: translateY(40px);
     transition: transform 2.2s ease-out, opacity 1.5s ease-out;
@@ -75,30 +75,5 @@
     justify-content: space-between;
     flex-wrap: wrap;
     margin-top: 2rem;
-
-    .logo {
-      display: inline-block;
-      width: 22%;
-      height: 100px;
-      padding: 0 0.5rem;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(20px);
-      transition: transform 1.5s ease-out, opacity 1.5s ease-out,
-        visibility 0s linear 1.5s;
-
-      &.animate {
-        opacity: 0.8;
-        visibility: visible;
-        transform: translateY(0);
-        transition: transform 1.5s ease-out, opacity 1.5s ease-out,
-          visibility 0s;
-      }
-
-      img {
-        max-width: 100%;
-        margin: 1rem 0;
-      }
-    }
   }
 }

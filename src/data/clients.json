@@ -45,6 +45,7 @@
     "id": 8,
     "name": "Beatclub",
     "logo": "/images/logos/clients/beatclub-logo.jpg",
-    "link": ""
+    "link": "",
+    "translateY": "-10px"
   }
 ]

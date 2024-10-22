@@ -1,0 +1,25 @@
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22%;
+  height: 100px;
+  padding: 0 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(calc(20px + var(--logo-translateY, 0px))) scale(1);
+  transition: transform 1.5s ease-out, opacity 1.5s ease-out,
+    visibility 0s linear 1.5s;
+
+  &.animate {
+    opacity: 0.8;
+    visibility: visible;
+    transform: translateY(var(--logo-translateY, 0px)) scale(1);
+    transition: transform 1.5s ease-out, opacity 1.5s ease-out, visibility 0s;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}

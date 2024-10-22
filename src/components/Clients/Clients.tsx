@@ -1,7 +1,9 @@
 import { AnimatedLine } from '@/components';
 import { clients } from '@/data';
 import { useInView } from '@/hooks';
+import { Client } from '@/types';
 import { useRef } from 'react';
+import ClientLogo from './ClientLogo';
 import './Clients.scss';
 
 const triggerPointEnter = window.innerHeight * 0.8;
@@ -22,20 +24,17 @@ const Clients = () => {
       </div>
       <div className="clients__content">
         <div className={`clients__description ${isInView ? 'animate' : ''}`}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod itaque
-          at porro? Rem explicabo, ipsam iusto quasi eveniet ratione quia magni
-          reprehenderit adipisci, aspernatur, minus eius enim delectus unde
-          quod.
+          I've had the privilege of collaborating with a diverse range of
+          companies, from innovative startups to established industry leaders.
+          Here are some of them.
         </div>
         <div className="clients__logos">
           {clients.map((client, idx) => (
-            <span
-              key={client.id}
-              className={`logo ${isInView ? 'animate' : ''}`}
-              style={{ transitionDelay: `${idx * 0.15}s` }}
-            >
-              <img src={client.logo} alt={`${client.name}'s logo`} />
-            </span>
+            <ClientLogo
+              client={client as Client}
+              transitionDelay={`${idx * 0.15}s`}
+              isInView={isInView}
+            />
           ))}
         </div>
       </div>

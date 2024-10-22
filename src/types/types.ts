@@ -19,6 +19,8 @@ export interface Client {
   id: number;
   name: string;
   logo: string;
+  link: string;
+  translateY: string | undefined;
 }
 
 export interface Skill {
