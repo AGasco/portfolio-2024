@@ -1,4 +1,5 @@
 .skills {
+  position: relative;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -41,6 +42,34 @@
       h2 {
         opacity: 1;
       }
+    }
+  }
+
+  &__arrow {
+    left: -25%;
+    top: -13%;
+    pointer-events: none;
+    transform: scaleY(0.95);
+    opacity: 0;
+
+    &__message {
+      position: absolute;
+      top: 25%;
+      left: -7%;
+      font-family: 'Caveat', cursive;
+      font-weight: 100;
+      font-size: 20px;
+      width: 100px;
+      transform: rotateZ(55deg);
+      opacity: 0;
+
+      &.animate {
+        animation: fadeIn 2s ease forwards 1.7s;
+      }
+    }
+
+    &.animate {
+      animation: fadeIn 2s ease forwards 1.2s;
     }
   }
 

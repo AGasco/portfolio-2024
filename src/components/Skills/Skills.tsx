@@ -1,4 +1,4 @@
-import { AnimatedLine, FadeTransition } from '@/components';
+import { AnimatedLine, CurvedArrow, FadeTransition } from '@/components';
 import { skills } from '@/data';
 import { useInView } from '@/hooks';
 import { Skill } from '@/types';
@@ -23,6 +23,17 @@ const Skills = () => {
 
   return (
     <div className="skills">
+      <>
+        <CurvedArrow
+          className={`skills__arrow ${isInView ? 'animate' : ''}`}
+          pathD="M338,225 C200,75 378,113 390,76"
+          arrowPosition="start"
+        />
+        <span className={`skills__arrow__message ${isInView ? 'animate' : ''}`}>
+          * select some skills
+        </span>
+      </>
+
       <div className="skills__left">
         <div
           className={`skills__title ${isInView ? 'animate' : ''}`}

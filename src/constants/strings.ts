@@ -7,3 +7,6 @@ export const CONTACT_SECTION = 'contact';
 export const FOOTER_SECTION = 'footer';
 
 export const SCROLL_EVENT = 'scroll';
+
+export const ARROW_START = 'start';
+export const ARROW_END = 'end';
