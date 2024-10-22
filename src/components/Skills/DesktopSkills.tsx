@@ -3,7 +3,7 @@ import { skills } from '@/data';
 import { useInView } from '@/hooks';
 import { Skill } from '@/types';
 import { useRef, useState } from 'react';
-import './Skills.scss';
+import './DesktopSkills.scss';
 
 const triggerPointEnter = window.innerHeight * 0.8;
 

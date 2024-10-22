@@ -1,1 +1,2 @@
-export { default as Skills } from './Skills';
+export { default as DesktopSkills } from './DesktopSkills';
+export { default as MobileSkills } from './MobileSkills';

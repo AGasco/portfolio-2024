@@ -3,7 +3,7 @@ export { Navbar } from './Navbar';
 export { About } from './About';
 export { Projects } from './Projects';
 export { Clients } from './Clients';
-export { Skills } from './Skills';
+export { DesktopSkills, MobileSkills } from './Skills';
 export { Contact } from './Contact';
 export { Footer } from './Footer';
 

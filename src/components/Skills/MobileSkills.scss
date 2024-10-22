@@ -1,0 +1,102 @@
+.mobile-skills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+
+  &__title {
+    flex-basis: 40%;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    margin-bottom: 1rem;
+    align-self: flex-start;
+    margin-bottom: 2rem;
+
+    h2 {
+      font-family: 'gt walsheim';
+      font-weight: 400;
+      text-align: left;
+      line-height: 0;
+      font-size: 1.1rem;
+      margin: 0;
+      padding-left: 40px;
+      opacity: 0;
+      transition: opacity 0.7s ease-out 0.4s;
+    }
+
+    &.animate {
+      h2 {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 300px;
+    min-width: 280px;
+    height: 100px;
+
+    button {
+      background: none;
+      border: none;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      padding: 0;
+
+      &:active,
+      &:focus,
+      &:focus-visible {
+        outline: none;
+        box-shadow: none;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &__name {
+    flex: 1;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    margin: 0 1rem;
+    text-align: center;
+    width: 280px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    img {
+      height: 100px;
+      margin-bottom: 1rem;
+      filter: invert(1) brightness(2);
+      opacity: 0.8;
+    }
+
+    h2 {
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #ccc;
+    }
+  }
+}

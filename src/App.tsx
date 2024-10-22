@@ -2,16 +2,20 @@ import {
   About,
   Clients,
   Contact,
+  DesktopSkills,
   Footer,
   Hero,
   LoadingScreen,
+  MobileSkills,
   Navbar,
   Projects,
-  ScrollToTop,
-  Skills
+  ScrollToTop
 } from '@/components';
 import {
   ABOUT_SECTION,
+  BREAKPOINT_DESKTOP,
+  BREAKPOINT_LARGEDESKTOP,
+  BREAKPOINT_XLDESKTOP,
   CLIENTS_SECTION,
   CONTACT_SECTION,
   FOOTER_SECTION,
@@ -22,8 +26,17 @@ import {
 import { BrowserRouter } from 'react-router-dom';
 import './App.scss';
 import './fonts.css';
+import { useDeviceType } from './hooks';
 
 function App() {
+  const device = useDeviceType();
+
+  const isDesktopOrLarger = [
+    BREAKPOINT_DESKTOP,
+    BREAKPOINT_LARGEDESKTOP,
+    BREAKPOINT_XLDESKTOP
+  ].includes(device);
+
   return (
     <BrowserRouter>
       <ScrollToTop />
@@ -43,7 +56,7 @@ function App() {
           <Clients />
         </section>
         <section id={SKILLS_SECTION}>
-          <Skills />
+          {isDesktopOrLarger ? <DesktopSkills /> : <MobileSkills />}
         </section>
         <section id={CONTACT_SECTION}>
           <Contact />
