@@ -65,6 +65,12 @@
     opacity: 0.45;
     margin-left: 4rem;
     margin-bottom: 1rem;
+    mask: radial-gradient(circle, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 0) 70%);
+    -webkit-mask: radial-gradient(
+      circle,
+      rgba(0, 0, 0, 1) 15%,
+      rgba(0, 0, 0, 0) 70%
+    );
 
     @include respond-to('extraLargeDesktop') {
       width: 500px;
