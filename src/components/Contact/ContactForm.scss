@@ -4,6 +4,24 @@
   flex-direction: column;
   margin-top: -1rem;
 
+  &__success {
+    color: green;
+    background-color: #e6ffe6;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  &__error {
+    color: #ce484a;
+    background-color: #ffe6e6;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
   &__group {
     position: relative;
     margin-bottom: 1rem;

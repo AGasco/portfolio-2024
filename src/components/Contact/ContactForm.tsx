@@ -1,6 +1,7 @@
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ChangeEvent, FormEvent, useState } from 'react';
+import emailjs from 'emailjs-com';
 import './ContactForm.scss';
 
 interface FormData {
@@ -27,6 +28,9 @@ const initialState: FormData = {
 const ContactForm = ({ className }: { className: string }) => {
   const [input, setInput] = useState<FormData>(initialState);
   const [errors, setErrors] = useState<FormErrors>({});
+  const [isSubmitting, setSubmitting] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -40,9 +44,38 @@ const ContactForm = ({ className }: { className: string }) => {
     e.preventDefault();
 
     if (validate()) {
-      console.log('Form submitted:', input);
-      // TODO Send email with formData
-      // TODO Render a confirmation screen
+      setSubmitting(true);
+
+      const serviceId = import.meta.env.VITE_API_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_API_EMAILJS_TEMPLATE_ID;
+      const userId = import.meta.env.VITE_API_EMAILJS_USER_ID;
+
+      emailjs
+        .send(
+          serviceId!,
+          templateId!,
+          {
+            option: input.option,
+            name: input.name,
+            email: input.email,
+            body: input.body
+          },
+          userId!
+        )
+        .then((res) => {
+          console.log('SUCCESS!', res.status, res.text);
+          setSuccessMessage('Your message has been sent successfully!');
+          setInput(initialState);
+        })
+        .catch((err) => {
+          console.error('FAILED...', err);
+          setErrorMessage(
+            'Failed to send your message. Please try again later.'
+          );
+        })
+        .finally(() => {
+          setSubmitting(false);
+        });
     }
   };
 
@@ -68,6 +101,9 @@ const ContactForm = ({ className }: { className: string }) => {
 
   return (
     <form onSubmit={handleSubmit} className={`form ${className}`} noValidate>
+      {successMessage && <div className="form__success">{successMessage}</div>}
+      {errorMessage && <div className="form__error">{errorMessage}</div>}
+
       {/* Select Dropdown */}
       <div className="form__group form__group--select">
         <select
@@ -80,9 +116,10 @@ const ContactForm = ({ className }: { className: string }) => {
           }`}
         >
           <option value="" disabled hidden></option>
-          <option value="1">Jimi 1</option>
-          <option value="2">Pepe 2</option>
-          <option value="3">Jaime 3</option>
+          <option value="full-time">Full Time</option>
+          <option value="part-time">Part Time</option>
+          <option value="contract">Contract</option>
+          <option value="other">Other</option>
         </select>
         <FontAwesomeIcon
           icon={faChevronDown}
@@ -172,8 +209,8 @@ const ContactForm = ({ className }: { className: string }) => {
       </div>
 
       {/* Submit Button */}
-      <button type="submit" className="form__button">
-        Send
+      <button type="submit" className="form__button" disabled={isSubmitting}>
+        {isSubmitting ? 'Sending...' : 'Send'}
       </button>
     </form>
   );
