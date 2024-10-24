@@ -19,7 +19,6 @@ const Hero = () => {
 
   return (
     <div className="hero-banner">
-      {/* <HeroVideo isLoaded={isLoaded} /> */}
       <div className="hero-content">
         <div className="headings">
           <h1>
