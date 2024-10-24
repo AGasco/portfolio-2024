@@ -212,6 +212,7 @@
 
     @include respond-to('extraLargeDesktop') {
       font-size: 1.2rem;
+      width: 120px;
     }
   }
 }
