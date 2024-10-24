@@ -6,11 +6,10 @@ import ContactForm from './ContactForm';
 import ContactVideo from './ContactVideo';
 
 const triggerPointEnter = window.innerHeight * 0.8;
-const triggerPointExit = window.innerHeight - 1000;
 
 const Contact = () => {
   const titleRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(titleRef, triggerPointEnter, triggerPointExit);
+  const isInView = useInView(titleRef, triggerPointEnter);
 
   return (
     <div className="contact">
