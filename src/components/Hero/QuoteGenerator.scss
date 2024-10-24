@@ -107,6 +107,7 @@
     margin-top: -20px;
     color: #eee;
     padding: 0;
+    opacity: 0.7;
     transition: all 0.3s;
 
     &:first-child {
@@ -119,6 +120,10 @@
       @include respond-to('extraLargeDesktop') {
         font-size: 2.2rem;
       }
+    }
+
+    &:hover {
+      opacity: 1;
     }
 
     &:focus {
