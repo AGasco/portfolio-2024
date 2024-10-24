@@ -10,21 +10,34 @@ const FADE_DURATION = 2000;
 const AUTO_QUOTE_INTERVAL = 8000;
 
 const QuoteGenerator = ({ isLoaded }: { isLoaded: boolean }) => {
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const cycleOrderRef = useRef<Quote[]>([]);
+
   const [curQuote, setCurQuote] = useState<Quote | null>(null);
   const [remainingQuotes, setRemainingQuotes] = useState<Quote[]>([]);
   const [isFading, setFading] = useState(true);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    resetQuotes();
+    const jobsQuote = quotes.find((quote) => quote.author === 'Steve Jobs')!;
+    const otherQuotes = quotes.filter(
+      (quote) => quote.author !== 'Steve Jobs'
+    )!;
+    const shuffledQuotes = [...otherQuotes].sort(() => Math.random() - 0.5);
 
-    setTimeout(() => {
+    cycleOrderRef.current = [jobsQuote, ...shuffledQuotes];
+    setCurQuote(jobsQuote);
+    setRemainingQuotes([...shuffledQuotes]);
+
+    const fadeTimeout = setTimeout(() => {
       setFading(false);
     }, FADE_DURATION);
 
     startAutoNextQuoteTimer();
 
-    return () => clearAutoNextQuoteTimer();
+    return () => {
+      clearTimeout(fadeTimeout);
+      clearAutoNextQuoteTimer();
+    };
   }, []);
 
   const startAutoNextQuoteTimer = () => {
@@ -37,41 +50,21 @@ const QuoteGenerator = ({ isLoaded }: { isLoaded: boolean }) => {
   };
 
   const generateNewQuote = () => {
-    if (remainingQuotes.length === 0) {
-      setFading(true);
-
-      setTimeout(() => {
-        resetQuotes();
-        setFading(false);
-        startAutoNextQuoteTimer();
-      }, FADE_DURATION);
-      return;
-    }
-
     setFading(true);
-    setTimeout(() => {
-      const randomIndex = Math.floor(Math.random() * remainingQuotes.length);
-      const newQuote = remainingQuotes[randomIndex];
 
-      setCurQuote(newQuote);
-      setRemainingQuotes((prev) =>
-        prev.filter((quote) => quote.id !== newQuote.id)
-      );
+    setTimeout(() => {
+      if (remainingQuotes.length === 0) {
+        setCurQuote(cycleOrderRef.current[0]);
+        setRemainingQuotes([...cycleOrderRef.current.slice(1)]);
+      } else {
+        const nextQuote = remainingQuotes[0];
+        setCurQuote(nextQuote);
+        setRemainingQuotes((prev) => prev.slice(1));
+      }
+
       setFading(false);
       startAutoNextQuoteTimer();
     }, FADE_DURATION);
-  };
-
-  const resetQuotes = () => {
-    const shuffledQuotes = [...quotes].sort(() => Math.random() - 0.5);
-    const differentQuote =
-      shuffledQuotes.find((quote) => quote.id !== curQuote?.id) ||
-      shuffledQuotes[0];
-
-    setRemainingQuotes(
-      shuffledQuotes.filter((quote) => quote.id !== differentQuote.id)
-    );
-    setCurQuote(differentQuote);
   };
 
   const handleManualQuoteChange = () => {
