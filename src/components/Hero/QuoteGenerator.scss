@@ -73,8 +73,8 @@
     );
 
     @include respond-to('extraLargeDesktop') {
-      width: 500px;
-      height: 500px;
+      width: 600px;
+      height: 600px;
       margin-bottom: 2rem;
     }
   }
@@ -85,6 +85,7 @@
     width: 90%;
     animation: timerLine 9s linear forwards;
     margin-left: 15%;
+    opacity: 0.7;
   }
 
   &__bottom {
@@ -168,7 +169,6 @@
 
     @include respond-to('extraLargeDesktop') {
       font-size: 1.5rem;
-      margin-top: 1rem;
     }
   }
 }
