@@ -1,8 +1,11 @@
+@import '@/styles/_breakpoints.scss';
+
 .skills {
   position: relative;
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-left: 1%;
 
   * {
     font-family: 'Begum', sans-serif;
@@ -17,6 +20,14 @@
     flex-direction: column;
     flex-basis: 30%;
     margin-top: 1rem;
+
+    @include respond-to('largeDesktop') {
+      margin-right: 10%;
+    }
+
+    @include respond-to('extraLargeDesktop') {
+      margin-right: 10%;
+    }
   }
 
   &__title {
@@ -70,6 +81,15 @@
 
     &.animate {
       animation: fadeIn 2s ease forwards 1.2s;
+    }
+
+    @include respond-to('extraLargeDesktop') {
+      left: -20%;
+      top: -14%;
+
+      &__message {
+        left: -5%;
+      }
     }
   }
 
@@ -133,6 +153,18 @@
         letter-spacing: 1px;
       }
     }
+
+    @include respond-to('extraLargeDesktop') {
+      &__id {
+        font-size: 1.5rem;
+      }
+
+      &__name {
+        font-size: 1.5rem;
+      }
+
+      margin-bottom: 0;
+    }
   }
 
   &__content {
@@ -144,7 +176,26 @@
       max-width: 300px;
       object-fit: contain;
       filter: invert(1) brightness(2);
-      opacity: 0.8;
+      opacity: 0.7;
+    }
+
+    p {
+      opacity: 0.7;
+    }
+
+    @include respond-to('extraLargeDesktop') {
+      img {
+        height: 150px;
+        max-width: 400px;
+      }
+
+      h2 {
+        font-size: 1.7rem;
+      }
+
+      p {
+        font-size: 1.1rem;
+      }
     }
   }
 }
