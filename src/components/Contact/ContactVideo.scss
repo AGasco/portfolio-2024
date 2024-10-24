@@ -1,8 +1,15 @@
+@import '@/styles/_breakpoints.scss';
+
 .contact-video {
   position: absolute;
-  bottom: 3%;
+  top: 60vh;
   left: 7%;
   width: 38%;
   z-index: -1;
   width: 33vw;
+
+  @include respond-to('extraLargeDesktop') {
+    left: 15%;
+    width: 30vw;
+  }
 }

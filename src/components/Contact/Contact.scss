@@ -15,7 +15,7 @@
 
   @include respond-to('extraLargeDesktop') {
     min-height: 100vh;
-    padding: 10% 15% 0;
+    padding: 10% 15% 0 25%;
   }
 
   &__left {
