@@ -1,3 +1,5 @@
+@import '@/styles/_breakpoints.scss';
+
 .footer {
   display: flex;
   flex-direction: column;
@@ -9,6 +11,14 @@
   min-width: 100vw;
   background-color: #f9f9f7;
   z-index: 1;
+
+  @include respond-to('largeDesktop') {
+    padding: 1rem 14%;
+  }
+
+  @include respond-to('extraLargeDesktop') {
+    padding: 1rem 25%;
+  }
 
   * {
     color: black;
@@ -44,7 +54,10 @@
 
   &__linksContainer {
     flex-basis: 45%;
-    margin-right: 10rem;
+
+    @include respond-to('largeDesktop') {
+      flex-basis: 52%;
+    }
   }
 
   &__logo {
@@ -64,8 +77,12 @@
       text-align: start;
     }
 
-    svg {
+    a:first-of-type svg {
       padding-right: 1rem;
+    }
+
+    @include respond-to('largeDesktop') {
+      padding-right: 5%;
     }
   }
 
