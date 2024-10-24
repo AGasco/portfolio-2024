@@ -41,6 +41,10 @@ section {
     margin-bottom: 0;
     min-height: 100%;
   }
+
+  @include respond-to('extraLargeDesktop') {
+    min-height: 75vh;
+  }
 }
 
 section * {
