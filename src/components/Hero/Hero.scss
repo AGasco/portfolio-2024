@@ -82,13 +82,13 @@
       flex-basis: 50%;
 
       h1 {
-        font-size: 5.5rem;
+        font-size: 7rem;
         width: 80%;
       }
 
       h2 {
         font-size: 1.6rem;
-        padding-right: 8rem;
+        padding-left: 220px;
         margin-bottom: 0.5rem;
       }
     }
@@ -114,13 +114,13 @@
 .hero-arrow {
   bottom: -20px;
   left: 35%;
-  width: 300px;
+  width: 360px;
   opacity: 0;
 
   &-message {
     position: absolute;
-    bottom: 3%;
-    left: 48%;
+    bottom: 2%;
+    left: 51%;
     font-family: 'Caveat', cursive;
     font-weight: 100;
     font-size: 18px;
