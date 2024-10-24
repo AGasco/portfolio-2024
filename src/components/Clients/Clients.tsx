@@ -1,17 +1,22 @@
 import { AnimatedLine } from '@/components';
 import { clients } from '@/data';
-import { useInView } from '@/hooks';
+import { useDeviceType, useInView } from '@/hooks';
 import { Client } from '@/types';
 import { useRef } from 'react';
 import ClientLogo from './ClientLogo';
 import './Clients.scss';
+import { BREAKPOINT_XLDESKTOP } from '@/constants';
 
 const triggerPointEnter = window.innerHeight * 0.8;
-const triggerPointExit = window.innerHeight * 0.2;
 
 const Clients = () => {
   const titleRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(titleRef, triggerPointEnter, triggerPointExit);
+  const device = useDeviceType();
+  const finalTriggerEnter =
+    device === BREAKPOINT_XLDESKTOP
+      ? triggerPointEnter * 1.1
+      : triggerPointEnter;
+  const isInView = useInView(titleRef, finalTriggerEnter);
 
   return (
     <div className="clients">
@@ -31,6 +36,7 @@ const Clients = () => {
         <div className="clients__logos">
           {clients.map((client, idx) => (
             <ClientLogo
+              key={client.id}
               client={client as Client}
               transitionDelay={`${idx * 0.15}s`}
               isInView={isInView}

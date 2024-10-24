@@ -155,6 +155,8 @@
     }
 
     @include respond-to('extraLargeDesktop') {
+      margin-bottom: 0;
+
       &__id {
         font-size: 1.5rem;
       }
@@ -162,8 +164,6 @@
       &__name {
         font-size: 1.5rem;
       }
-
-      margin-bottom: 0;
     }
   }
 

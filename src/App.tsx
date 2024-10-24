@@ -14,8 +14,8 @@ import {
 import {
   ABOUT_SECTION,
   BREAKPOINT_DESKTOP,
-  BREAKPOINT_LARGEDESKTOP,
-  BREAKPOINT_XLDESKTOP,
+  BREAKPOINT_MOBILE,
+  BREAKPOINT_TABLET,
   CLIENTS_SECTION,
   CONTACT_SECTION,
   FOOTER_SECTION,
@@ -31,10 +31,10 @@ import { useDeviceType } from './hooks';
 function App() {
   const device = useDeviceType();
 
-  const isDesktopOrLarger = [
-    BREAKPOINT_DESKTOP,
-    BREAKPOINT_LARGEDESKTOP,
-    BREAKPOINT_XLDESKTOP
+  const isMobileOrTablet = [
+    BREAKPOINT_MOBILE,
+    BREAKPOINT_TABLET,
+    BREAKPOINT_DESKTOP
   ].includes(device);
 
   return (
@@ -56,7 +56,7 @@ function App() {
           <Clients />
         </section>
         <section id={SKILLS_SECTION}>
-          {isDesktopOrLarger ? <DesktopSkills /> : <MobileSkills />}
+          {isMobileOrTablet ? <MobileSkills /> : <DesktopSkills />}
         </section>
         <section id={CONTACT_SECTION}>
           <Contact />

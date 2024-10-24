@@ -15,11 +15,7 @@ const ClientLogo = ({ client, transitionDelay, isInView }: Props) => {
   };
 
   return (
-    <span
-      key={client.id}
-      className={`logo ${isInView ? 'animate' : ''}`}
-      style={style}
-    >
+    <span className={`logo ${isInView ? 'animate' : ''}`} style={style}>
       <img src={client.logo} alt={`${client.name}'s logo`} />
     </span>
   );

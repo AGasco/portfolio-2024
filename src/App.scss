@@ -42,6 +42,14 @@ section {
     min-height: 100%;
   }
 
+  @include respond-to('desktop') {
+    margin-bottom: 5rem;
+  }
+
+  @include respond-to('largeDesktop') {
+    margin-bottom: 15rem;
+  }
+
   @include respond-to('extraLargeDesktop') {
     min-height: 75vh;
   }
