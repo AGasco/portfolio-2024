@@ -29,7 +29,7 @@ const ContactForm = ({ className }: { className: string }) => {
   const [input, setInput] = useState<FormData>(initialState);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setSubmitting] = useState(false);
-  const [hasSubmitted, setSubmitted] = useState(true);
+  const [hasSubmitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (
