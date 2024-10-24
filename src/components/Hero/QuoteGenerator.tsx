@@ -96,6 +96,10 @@ const QuoteGenerator = ({ isLoaded }: { isLoaded: boolean }) => {
             <p className="quoteGenerator__quote">{curQuote?.quote}</p>
           </div>
 
+          {curQuote && (
+            <div key={curQuote.id} className="quoteGenerator__timer" />
+          )}
+
           <div className="quoteGenerator__bottom">
             <button
               onClick={handleManualQuoteChange}

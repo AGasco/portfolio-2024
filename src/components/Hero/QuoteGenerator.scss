@@ -5,10 +5,10 @@
   font-size: 1rem;
   opacity: 0;
   transition: opacity 2s ease-in-out 2s;
+  margin-bottom: -20px;
 
   @include respond-to('extraLargeDesktop') {
     padding-left: 3rem;
-    margin-bottom: 5rem;
   }
 
   &.animate {
@@ -36,7 +36,7 @@
     text-align: right;
     width: 100%;
     padding-left: 5%;
-    margin: 10px 0 20px;
+    margin: 10px 0 10px;
     font-size: 1.3rem;
     opacity: 0.8;
 
@@ -58,8 +58,8 @@
   }
 
   &__image {
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
     border-radius: 50%;
     object-fit: cover;
     opacity: 0.45;
@@ -79,11 +79,18 @@
     }
   }
 
+  &__timer {
+    height: 0.5px;
+    background-color: white;
+    width: 90%;
+    animation: timerLine 9s linear forwards;
+    margin-left: 15%;
+  }
+
   &__bottom {
     width: 60%;
     align-self: flex-end;
     text-align: right;
-    margin-top: -20px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -172,5 +179,14 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes timerLine {
+  from {
+    width: 90%;
+  }
+  to {
+    width: 0%;
   }
 }

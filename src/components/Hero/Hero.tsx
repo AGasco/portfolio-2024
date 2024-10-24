@@ -3,14 +3,11 @@ import { BREAKPOINT_LARGEDESKTOP, BREAKPOINT_XLDESKTOP } from '@/constants';
 import { useDeviceType } from '@/hooks';
 import { useEffect, useState } from 'react';
 import './Hero.scss';
-import HeroVideo from './HeroVideo';
 import QuoteGenerator from './QuoteGenerator';
 
 const Hero = () => {
   const [isLoaded, setLoaded] = useState(false);
   const device = useDeviceType();
-
-  console.log('device', device);
 
   useEffect(() => {
     const heroContent = document.querySelector('.hero-content');
@@ -22,7 +19,7 @@ const Hero = () => {
 
   return (
     <div className="hero-banner">
-      <HeroVideo isLoaded={isLoaded} />
+      {/* <HeroVideo isLoaded={isLoaded} /> */}
       <div className="hero-content">
         <div className="headings">
           <h1>
