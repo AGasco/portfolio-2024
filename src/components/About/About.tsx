@@ -1,4 +1,8 @@
-import { BREAKPOINT_XLDESKTOP } from '@/constants';
+import {
+  BREAKPOINT_DESKTOP,
+  BREAKPOINT_LARGEDESKTOP,
+  BREAKPOINT_XLDESKTOP
+} from '@/constants';
 import { useDeviceType, useInView } from '@/hooks';
 import { useRef } from 'react';
 import './About.scss';
@@ -16,10 +20,16 @@ const About = () => {
       : triggerPointEnter;
   const isInView = useInView(ref, finalTrigger);
 
+  const isDesktopOrLarger = [
+    BREAKPOINT_DESKTOP,
+    BREAKPOINT_LARGEDESKTOP,
+    BREAKPOINT_XLDESKTOP
+  ].includes(device);
+
   return (
     <>
       <div ref={ref} className={`about ${isInView ? 'animate' : ''}`}>
-        <AboutVideo isLoaded={isInView} />
+        {isDesktopOrLarger && <AboutVideo isLoaded={isInView} />}
         I'm a frontend developer who quickly adapts to new concepts, projects
         and technologies, consistently delivering quality results. I take great
         responsibility for my work and thrive in collaborative environments,
