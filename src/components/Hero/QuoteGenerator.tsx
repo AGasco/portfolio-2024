@@ -12,6 +12,7 @@ const AUTO_QUOTE_INTERVAL = 8000;
 const QuoteGenerator = ({ isLoaded }: { isLoaded: boolean }) => {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const cycleOrderRef = useRef<Quote[]>([]);
+  const remainingQuotesRef = useRef<Quote[]>([]);
 
   const [curQuote, setCurQuote] = useState<Quote | null>(null);
   const [remainingQuotes, setRemainingQuotes] = useState<Quote[]>([]);
@@ -32,13 +33,20 @@ const QuoteGenerator = ({ isLoaded }: { isLoaded: boolean }) => {
       setFading(false);
     }, FADE_DURATION);
 
-    startAutoNextQuoteTimer();
+    if (isLoaded) {
+      startAutoNextQuoteTimer();
+    }
 
     return () => {
       clearTimeout(fadeTimeout);
       clearAutoNextQuoteTimer();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    remainingQuotesRef.current = remainingQuotes;
+  }, [remainingQuotes]);
 
   const startAutoNextQuoteTimer = () => {
     clearAutoNextQuoteTimer();
@@ -53,17 +61,26 @@ const QuoteGenerator = ({ isLoaded }: { isLoaded: boolean }) => {
     setFading(true);
 
     setTimeout(() => {
-      if (remainingQuotes.length === 0) {
+      const currentRemainingQuotes = remainingQuotesRef.current;
+
+      if (currentRemainingQuotes.length === 0) {
         setCurQuote(cycleOrderRef.current[0]);
-        setRemainingQuotes([...cycleOrderRef.current.slice(1)]);
+        const newRemainingQuotes = [...cycleOrderRef.current.slice(1)];
+        setRemainingQuotes(newRemainingQuotes);
+        remainingQuotesRef.current = newRemainingQuotes;
       } else {
-        const nextQuote = remainingQuotes[0];
+        const nextQuote = currentRemainingQuotes[0];
         setCurQuote(nextQuote);
-        setRemainingQuotes((prev) => prev.slice(1));
+        const newRemainingQuotes = currentRemainingQuotes.slice(1);
+        setRemainingQuotes(newRemainingQuotes);
+        remainingQuotesRef.current = newRemainingQuotes;
       }
 
       setFading(false);
-      startAutoNextQuoteTimer();
+
+      if (isLoaded) {
+        startAutoNextQuoteTimer();
+      }
     }, FADE_DURATION);
   };
 
