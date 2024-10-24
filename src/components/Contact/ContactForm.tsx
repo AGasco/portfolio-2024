@@ -29,7 +29,7 @@ const ContactForm = ({ className }: { className: string }) => {
   const [input, setInput] = useState<FormData>(initialState);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setSubmitting] = useState(false);
-  const [successMessage, setSuccessMessage] = useState('');
+  const [hasSubmitted, setSubmitted] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (
@@ -62,19 +62,17 @@ const ContactForm = ({ className }: { className: string }) => {
           },
           userId!
         )
-        .then((res) => {
-          console.log('SUCCESS!', res.status, res.text);
-          setSuccessMessage('Your message has been sent successfully!');
-          setInput(initialState);
+        .then(() => {
+          setSubmitted(true);
         })
-        .catch((err) => {
-          console.error('FAILED...', err);
+        .catch(() => {
           setErrorMessage(
             'Failed to send your message. Please try again later.'
           );
         })
         .finally(() => {
           setSubmitting(false);
+          setInput(initialState);
         });
     }
   };
@@ -99,9 +97,12 @@ const ContactForm = ({ className }: { className: string }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  return (
+  return hasSubmitted ? (
+    <p className="confirmationMsg">
+      Thank you for reaching out. I will be in touch shortly.
+    </p>
+  ) : (
     <form onSubmit={handleSubmit} className={`form ${className}`} noValidate>
-      {successMessage && <div className="form__success">{successMessage}</div>}
       {errorMessage && <div className="form__error">{errorMessage}</div>}
 
       {/* Select Dropdown */}
