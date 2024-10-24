@@ -52,6 +52,21 @@
     &:last-child {
       margin-bottom: 0;
     }
+
+    @include respond-to('extraLargeDesktop') {
+      &::before {
+        width: 5px;
+        top: 34px;
+        height: 50px;
+        background-color: #ddd;
+      }
+
+      &:hover::before {
+        top: 24px;
+        height: 70px;
+        bottom: -10px;
+      }
+    }
   }
 
   &__group--select {
@@ -193,6 +208,10 @@
 
     &:hover {
       background-color: black;
+    }
+
+    @include respond-to('extraLargeDesktop') {
+      font-size: 1.2rem;
     }
   }
 }
