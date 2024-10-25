@@ -34,7 +34,7 @@ const Contact = () => {
           </p>
         </div>
       </div>
-      {isLargeDesktop && <div className="contact__dividerLine" />}
+      <div className="contact__dividerLine" />
       <div className="contact__right">
         <ContactForm
           className={`contact__right__content ${isInView ? 'animate' : ''}`}

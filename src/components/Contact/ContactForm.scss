@@ -73,7 +73,7 @@
     display: block;
     width: 100%;
 
-    @include respond-to('largeDesktop') {
+    @include respond-to('desktop') {
       margin: 5px 0;
     }
 
@@ -127,7 +127,7 @@
       opacity: 0;
     }
 
-    @include respond-to('largeDesktop') {
+    @include respond-to('desktop') {
       font-size: 2.5rem;
       line-height: normal;
 
@@ -191,6 +191,11 @@
     pointer-events: none;
     transition: all 0.2s ease;
 
+    @include respond-to('desktop') {
+      font-size: 1.5rem;
+      margin-top: 10px;
+    }
+
     @include respond-to('largeDesktop') {
       font-size: 2.5rem;
     }
@@ -219,7 +224,7 @@
       background-color: black;
     }
 
-    @include respond-to('largeDesktop') {
+    @include respond-to('desktop') {
       margin: 0;
     }
 
@@ -240,12 +245,16 @@
   opacity: 0;
   animation: fadeIn07 2s ease-in forwards;
 
-  @include respond-to('largeDesktop') {
+  @include respond-to('desktop') {
+    height: 95%;
     padding-left: 2rem;
   }
 
-  @include respond-to('extraLargeDesktop') {
+  @include respond-to('largeDesktop') {
     height: 60%;
+  }
+
+  @include respond-to('extraLargeDesktop') {
     font-size: 2rem;
     padding-left: 4rem;
   }
