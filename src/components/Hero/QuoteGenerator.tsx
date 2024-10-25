@@ -1,6 +1,6 @@
 import { quotes } from '@/data';
 import { Quote } from '@/types';
-import { faArrowsRotate } from '@fortawesome/free-solid-svg-icons';
+import { faForwardStep } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useRef, useState } from 'react';
 import { FadeWrapper } from '../FadeWrapper';
@@ -116,7 +116,7 @@ const QuoteGenerator = ({ isLoaded }: { isLoaded: boolean }) => {
               className="quoteGenerator__btn"
               disabled={isFading}
             >
-              <FontAwesomeIcon icon={faArrowsRotate} color="#fff" />
+              <FontAwesomeIcon icon={faForwardStep} color="#fff" />
             </button>
             <div className="quoteGenerator__author">
               <a
