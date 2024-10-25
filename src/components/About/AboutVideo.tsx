@@ -24,7 +24,6 @@ const AboutVideo = ({ isLoaded = true, position }: Props) => {
         aria-hidden
       >
         <source src="/videos/rotating-shape-black-720.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
       </video>
     </div>
   );
