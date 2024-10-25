@@ -1,21 +1,22 @@
 import { CurvedArrow } from '@/components';
-import { BREAKPOINT_LARGEDESKTOP, BREAKPOINT_XLDESKTOP } from '@/constants';
-import { useDeviceType } from '@/hooks';
+import { BREAKPOINT_LARGEDESKTOP, LARGER } from '@/constants';
+import { useBreakpointComparison } from '@/hooks';
 import { useEffect, useState } from 'react';
 import './Hero.scss';
 import QuoteGenerator from './QuoteGenerator';
 
 const Hero = () => {
   const [isLoaded, setLoaded] = useState(false);
-  const device = useDeviceType();
 
   useEffect(() => {
     const heroContent = document.querySelector('.hero-content');
     setLoaded(Boolean(heroContent));
   }, []);
 
-  const isLargeDesktop =
-    device === BREAKPOINT_LARGEDESKTOP || device === BREAKPOINT_XLDESKTOP;
+  const isLargeDesktop = useBreakpointComparison(
+    BREAKPOINT_LARGEDESKTOP,
+    LARGER
+  );
 
   return (
     <div className="hero-banner">

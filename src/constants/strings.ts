@@ -10,3 +10,9 @@ export const SCROLL_EVENT = 'scroll';
 
 export const ARROW_START = 'start';
 export const ARROW_END = 'end';
+
+export const LEFT = 'left';
+export const RIGHT = 'right';
+
+export const LARGER = 'larger';
+export const SMALLER = 'smaller';

@@ -1,9 +1,10 @@
+import { LEFT, RIGHT } from '@/constants';
 import { useEffect, useState } from 'react';
 import './AboutVideo.scss';
 
 interface Props {
   isLoaded?: boolean;
-  position: 'left' | 'right';
+  position: typeof LEFT | typeof RIGHT;
 }
 
 const AboutVideo = ({ isLoaded = true, position }: Props) => {

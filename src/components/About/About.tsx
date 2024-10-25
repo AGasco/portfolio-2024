@@ -1,9 +1,11 @@
 import {
-  BREAKPOINT_DESKTOP,
   BREAKPOINT_LARGEDESKTOP,
-  BREAKPOINT_XLDESKTOP
+  BREAKPOINT_XLDESKTOP,
+  LARGER,
+  LEFT,
+  RIGHT
 } from '@/constants';
-import { useDeviceType, useInView } from '@/hooks';
+import { useBreakpointComparison, useFinalTrigger, useInView } from '@/hooks';
 import { useRef } from 'react';
 import './About.scss';
 import AboutVideo from './AboutVideo';
@@ -12,26 +14,25 @@ const triggerPointEnter = window.innerHeight;
 
 const About = () => {
   const ref = useRef<HTMLDivElement>(null);
-  const device = useDeviceType();
-  const finalTrigger =
-    device !== BREAKPOINT_XLDESKTOP
-      ? triggerPointEnter * 0.95
-      : triggerPointEnter;
+
+  const finalTrigger = useFinalTrigger(triggerPointEnter, {
+    [BREAKPOINT_XLDESKTOP]: 1,
+    default: 0.95
+  });
   const isInView = useInView(ref, finalTrigger);
 
-  const isDesktopOrLarger = [
-    BREAKPOINT_DESKTOP,
+  const isLargeDesktopOrLarger = useBreakpointComparison(
     BREAKPOINT_LARGEDESKTOP,
-    BREAKPOINT_XLDESKTOP
-  ].includes(device);
+    LARGER
+  );
 
   return (
     <>
       <div ref={ref} className={`about ${isInView ? 'animate' : ''}`}>
-        {isDesktopOrLarger && (
+        {isLargeDesktopOrLarger && (
           <>
-            <AboutVideo position="left" isLoaded={isInView} />
-            <AboutVideo position="right" isLoaded={isInView} />
+            <AboutVideo position={LEFT} isLoaded={isInView} />
+            <AboutVideo position={RIGHT} isLoaded={isInView} />
           </>
         )}
         I'm a frontend developer who quickly adapts to new concepts, projects

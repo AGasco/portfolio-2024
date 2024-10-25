@@ -1,4 +1,4 @@
-import { useDeviceType } from '@/hooks';
+import useDeviceType from './useDeviceType';
 
 type AdjustmentFactors = {
   [device: string]: number;

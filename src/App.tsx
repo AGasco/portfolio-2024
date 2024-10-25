@@ -14,28 +14,21 @@ import {
 import {
   ABOUT_SECTION,
   BREAKPOINT_DESKTOP,
-  BREAKPOINT_MOBILE,
-  BREAKPOINT_TABLET,
   CLIENTS_SECTION,
   CONTACT_SECTION,
   FOOTER_SECTION,
   HERO_SECTION,
   PROJECTS_SECTION,
-  SKILLS_SECTION
+  SKILLS_SECTION,
+  SMALLER
 } from '@/constants';
 import { BrowserRouter } from 'react-router-dom';
 import './App.scss';
 import './fonts.css';
-import { useDeviceType } from './hooks';
+import { useBreakpointComparison } from './hooks';
 
 function App() {
-  const device = useDeviceType();
-
-  const isMobileOrTablet = [
-    BREAKPOINT_MOBILE,
-    BREAKPOINT_TABLET,
-    BREAKPOINT_DESKTOP
-  ].includes(device);
+  const isMobileOrTablet = useBreakpointComparison(BREAKPOINT_DESKTOP, SMALLER);
 
   return (
     <BrowserRouter>

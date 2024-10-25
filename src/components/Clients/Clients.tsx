@@ -1,21 +1,20 @@
 import { AnimatedLine } from '@/components';
+import { BREAKPOINT_XLDESKTOP } from '@/constants';
 import { clients } from '@/data';
-import { useDeviceType, useInView } from '@/hooks';
+import { useFinalTrigger, useInView } from '@/hooks';
 import { Client } from '@/types';
 import { useRef } from 'react';
 import ClientLogo from './ClientLogo';
 import './Clients.scss';
-import { BREAKPOINT_XLDESKTOP } from '@/constants';
 
 const triggerPointEnter = window.innerHeight * 0.8;
 
 const Clients = () => {
   const titleRef = useRef<HTMLDivElement>(null);
-  const device = useDeviceType();
-  const finalTriggerEnter =
-    device === BREAKPOINT_XLDESKTOP
-      ? triggerPointEnter * 1.1
-      : triggerPointEnter;
+  const finalTriggerEnter = useFinalTrigger(triggerPointEnter, {
+    [BREAKPOINT_XLDESKTOP]: 1.1,
+    default: 1
+  });
   const isInView = useInView(titleRef, finalTriggerEnter);
 
   return (
