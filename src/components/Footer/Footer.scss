@@ -12,7 +12,7 @@
   background-color: #f9f9f7;
   z-index: 1;
 
-  @include respond-to('largeDesktop') {
+  @include respond-to('desktop') {
     padding: 1rem 14%;
   }
 
@@ -52,7 +52,7 @@
     align-items: center;
     flex-direction: column;
 
-    @include respond-to('largeDesktop') {
+    @include respond-to('desktop') {
       flex-direction: row;
     }
   }
@@ -62,7 +62,7 @@
     justify-content: space-around;
     width: 100%;
 
-    @include respond-to('largeDesktop') {
+    @include respond-to('desktop') {
       flex-basis: 52%;
       justify-content: space-between;
     }
@@ -73,7 +73,7 @@
     font-size: 32px;
     padding-bottom: 1.5rem;
 
-    @include respond-to('largeDesktop') {
+    @include respond-to('desktop') {
       padding-right: 2rem;
       padding-bottom: 4rem;
     }
@@ -93,7 +93,7 @@
       padding-right: 1rem;
     }
 
-    @include respond-to('largeDesktop') {
+    @include respond-to('desktop') {
       padding-right: 5%;
     }
   }
@@ -110,7 +110,7 @@
       padding: 0 5px;
     }
 
-    @include respond-to('largeDesktop') {
+    @include respond-to('desktop') {
       margin-top: 0;
       text-align: left;
     }
