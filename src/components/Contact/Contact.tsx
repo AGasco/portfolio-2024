@@ -1,5 +1,6 @@
 import { AnimatedLine } from '@/components';
-import { useInView } from '@/hooks';
+import { BREAKPOINT_LARGEDESKTOP, LARGER } from '@/constants';
+import { useBreakpointComparison, useInView } from '@/hooks';
 import { useRef } from 'react';
 import './Contact.scss';
 import ContactForm from './ContactForm';
@@ -10,6 +11,10 @@ const triggerPointEnter = window.innerHeight * 0.8;
 const Contact = () => {
   const titleRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(titleRef, triggerPointEnter);
+  const isLargeDesktop = useBreakpointComparison(
+    BREAKPOINT_LARGEDESKTOP,
+    LARGER
+  );
 
   return (
     <div className="contact">
@@ -35,7 +40,7 @@ const Contact = () => {
           className={`contact__right__content ${isInView ? 'animate' : ''}`}
         />
       </div>
-      <ContactVideo />
+      {isLargeDesktop && <ContactVideo />}
     </div>
   );
 };

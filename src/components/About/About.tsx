@@ -21,7 +21,7 @@ const About = () => {
   });
   const isInView = useInView(ref, finalTrigger);
 
-  const isLargeDesktopOrLarger = useBreakpointComparison(
+  const isLargeDesktop = useBreakpointComparison(
     BREAKPOINT_LARGEDESKTOP,
     LARGER
   );
@@ -29,7 +29,7 @@ const About = () => {
   return (
     <>
       <div ref={ref} className={`about ${isInView ? 'animate' : ''}`}>
-        {isLargeDesktopOrLarger && (
+        {isLargeDesktop && (
           <>
             <AboutVideo position={LEFT} isLoaded={isInView} />
             <AboutVideo position={RIGHT} isLoaded={isInView} />
