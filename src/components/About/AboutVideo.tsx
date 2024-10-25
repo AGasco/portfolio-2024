@@ -21,6 +21,7 @@ const AboutVideo = ({ isLoaded = true, position }: Props) => {
         muted
         loop
         playsInline
+        aria-hidden
       >
         <source src="/videos/rotating-shape-black-720.mp4" type="video/mp4" />
         Your browser does not support the video tag.
