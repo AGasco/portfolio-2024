@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import './AboutVideo.scss';
 
-const AboutVideo = ({ isLoaded = true }: { isLoaded?: boolean }) => {
+interface Props {
+  isLoaded?: boolean;
+  position: 'left' | 'right';
+}
+
+const AboutVideo = ({ isLoaded = true, position }: Props) => {
   const [isActive, setActive] = useState(false);
 
   useEffect(() => {
@@ -9,12 +14,13 @@ const AboutVideo = ({ isLoaded = true }: { isLoaded?: boolean }) => {
   }, [isLoaded]);
 
   return (
-    <div>
+    <div className={`about-video-wrapper ${position}`}>
       <video
         className={`about-video ${isActive || isLoaded ? 'animate' : ''}`}
         autoPlay
         muted
         loop
+        playsInline
       >
         <source src="/videos/rotating-shape-black-720.mp4" type="video/mp4" />
         Your browser does not support the video tag.

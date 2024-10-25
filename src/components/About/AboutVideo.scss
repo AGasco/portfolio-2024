@@ -1,11 +1,29 @@
 @import '@/styles/main.scss';
 
+.about-video-wrapper {
+  &.left .about-video {
+    transform: translateX(-5vw);
+
+    @include respond-to('extraLargeDesktop') {
+      transform: translateX(-2vw);
+    }
+  }
+
+  &.right .about-video {
+    transform: translateX(95vw);
+
+    @include respond-to('extraLargeDesktop') {
+      transform: translateX(98vw);
+    }
+  }
+}
+
 .about-video {
   position: absolute;
-  top: 0;
+  top: 10%;
   left: -20%;
   height: 80vh;
-  width: 200vw;
+  width: 200%;
   opacity: 0;
   transition: opacity 4s ease-in;
   z-index: -1000;
