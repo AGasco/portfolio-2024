@@ -11,8 +11,6 @@ import useWindowSize from './useWindowSize';
 const useDeviceType = () => {
   const { width } = useWindowSize();
 
-  console.log(width);
-
   if (!width) return BREAKPOINT_MOBILE;
   if (width >= breakpoints.xlDesktop) return BREAKPOINT_XLDESKTOP;
   if (width >= breakpoints.largeDesktop) return BREAKPOINT_LARGEDESKTOP;
