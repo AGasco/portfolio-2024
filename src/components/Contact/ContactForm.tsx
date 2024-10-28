@@ -1,7 +1,7 @@
-import { useContactForm } from '@/hooks';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './ContactForm.scss';
+import useContactForm from './useContactForm';
 
 const ContactForm = ({ className }: { className: string }) => {
   const {
