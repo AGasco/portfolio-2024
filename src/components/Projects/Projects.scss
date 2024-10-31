@@ -10,6 +10,7 @@
   font-family: 'Begum', sans-serif;
   z-index: 1;
   margin-top: -4px;
+  transition: background-color 2s ease;
 
   &__controls {
     width: 90%;
@@ -119,35 +120,19 @@
       }
 
       /* ANIMATIONS FOR SCREENSHOTS */
-      &.stagger-3 {
-        animation-delay: 0.75s;
-      }
-
       &.animate-outgoing,
       &.animate-incoming {
         animation-fill-mode: forwards;
       }
 
-      &.animate-outgoing.next {
+      &.animate-outgoing {
         --startX: 0;
         --endX: 150%;
         animation: slideOutHorizontal 1.5s ease-in-out;
       }
 
-      &.animate-outgoing.previous {
-        --startX: 0;
-        --endX: -150%;
-        animation: slideOutHorizontal 1.5s ease-in-out;
-      }
-
-      &.animate-incoming.next {
+      &.animate-incoming {
         --startX: 150%;
-        --endX: 0;
-        animation: slideInHorizontal 1.5s ease-in-out;
-      }
-
-      &.animate-incoming.previous {
-        --startX: -150%;
         --endX: 0;
         animation: slideInHorizontal 1.5s ease-in-out;
       }
@@ -157,29 +142,21 @@
   /* ANIMATIONS FOR h2 AND p */
   &__title,
   &__description {
-    &.stagger-1 {
-      animation-delay: 0s;
-    }
-
-    &.stagger-2 {
-      animation-delay: 0.5s;
-    }
-
     &.animate-outgoing,
     &.animate-incoming {
       animation-fill-mode: forwards;
     }
 
-    &.animate-outgoing.next {
+    &.animate-outgoing {
       --startX: 0;
       --endX: -150%;
       animation: slideOutHorizontal 1.5s ease-in-out;
     }
 
-    &.animate-outgoing.previous {
-      --startX: 0;
-      --endX: 150%;
-      animation: slideOutHorizontal 1.5s ease-in-out;
+    &.animate-incoming {
+      --startX: -150%;
+      --endX: 0;
+      animation: slideInHorizontal 1.5s ease-in-out;
     }
 
     &.animate-outgoing.description {
@@ -188,24 +165,24 @@
       animation: slideOutVertical 1.5s ease-in-out;
     }
 
-    &.animate-incoming.next {
-      --startX: -150%;
-      --endX: 0;
-      animation: slideInHorizontal 1.5s ease-in-out;
-    }
-
-    &.animate-incoming.previous {
-      --startX: 150%;
-      --endX: 0;
-      animation: slideInHorizontal 1.5s ease-in-out;
-    }
-
     &.animate-incoming.description {
       --startY: 150%;
       --endY: 0;
       animation: slideInVertical 1.5s ease-in-out;
     }
   }
+}
+
+.stagger-1 {
+  animation-delay: 0s;
+}
+
+.stagger-2 {
+  animation-delay: 0.5s;
+}
+
+.stagger-3 {
+  animation-delay: 0.75s;
 }
 
 @keyframes slideOutHorizontal {
