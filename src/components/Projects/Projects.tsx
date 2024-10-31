@@ -1,5 +1,7 @@
+import { IDLE, INCOMING, NEXT, OUTGOING, PREVIOUS, WAITING } from '@/constants';
 import { projects } from '@/data';
 import { useInView, useScrollOpacity } from '@/hooks';
+import { ProjectAnimDirections, ProjectAnimPhase } from '@/types';
 import {
   faChevronLeft,
   faChevronRight
@@ -19,20 +21,60 @@ const Projects = () => {
 
   const [currentProjectIdx, setCurrentProjectIdx] = useState(0);
   const [targetPosition, setTargetPosition] = useState(0);
+  const [isAnimating, setAnimating] = useState(false);
+  const [animDirection, setAnimDirection] =
+    useState<ProjectAnimDirections | null>(null);
+  const [animPhase, setAnimPhase] = useState<ProjectAnimPhase>(IDLE);
 
   useEffect(() => {
     setTargetPosition(0);
   }, [currentProjectIdx]);
 
   const handlePrevious = () => {
-    setCurrentProjectIdx(
-      (prevIdx) => (prevIdx - 1 + projects.length) % projects.length
-    );
+    if (isAnimating) return;
+
+    setAnimating(true);
+    setAnimDirection(PREVIOUS);
+    setAnimPhase(OUTGOING);
   };
 
   const handleNext = () => {
-    setCurrentProjectIdx((prevIdx) => (prevIdx + 1) % projects.length);
+    if (isAnimating) return;
+
+    setAnimating(true);
+    setAnimDirection(NEXT);
+    setAnimPhase(OUTGOING);
   };
+
+  useEffect(() => {
+    if (animPhase !== OUTGOING) return;
+
+    const outgoingDuration = 1500;
+    const incomingDuration = 1500;
+    const waitTime = 300;
+
+    setTimeout(() => {
+      setAnimPhase(WAITING);
+
+      setCurrentProjectIdx((prevIdx) => {
+        if (animDirection === NEXT) {
+          return (prevIdx + 1) % projects.length;
+        } else {
+          return (prevIdx - 1 + projects.length) % projects.length;
+        }
+      });
+
+      setTimeout(() => {
+        setAnimPhase(INCOMING);
+
+        setTimeout(() => {
+          setAnimPhase(IDLE);
+          setAnimDirection(null);
+          setAnimating(false);
+        }, incomingDuration);
+      }, waitTime);
+    }, outgoingDuration);
+  }, [animPhase, animDirection]);
 
   const getImgTransformValues = (idx: number) => {
     let positionOffset = idx - targetPosition;
@@ -49,9 +91,12 @@ const Projects = () => {
         translateZValue = positionOffset * -300;
         rotateYValue = positionOffset * 20;
       }
-    } else {
+    } else if (animPhase === IDLE) {
       translateZValue = positionOffset * -200;
       rotateYValue = positionOffset * 10;
+    } else {
+      translateZValue = 0;
+      rotateYValue = 0;
     }
 
     return { translateZValue, rotateYValue };
@@ -73,37 +118,61 @@ const Projects = () => {
         style={{
           transform: `translateZ(${translateZValue}px) rotateY(${rotateYValue}deg)`,
           transition: 'transform 1s ease',
-          zIndex: zIndex,
-          opacity: opacity
+          zIndex,
+          opacity
         }}
         onClick={() => setTargetPosition(idx)}
       />
     );
   };
-
   const { title, description, screenshots, backgroundColor } =
     projects[currentProjectIdx];
 
   return (
     <div className="projects" ref={topRef} style={{ backgroundColor, opacity }}>
       <div className="projects__controls">
-        <button onClick={handlePrevious}>
+        <button onClick={handlePrevious} disabled={isAnimating}>
           <FontAwesomeIcon icon={faChevronLeft} />
         </button>
         <span>
           {String(currentProjectIdx + 1).padStart(2, '0')} /{' '}
           {String(projects.length).padStart(2, '0')}
         </span>
-        <button onClick={handleNext}>
+        <button onClick={handleNext} disabled={isAnimating}>
           <FontAwesomeIcon icon={faChevronRight} />
         </button>
       </div>
-      <div className="projects__content">
+      <div
+        className={`projects__content ${animPhase === WAITING ? 'hidden' : ''}`}
+      >
         <div className="projects__content__details">
-          <h2>{title}</h2>
-          <p>{description}</p>
+          <h2
+            className={`projects__title stagger-1 ${
+              animPhase !== IDLE && animPhase !== WAITING && animDirection
+                ? `animate-${animPhase} ${animDirection}`
+                : ''
+            }`}
+          >
+            {title}
+          </h2>
+          <p
+            className={`projects__description stagger-2 ${
+              animPhase !== IDLE && animPhase !== WAITING && animDirection
+                ? `animate-${animPhase} ${animDirection} description`
+                : ''
+            }`}
+          >
+            {description}
+          </p>
         </div>
-        <div ref={screenshotsRef} className="projects__content__screenshots">
+        <div
+          ref={screenshotsRef}
+          className={`projects__content__screenshots stagger-3 ${
+            animPhase !== IDLE && animPhase !== WAITING && animDirection
+              ? `animate-${animPhase} ${animDirection}`
+              : ''
+          }`}
+        >
           <div
             className={`projects__content__screenshots__carousel ${
               isInView ? 'animate' : ''

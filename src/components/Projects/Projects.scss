@@ -26,9 +26,20 @@
       font-size: 1.5rem;
       cursor: pointer;
       padding: 0 0.5rem;
+      opacity: 1;
+      transition: opacity 0.3s ease;
 
       &:hover {
-        color: #ccc;
+        opacity: 0.8;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &:disabled {
+        cursor: default;
+        opacity: 0.7;
       }
     }
 
@@ -46,6 +57,10 @@
     justify-content: space-between;
     align-items: flex-start;
     width: 100%;
+
+    &.hidden {
+      visibility: hidden;
+    }
 
     &__details {
       flex-basis: 60%;
@@ -102,6 +117,137 @@
           opacity: 1;
         }
       }
+
+      /* ANIMATIONS FOR SCREENSHOTS */
+      &.stagger-3 {
+        animation-delay: 0.75s;
+      }
+
+      &.animate-outgoing,
+      &.animate-incoming {
+        animation-fill-mode: forwards;
+      }
+
+      &.animate-outgoing.next {
+        --startX: 0;
+        --endX: 150%;
+        animation: slideOutHorizontal 1.5s ease-in-out;
+      }
+
+      &.animate-outgoing.previous {
+        --startX: 0;
+        --endX: -150%;
+        animation: slideOutHorizontal 1.5s ease-in-out;
+      }
+
+      &.animate-incoming.next {
+        --startX: 150%;
+        --endX: 0;
+        animation: slideInHorizontal 1.5s ease-in-out;
+      }
+
+      &.animate-incoming.previous {
+        --startX: -150%;
+        --endX: 0;
+        animation: slideInHorizontal 1.5s ease-in-out;
+      }
     }
+  }
+
+  /* ANIMATIONS FOR h2 AND p */
+  &__title,
+  &__description {
+    &.stagger-1 {
+      animation-delay: 0s;
+    }
+
+    &.stagger-2 {
+      animation-delay: 0.5s;
+    }
+
+    &.animate-outgoing,
+    &.animate-incoming {
+      animation-fill-mode: forwards;
+    }
+
+    &.animate-outgoing.next {
+      --startX: 0;
+      --endX: -150%;
+      animation: slideOutHorizontal 1.5s ease-in-out;
+    }
+
+    &.animate-outgoing.previous {
+      --startX: 0;
+      --endX: 150%;
+      animation: slideOutHorizontal 1.5s ease-in-out;
+    }
+
+    &.animate-outgoing.description {
+      --startY: 0;
+      --endY: 150%;
+      animation: slideOutVertical 1.5s ease-in-out;
+    }
+
+    &.animate-incoming.next {
+      --startX: -150%;
+      --endX: 0;
+      animation: slideInHorizontal 1.5s ease-in-out;
+    }
+
+    &.animate-incoming.previous {
+      --startX: 150%;
+      --endX: 0;
+      animation: slideInHorizontal 1.5s ease-in-out;
+    }
+
+    &.animate-incoming.description {
+      --startY: 150%;
+      --endY: 0;
+      animation: slideInVertical 1.5s ease-in-out;
+    }
+  }
+}
+
+@keyframes slideOutHorizontal {
+  from {
+    transform: translateX(var(--startX, 0));
+    opacity: 1;
+  }
+  to {
+    transform: translateX(var(--endX, 0));
+    opacity: 0;
+  }
+}
+
+@keyframes slideInHorizontal {
+  from {
+    transform: translateX(var(--startX, 0));
+    opacity: 0;
+  }
+  to {
+    transform: translateX(var(--endX, 0));
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutVertical {
+  from {
+    transform: translateY(var(--startY, 0));
+    opacity: 1;
+  }
+  to {
+    transform: translateY(var(--endY, 0));
+    opacity: 0;
+  }
+}
+
+@keyframes slideInVertical {
+  from {
+    transform: translateY(var(--startY, 0));
+    opacity: 0;
+  }
+  to {
+    transform: translateY(var(--endY, 0));
+    opacity: 1;
   }
 }

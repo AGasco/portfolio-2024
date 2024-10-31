@@ -13,6 +13,13 @@ export const ARROW_END = 'end';
 
 export const LEFT = 'left';
 export const RIGHT = 'right';
+export const PREVIOUS = 'previous';
+export const NEXT = 'next';
+
+export const IDLE = 'idle';
+export const OUTGOING = 'outgoing';
+export const WAITING = 'waiting';
+export const INCOMING = 'incoming';
 
 export const LARGER = 'larger';
 export const SMALLER = 'smaller';

@@ -1,3 +1,5 @@
+import { IDLE, INCOMING, NEXT, OUTGOING, PREVIOUS, WAITING } from '@/constants';
+
 export interface Quote {
   id: number;
   quote: string;
@@ -31,3 +33,10 @@ export interface Skill {
   title: string;
   description: string;
 }
+
+export type ProjectAnimDirections = typeof NEXT | typeof PREVIOUS;
+export type ProjectAnimPhase =
+  | typeof IDLE
+  | typeof OUTGOING
+  | typeof WAITING
+  | typeof INCOMING;
