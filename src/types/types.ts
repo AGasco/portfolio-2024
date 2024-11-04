@@ -9,14 +9,6 @@ export interface Quote {
   wikipedia: string;
 }
 
-export interface Project {
-  id: number;
-  title: string;
-  description: string;
-  screenshots: string[];
-  backgroundColor: string;
-}
-
 export interface Client {
   id: number;
   name: string;
