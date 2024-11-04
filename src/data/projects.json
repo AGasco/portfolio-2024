@@ -2,13 +2,14 @@
   {
     "id": 0,
     "title": "Games Showcase App",
-    "description": "This is a web application developed to display video games from all major platforms. By integrating the rawg.io API, the app allows users to search and filter games by platform, genre, and name. It features a PLP for browsing games and a PDP that provides trailers, screenshots, metacritic scores and more.\n\n This project demonstrates my skills in responsive design, API integration, and creating intuitive user interfaces. You can view a live demo of the app and explore the source code on GitHub.",
+    "description": "This is a web application developed to display video games from all major platforms. By integrating the rawg.io API, the app allows users to search and filter games by platform, genre, name, etc. It features a PLP for browsing games and a PDP that provides description, trailers, screenshots, metacritic scores and more.\n\n This project demonstrates my skills in responsive design, API integration, and creating intuitive user interfaces. You can view a live demo of the app and explore the source code on GitHub.",
     "screenshots": [
-      "https://antoniofgasco.com/static/media/kikemindfulness.4ea1f983.JPG",
-      "https://antoniofgasco.com/static/media/kikemindfulness.4ea1f983.JPG",
-      "https://antoniofgasco.com/static/media/kikemindfulness.4ea1f983.JPG"
+      "/images/screenshots/games-showcase-1.png",
+      "/images/screenshots/games-showcase-2.png",
+      "/images/screenshots/games-showcase-3.png"
     ],
-    "backgroundColor": "green"
+    "backgroundColor": "#524770",
+    "objectPosition": "0%"
   },
   {
     "id": 0,
@@ -19,7 +20,8 @@
       "https://antoniofgasco.com/static/media/kikemindfulness.4ea1f983.JPG",
       "https://antoniofgasco.com/static/media/kikemindfulness.4ea1f983.JPG"
     ],
-    "backgroundColor": "red"
+    "backgroundColor": "#706047",
+    "objectPosition": "center"
   },
   {
     "id": 0,
@@ -30,6 +32,6 @@
       "https://antoniofgasco.com/static/media/kikemindfulness.4ea1f983.JPG",
       "https://antoniofgasco.com/static/media/kikemindfulness.4ea1f983.JPG"
     ],
-    "backgroundColor": "blue"
+    "backgroundColor": "#704747"
   }
 ]

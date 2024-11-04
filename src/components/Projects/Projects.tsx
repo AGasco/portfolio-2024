@@ -119,13 +119,14 @@ const Projects = () => {
           transform: `translateZ(${translateZValue}px) rotateY(${rotateYValue}deg)`,
           transition: 'transform 1s ease',
           zIndex,
-          opacity
+          opacity,
+          objectPosition
         }}
         onClick={() => setTargetPosition(idx)}
       />
     );
   };
-  const { title, description, screenshots, backgroundColor } =
+  const { title, description, screenshots, backgroundColor, objectPosition } =
     projects[currentProjectIdx];
 
   return (
