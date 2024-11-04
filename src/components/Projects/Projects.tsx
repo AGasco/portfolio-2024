@@ -2,12 +2,15 @@ import { IDLE, INCOMING, NEXT, OUTGOING, PREVIOUS, WAITING } from '@/constants';
 import { projects } from '@/data';
 import { useInView, useScrollOpacity } from '@/hooks';
 import { ProjectAnimDirections, ProjectAnimPhase } from '@/types';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import {
   faChevronLeft,
-  faChevronRight
+  faChevronRight,
+  faLaptop
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Projects.scss';
 
 const triggerPointEnter = window.innerHeight * 0.6;
@@ -126,8 +129,14 @@ const Projects = () => {
       />
     );
   };
-  const { title, description, screenshots, backgroundColor, objectPosition } =
-    projects[currentProjectIdx];
+  const {
+    title,
+    description,
+    screenshots,
+    links,
+    backgroundColor,
+    objectPosition
+  } = projects[currentProjectIdx];
 
   return (
     <div className="projects" ref={topRef} style={{ backgroundColor, opacity }}>
@@ -164,6 +173,16 @@ const Projects = () => {
             }`}
           >
             {description}
+            <div className="dividerLine" />
+            <div className="projects__linksContainer">
+              <h4>Links</h4>
+              <Link to={links.demo} target="_blank">
+                <FontAwesomeIcon icon={faLaptop} size="lg" />
+              </Link>
+              <Link to={links.github} target="_blank">
+                <FontAwesomeIcon icon={faGithub} size="lg" />
+              </Link>
+            </div>
           </p>
         </div>
         <div

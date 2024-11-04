@@ -8,6 +8,10 @@
       "/images/screenshots/games-showcase-2.png",
       "/images/screenshots/games-showcase-3.png"
     ],
+    "links": {
+      "demo": "https://videogames-showcase-app.vercel.app/",
+      "github": "https://github.com/AGasco/videogames-showcase-app"
+    },
     "backgroundColor": "#524770",
     "objectPosition": "0%"
   },
@@ -20,18 +24,27 @@
       "https://antoniofgasco.com/static/media/kikemindfulness.4ea1f983.JPG",
       "https://antoniofgasco.com/static/media/kikemindfulness.4ea1f983.JPG"
     ],
+    "links": {
+      "demo": "",
+      "github": ""
+    },
     "backgroundColor": "#706047",
     "objectPosition": "center"
   },
   {
     "id": 0,
-    "title": "Project 3",
+    "title": "Responsive Carousel",
     "description": "The Responsive Carousel is a fully adaptable carousel component developed using vanilla React, without relying on any external libraries. It seamlessly supports all HTML elements, including custom components, tables, and divs, showcasing its versatility and flexibility. The carousel features intuitive finger-following swipe gestures for both mobile and desktop devices and supports infinite looping.\n\n This project demonstrates my expertise in building complex, high-performance UI components from scratch, emphasizing clean code and responsiveness. You can view a live demo of the carousel and explore the source code on GitHub.",
     "screenshots": [
       "/images/screenshots/responsive-carousel-1.png",
       "/images/screenshots/responsive-carousel-2.png",
       "/images/screenshots/responsive-carousel-3.png"
     ],
-    "backgroundColor": "#704747"
+    "links": {
+      "demo": "https://responsive-carousel.web.app/",
+      "github": "https://github.com/AGasco/react-responsive-carousel"
+    },
+    "backgroundColor": "#704747",
+    "objectPosition": "center"
   }
 ]
