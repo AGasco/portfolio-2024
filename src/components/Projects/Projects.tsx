@@ -149,7 +149,7 @@ const Projects = () => {
           <h2
             className={`projects__title stagger-1 ${
               animPhase !== IDLE && animPhase !== WAITING && animDirection
-                ? `animate-${animPhase} ${animDirection}`
+                ? `animate-${animPhase}`
                 : ''
             }`}
           >
@@ -158,7 +158,7 @@ const Projects = () => {
           <p
             className={`projects__description stagger-2 ${
               animPhase !== IDLE && animPhase !== WAITING && animDirection
-                ? `animate-${animPhase} ${animDirection} description`
+                ? `animate-${animPhase} description`
                 : ''
             }`}
           >
@@ -169,7 +169,7 @@ const Projects = () => {
           ref={screenshotsRef}
           className={`projects__content__screenshots stagger-3 ${
             animPhase !== IDLE && animPhase !== WAITING && animDirection
-              ? `animate-${animPhase} ${animDirection}`
+              ? `animate-${animPhase}`
               : ''
           }`}
         >
