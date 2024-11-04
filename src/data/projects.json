@@ -18,7 +18,7 @@
   {
     "id": 0,
     "title": "CRUD App",
-    "description": "The Task Manager CRUD Application is a robust web application designed to demonstrate comprehensive frontend development skills in interacting with backend services. Built with React, the app allows users to create, view, update, and delete tasks seamlessly. By developing and integrating a custom RESTful API, the application ensures real-time data management and persistence. Key features include responsive design, intuitive user interfaces, form validation, error handling, and smooth navigation across different views.\n\nThis project highlights proficiency in API development & integration, state management, and building user-centric applications. You can view a live demo of the Task Manager and explore the source code on GitHub.",
+    "description": "The Task Manager CRUD Application is a robust web application designed to demonstrate comprehensive frontend development skills in interacting with backend services. Built with React, the app allows users to create, view, update, and delete tasks seamlessly. By integrating a custom RESTful API, the application ensures real-time data management and persistence. Key features include responsive design, intuitive user interfaces, form validation, error handling, and smooth navigation across different views.\n\nThis project highlights proficiency in API development & integration, state management, and building user-centric applications. You can view a live demo of the Task Manager and explore the source code on GitHub.",
     "screenshots": [
       "https://antoniofgasco.com/static/media/kikemindfulness.4ea1f983.JPG",
       "https://antoniofgasco.com/static/media/kikemindfulness.4ea1f983.JPG",
