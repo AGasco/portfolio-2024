@@ -1,8 +1,8 @@
 [
   {
     "id": 0,
-    "title": "Project 1",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque erat, luctus sollicitudin facilisis non, hendrerit venenatis ligula. Cras auctor porta sagittis. Nunc sed ullamcorper leo. Nunc id eleifend risus. In laoreet orci eget mauris elementum, ut convallis nisl commodo. Quisque placerat metus volutpat leo aliquet elementum.",
+    "title": "Games Showcase App",
+    "description": "This is a web application developed to display video games from all major platforms. By integrating the rawg.io API, the app allows users to search and filter games by platform, genre, and name. It features a PLP for browsing games and a PDP that provides trailers, screenshots, metacritic scores and more.\n\n This project demonstrates my skills in responsive design, API integration, and creating intuitive user interfaces. You can view a live demo of the app and explore the source code on GitHub.",
     "screenshots": [
       "https://antoniofgasco.com/static/media/kikemindfulness.4ea1f983.JPG",
       "https://antoniofgasco.com/static/media/kikemindfulness.4ea1f983.JPG",
