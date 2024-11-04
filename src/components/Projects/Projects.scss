@@ -64,11 +64,11 @@
     }
 
     &__details {
-      flex-basis: 60%;
+      flex-basis: 55%;
       padding-right: 2rem;
 
       h2 {
-        font-size: 4rem;
+        font-size: 3.7rem;
         margin: 1rem 5rem;
         text-align: left;
       }
@@ -84,14 +84,14 @@
 
     &__screenshots {
       position: relative;
-      flex-basis: 40%;
+      flex-basis: 45%;
       perspective: 1500px;
       margin-top: -2rem;
 
       &__carousel {
         position: relative;
         height: 400px;
-        width: 400px;
+        width: 500px;
         transform-style: preserve-3d;
         transform: rotateY(-30deg);
         opacity: 1;
@@ -107,7 +107,6 @@
           border-radius: 20px;
           object-fit: cover;
           backface-visibility: hidden;
-          object-position: 0%;
           transition: transform 0.8s ease, opacity 0.8s ease;
           z-index: 1;
         }
