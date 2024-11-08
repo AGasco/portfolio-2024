@@ -23,92 +23,27 @@ const Projects = () => {
   const isInView = useInView(screenshotsRef, triggerPointEnter);
 
   const [currentProjectIdx, setCurrentProjectIdx] = useState(0);
+  const [displayedProjectIdx, setDisplayedProjectIdx] = useState(0);
   const [targetPosition, setTargetPosition] = useState(0);
   const [isAnimating, setAnimating] = useState(false);
   const [animDirection, setAnimDirection] =
     useState<ProjectAnimDirections | null>(null);
   const [animPhase, setAnimPhase] = useState<ProjectAnimPhase>(IDLE);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  const prevAnimPhaseRef = useRef<ProjectAnimPhase>(animPhase);
+
+  const timeouts = useRef<{
+    timeout1?: number;
+    timeout2?: number;
+    timeout3?: number;
+  }>({});
 
   useEffect(() => {
     setTargetPosition(0);
-  }, [currentProjectIdx]);
-
-  // Handling animPhases and setting new project idx
-  useEffect(() => {
-    if (animPhase !== OUTGOING) return;
-
-    const outgoingDuration = 1500;
-    const incomingDuration = 1500;
-    const waitTime = 300;
-    let timeout2: NodeJS.Timeout;
-
-    const timeout1 = setTimeout(() => {
-      setAnimPhase(WAITING);
-
-      setTimeout(() => {
-        setCurrentProjectIdx((prevIdx) => {
-          if (animDirection === NEXT) {
-            return (prevIdx + 1) % projects.length;
-          } else {
-            return (prevIdx - 1 + projects.length) % projects.length;
-          }
-        });
-
-        setAnimPhase(INCOMING);
-
-        timeout2 = setTimeout(() => {
-          setAnimPhase(IDLE);
-          setAnimDirection(null);
-          setAnimating(false);
-        }, incomingDuration);
-      }, waitTime);
-    }, outgoingDuration);
-
-    return () => {
-      clearTimeout(timeout1);
-      clearTimeout(timeout2);
-    };
-  }, [animPhase, animDirection]);
-
-  // Preload images to prevent visual hiccups when switching between projects
-  useEffect(() => {
-    if (animPhase === WAITING) {
-      const { screenshots } =
-        projects[
-          (currentProjectIdx +
-            (animDirection === NEXT ? 1 : -1) +
-            projects.length) %
-            projects.length
-        ];
-
-      const imgPromises = screenshots.map(
-        (src) =>
-          new Promise((resolve) => {
-            const img = new Image();
-            img.src = src;
-            img.onload = resolve;
-            img.onerror = resolve;
-          })
-      );
-
-      Promise.all(imgPromises).then(() => {
-        setImagesLoaded(true);
-      });
-    } else {
-      setImagesLoaded(false);
-    }
-  }, [animPhase, animDirection]);
-
-  useEffect(() => {
-    if (imagesLoaded && animPhase === WAITING) {
-      setAnimPhase(INCOMING);
-    }
-  }, [imagesLoaded, animPhase]);
+  }, [displayedProjectIdx]);
 
   const handlePrevious = () => {
     if (isAnimating) return;
-
     setAnimating(true);
     setAnimDirection(PREVIOUS);
     setAnimPhase(OUTGOING);
@@ -116,11 +51,66 @@ const Projects = () => {
 
   const handleNext = () => {
     if (isAnimating) return;
-
     setAnimating(true);
     setAnimDirection(NEXT);
     setAnimPhase(OUTGOING);
   };
+
+  useEffect(() => {
+    const prevAnimPhase = prevAnimPhaseRef.current;
+
+    if (prevAnimPhase !== OUTGOING && animPhase === OUTGOING) {
+      const outgoingDuration = 1500;
+      const incomingDuration = 1500;
+      const waitTime = 300;
+
+      timeouts.current.timeout1 = window.setTimeout(() => {
+        setAnimPhase(WAITING);
+
+        let nextProjectIdx;
+        if (animDirection === NEXT) {
+          nextProjectIdx = (currentProjectIdx + 1) % projects.length;
+        } else {
+          nextProjectIdx =
+            (currentProjectIdx - 1 + projects.length) % projects.length;
+        }
+        setCurrentProjectIdx(nextProjectIdx);
+
+        timeouts.current.timeout2 = window.setTimeout(() => {
+          setDisplayedProjectIdx(nextProjectIdx);
+          setTargetPosition(0);
+          setAnimPhase(INCOMING);
+
+          timeouts.current.timeout3 = window.setTimeout(() => {
+            setAnimPhase(IDLE);
+            setAnimDirection(null);
+            setAnimating(false);
+          }, incomingDuration);
+        }, waitTime);
+      }, outgoingDuration);
+    }
+
+    prevAnimPhaseRef.current = animPhase;
+  }, [animPhase, animDirection, currentProjectIdx]);
+
+  useEffect(() => {
+    const currentTimeouts = timeouts.current;
+
+    return () => {
+      clearTimeout(currentTimeouts.timeout1);
+      clearTimeout(currentTimeouts.timeout2);
+      clearTimeout(currentTimeouts.timeout3);
+    };
+  }, []);
+
+  const {
+    title,
+    description,
+    screenshots,
+    links,
+    backgroundColor,
+    objectPosition
+  } = projects[displayedProjectIdx];
 
   const getImgTransformValues = (idx: number) => {
     let positionOffset = idx - targetPosition;
@@ -172,14 +162,6 @@ const Projects = () => {
       />
     );
   };
-  const {
-    title,
-    description,
-    screenshots,
-    links,
-    backgroundColor,
-    objectPosition
-  } = projects[currentProjectIdx];
 
   return (
     <div className="projects" ref={topRef} style={{ backgroundColor, opacity }}>
@@ -195,61 +177,55 @@ const Projects = () => {
           <FontAwesomeIcon icon={faChevronRight} />
         </button>
       </div>
-      <div className={`projects__content`}>
-        {!(animPhase === WAITING && !imagesLoaded) && (
-          <div
-            className={`projects__content__inner ${
-              animPhase === WAITING ? 'hidden' : ''
+      <div
+        className={`projects__content ${animPhase === WAITING ? 'hidden' : ''}`}
+      >
+        <div className="projects__content__details">
+          <h2
+            className={`projects__title stagger-1 ${
+              animPhase !== IDLE && animPhase !== WAITING && animDirection
+                ? `animate-${animPhase}`
+                : ''
             }`}
           >
-            <div className="projects__content__details">
-              <h2
-                className={`projects__title stagger-1 ${
-                  animPhase !== IDLE && animPhase !== WAITING && animDirection
-                    ? `animate-${animPhase}`
-                    : ''
-                }`}
-              >
-                {title}
-              </h2>
-              <p
-                className={`projects__description stagger-2 ${
-                  animPhase !== IDLE && animPhase !== WAITING && animDirection
-                    ? `animate-${animPhase} description`
-                    : ''
-                }`}
-              >
-                {description}
-                <div className="dividerLine" />
-                <div className="projects__linksContainer">
-                  <h4>Links</h4>
-                  <Link to={links.demo} target="_blank">
-                    <FontAwesomeIcon icon={faLaptop} size="lg" />
-                  </Link>
-                  <Link to={links.github} target="_blank">
-                    <FontAwesomeIcon icon={faGithub} size="lg" />
-                  </Link>
-                </div>
-              </p>
+            {title}
+          </h2>
+          <p
+            className={`projects__description stagger-2 ${
+              animPhase !== IDLE && animPhase !== WAITING && animDirection
+                ? `animate-${animPhase} description`
+                : ''
+            }`}
+          >
+            {description}
+            <div className="dividerLine" />
+            <div className="projects__linksContainer">
+              <h4>Links</h4>
+              <Link to={links.demo} target="_blank">
+                <FontAwesomeIcon icon={faLaptop} size="lg" />
+              </Link>
+              <Link to={links.github} target="_blank">
+                <FontAwesomeIcon icon={faGithub} size="lg" />
+              </Link>
             </div>
-            <div
-              ref={screenshotsRef}
-              className={`projects__content__screenshots stagger-3 ${
-                animPhase !== IDLE && animPhase !== WAITING && animDirection
-                  ? `animate-${animPhase}`
-                  : ''
-              }`}
-            >
-              <div
-                className={`projects__content__screenshots__carousel ${
-                  isInView ? 'animate' : ''
-                }`}
-              >
-                {screenshots.map((src, idx) => renderScreenshot(src, idx))}
-              </div>
-            </div>
+          </p>
+        </div>
+        <div
+          ref={screenshotsRef}
+          className={`projects__content__screenshots stagger-3 ${
+            animPhase !== IDLE && animPhase !== WAITING && animDirection
+              ? `animate-${animPhase}`
+              : ''
+          }`}
+        >
+          <div
+            className={`projects__content__screenshots__carousel ${
+              isInView ? 'animate' : ''
+            }`}
+          >
+            {screenshots.map((src, idx) => renderScreenshot(src, idx))}
           </div>
-        )}
+        </div>
       </div>
     </div>
   );
