@@ -54,13 +54,18 @@
   }
 
   &__content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
     width: 100%;
 
-    &.hidden {
+    &__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    & .hidden {
       visibility: hidden;
+      position: absolute;
+      width: 100%;
     }
 
     &__details {
