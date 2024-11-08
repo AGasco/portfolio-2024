@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Projects.scss';
+import ProjectScreenshot from './ProjectScreenshot';
 
 const triggerPointEnter = window.innerHeight * 0.6;
 const offset = 0.4;
@@ -112,57 +113,6 @@ const Projects = () => {
     objectPosition
   } = projects[displayedProjectIdx];
 
-  const getImgTransformValues = (idx: number) => {
-    let positionOffset = idx - targetPosition;
-    if (positionOffset < 0) positionOffset += screenshots.length;
-
-    let translateZValue;
-    let rotateYValue;
-
-    if (!isInView) {
-      if (positionOffset === 0) {
-        translateZValue = 100;
-        rotateYValue = 0;
-      } else {
-        translateZValue = positionOffset * -300;
-        rotateYValue = positionOffset * 20;
-      }
-    } else if (animPhase === IDLE) {
-      translateZValue = positionOffset * -200;
-      rotateYValue = positionOffset * 10;
-    } else {
-      translateZValue = 0;
-      rotateYValue = 0;
-    }
-
-    return { translateZValue, rotateYValue };
-  };
-
-  const renderScreenshot = (src: string, idx: number) => {
-    const { translateZValue, rotateYValue } = getImgTransformValues(idx);
-    let positionOffset = idx - targetPosition;
-    if (positionOffset < 0) positionOffset += screenshots.length;
-
-    const zIndex = screenshots.length - positionOffset;
-    const opacity = Math.max(1 - positionOffset * 0.2, 0.2);
-
-    return (
-      <img
-        key={idx}
-        src={src}
-        className={`screenshot ${idx === targetPosition ? 'active' : ''}`}
-        style={{
-          transform: `translateZ(${translateZValue}px) rotateY(${rotateYValue}deg)`,
-          transition: 'transform 1s ease',
-          zIndex,
-          opacity,
-          objectPosition
-        }}
-        onClick={() => setTargetPosition(idx)}
-      />
-    );
-  };
-
   return (
     <div className="projects" ref={topRef} style={{ backgroundColor, opacity }}>
       <div className="projects__controls">
@@ -223,7 +173,18 @@ const Projects = () => {
               isInView ? 'animate' : ''
             }`}
           >
-            {screenshots.map((src, idx) => renderScreenshot(src, idx))}
+            {screenshots.map((src, idx) => (
+              <ProjectScreenshot
+                idx={idx}
+                src={src}
+                screenshotsLength={screenshots.length}
+                isInView={isInView}
+                animPhase={animPhase}
+                objectPosition={objectPosition}
+                targetPosition={targetPosition}
+                setTargetPosition={setTargetPosition}
+              />
+            ))}
           </div>
         </div>
       </div>
