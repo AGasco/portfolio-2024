@@ -1,6 +1,13 @@
-import { IDLE, NEXT, PREVIOUS, WAITING } from '@/constants';
+import {
+  BREAKPOINT_DESKTOP,
+  IDLE,
+  NEXT,
+  PREVIOUS,
+  SMALLER,
+  WAITING
+} from '@/constants';
 import { projects } from '@/data';
-import { useInView, useScrollOpacity } from '@/hooks';
+import { useBreakpointComparison, useInView, useScrollOpacity } from '@/hooks';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import {
   faChevronLeft,
@@ -33,6 +40,11 @@ const Projects = () => {
     handleNavigation
   } = useProjectAnimation();
 
+  const isSmallerThanDesktop = useBreakpointComparison(
+    BREAKPOINT_DESKTOP,
+    SMALLER
+  );
+
   const {
     title,
     description,
@@ -44,82 +56,98 @@ const Projects = () => {
 
   return (
     <div className="projects" ref={topRef} style={{ backgroundColor, opacity }}>
-      <div className="projects__controls">
-        <button
-          onClick={() => handleNavigation(PREVIOUS)}
-          disabled={isAnimating}
-        >
-          <FontAwesomeIcon icon={faChevronLeft} />
-        </button>
-        <span>
-          {String(currentProjectIdx + 1).padStart(2, '0')} /{' '}
-          {String(projects.length).padStart(2, '0')}
-        </span>
-        <button onClick={() => handleNavigation(NEXT)} disabled={isAnimating}>
-          <FontAwesomeIcon icon={faChevronRight} />
-        </button>
-      </div>
-      <div
-        className={`projects__content ${animPhase === WAITING ? 'hidden' : ''}`}
-      >
-        <div className="projects__content__details">
-          <h2
-            className={`projects__title stagger-1 ${
-              animPhase !== IDLE && animPhase !== WAITING && animDirection
-                ? `animate-${animPhase}`
-                : ''
-            }`}
-          >
-            {title}
-          </h2>
-          <p
-            className={`projects__description stagger-2 ${
-              animPhase !== IDLE && animPhase !== WAITING && animDirection
-                ? `animate-${animPhase} description`
-                : ''
-            }`}
-          >
-            {description}
-            <div className="dividerLine" />
-            <div className="projects__linksContainer">
-              <h4>Links</h4>
-              <Link to={links.demo} target="_blank">
-                <FontAwesomeIcon icon={faLaptop} size="lg" />
-              </Link>
-              <Link to={links.github} target="_blank">
-                <FontAwesomeIcon icon={faGithub} size="lg" />
-              </Link>
-            </div>
-          </p>
-        </div>
-        <div
-          ref={screenshotsRef}
-          className={`projects__content__screenshots stagger-3 ${
-            animPhase !== IDLE && animPhase !== WAITING && animDirection
-              ? `animate-${animPhase}`
-              : ''
-          }`}
-        >
-          <div
-            className={`projects__content__screenshots__carousel ${
-              isInView ? 'animate' : ''
-            }`}
-          >
-            {screenshots.map((src, idx) => (
-              <ProjectScreenshot
-                idx={idx}
-                src={src}
-                screenshotsLength={screenshots.length}
-                isInView={isInView}
-                animPhase={animPhase}
-                objectPosition={objectPosition}
-                targetPosition={targetPosition}
-                setTargetPosition={setTargetPosition}
-              />
-            ))}
+      {isSmallerThanDesktop ? (
+        <p style={{ fontSize: '22px' }}>
+          This section is currently under development for mobile & tablets.{' '}
+          <br />
+          You can view this section in a desktop for now. Sorry for the
+          inconveniences.
+        </p>
+      ) : (
+        <>
+          <div className="projects__controls">
+            <button
+              onClick={() => handleNavigation(PREVIOUS)}
+              disabled={isAnimating}
+            >
+              <FontAwesomeIcon icon={faChevronLeft} />
+            </button>
+            <span>
+              {String(currentProjectIdx + 1).padStart(2, '0')} /{' '}
+              {String(projects.length).padStart(2, '0')}
+            </span>
+            <button
+              onClick={() => handleNavigation(NEXT)}
+              disabled={isAnimating}
+            >
+              <FontAwesomeIcon icon={faChevronRight} />
+            </button>
           </div>
-        </div>
-      </div>
+          <div
+            className={`projects__content ${
+              animPhase === WAITING ? 'hidden' : ''
+            }`}
+          >
+            <div className="projects__content__details">
+              <h2
+                className={`projects__title stagger-1 ${
+                  animPhase !== IDLE && animPhase !== WAITING && animDirection
+                    ? `animate-${animPhase}`
+                    : ''
+                }`}
+              >
+                {title}
+              </h2>
+              <p
+                className={`projects__description stagger-2 ${
+                  animPhase !== IDLE && animPhase !== WAITING && animDirection
+                    ? `animate-${animPhase} description`
+                    : ''
+                }`}
+              >
+                {description}
+                <div className="dividerLine" />
+                <div className="projects__linksContainer">
+                  <h4>Links</h4>
+                  <Link to={links.demo} target="_blank">
+                    <FontAwesomeIcon icon={faLaptop} size="lg" />
+                  </Link>
+                  <Link to={links.github} target="_blank">
+                    <FontAwesomeIcon icon={faGithub} size="lg" />
+                  </Link>
+                </div>
+              </p>
+            </div>
+            <div
+              ref={screenshotsRef}
+              className={`projects__content__screenshots stagger-3 ${
+                animPhase !== IDLE && animPhase !== WAITING && animDirection
+                  ? `animate-${animPhase}`
+                  : ''
+              }`}
+            >
+              <div
+                className={`projects__content__screenshots__carousel ${
+                  isInView ? 'animate' : ''
+                }`}
+              >
+                {screenshots.map((src, idx) => (
+                  <ProjectScreenshot
+                    idx={idx}
+                    src={src}
+                    screenshotsLength={screenshots.length}
+                    isInView={isInView}
+                    animPhase={animPhase}
+                    objectPosition={objectPosition}
+                    targetPosition={targetPosition}
+                    setTargetPosition={setTargetPosition}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };
