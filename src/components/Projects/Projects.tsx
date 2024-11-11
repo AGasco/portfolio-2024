@@ -1,5 +1,6 @@
 import {
   BREAKPOINT_DESKTOP,
+  BREAKPOINT_XLDESKTOP,
   IDLE,
   NEXT,
   PREVIOUS,
@@ -7,7 +8,12 @@ import {
   WAITING
 } from '@/constants';
 import { projects } from '@/data';
-import { useBreakpointComparison, useInView, useScrollOpacity } from '@/hooks';
+import {
+  useBreakpointComparison,
+  useFinalTrigger,
+  useInView,
+  useScrollOpacity
+} from '@/hooks';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import {
   faChevronLeft,
@@ -28,7 +34,12 @@ const Projects = () => {
   const topRef = useRef(null);
   const screenshotsRef = useRef(null);
   const opacity = useScrollOpacity(topRef, offset);
-  const isInView = useInView(screenshotsRef, triggerPointEnter);
+
+  const finalTrigger = useFinalTrigger(triggerPointEnter, {
+    [BREAKPOINT_XLDESKTOP]: 0.6,
+    default: 1
+  });
+  const isInView = useInView(screenshotsRef, finalTrigger);
   const {
     currentProjectIdx,
     displayedProjectIdx,
@@ -108,13 +119,17 @@ const Projects = () => {
                 {description}
                 <div className="dividerLine" />
                 <div className="projects__linksContainer">
-                  <h4>Links</h4>
-                  <Link to={links.demo} target="_blank">
-                    <FontAwesomeIcon icon={faLaptop} size="lg" />
-                  </Link>
-                  <Link to={links.github} target="_blank">
-                    <FontAwesomeIcon icon={faGithub} size="lg" />
-                  </Link>
+                  {links && (
+                    <>
+                      <h4>Links</h4>
+                      <Link to={links.demo} target="_blank">
+                        <FontAwesomeIcon icon={faLaptop} size="lg" />
+                      </Link>
+                      <Link to={links.github} target="_blank">
+                        <FontAwesomeIcon icon={faGithub} size="lg" />
+                      </Link>
+                    </>
+                  )}
                 </div>
               </p>
             </div>
@@ -131,7 +146,7 @@ const Projects = () => {
                   isInView ? 'animate' : ''
                 }`}
               >
-                {screenshots.map((src, idx) => (
+                {screenshots?.map((src, idx) => (
                   <ProjectScreenshot
                     idx={idx}
                     src={src}
