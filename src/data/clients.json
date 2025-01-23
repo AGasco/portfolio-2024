@@ -12,21 +12,9 @@
     "link": ""
   },
   {
-    "id": 2,
-    "name": "Version 1",
-    "logo": "/images/logos/clients/version1-logo.png",
-    "link": ""
-  },
-  {
     "id": 4,
     "name": "Sweet",
     "logo": "/images/logos/clients/sweet-logo.jpg",
-    "link": ""
-  },
-  {
-    "id": 5,
-    "name": "Inditex",
-    "logo": "/images/logos/clients/inditex-logo.jpg",
     "link": ""
   },
   {
